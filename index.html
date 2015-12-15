@@ -152,8 +152,8 @@ aside.example div.example {
 aside.example div.example div.example-title {
     color: #999;
 }
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
-  "specStatus": "FPWD",
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+  "specStatus": "ED",
   "shortName": "webmention",
   "edDraftURI": "http://webmention.net/draft/",
   "editors": [
@@ -161,18 +161,6 @@ aside.example div.example div.example-title {
       "name": "Aaron Parecki",
       "url": "http://aaronparecki.com/",
       "w3cid": "59996"
-    }
-  ],
-  "authors": [
-    {
-      "name": "Aaron Parecki",
-      "url": "http://aaronparecki.com/",
-      "w3cid": "59996"
-    },
-    {
-      "name": "Sandeep Shetty",
-      "url": "http://sandeep.io/",
-      "w3cid": ""
     }
   ],
   "wg": "Social Web Working Group",
@@ -211,11 +199,11 @@ aside.example div.example div.example-title {
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
   
-  <h2 id="w3c-first-public-working-draft-15-december-2015"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-12-15">15 December 2015</time></h2>
+  <h2 id="w3c-editor-s-draft-15-december-2015"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2015-12-15">15 December 2015</time></h2>
   <dl>
     
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-webmention-20151215/">http://www.w3.org/TR/2015/WD-webmention-20151215/</a></dd>
+      <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/webmention/">http://www.w3.org/TR/webmention/</a></dd>
     
@@ -227,18 +215,13 @@ aside.example div.example div.example-title {
     
     
     
+      
+    
     
     
     <dt>Editor:</dt>
     <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
 <span property="rdf:rest" resource="rdf:nil"></span>
-</dd>
-
-    
-      <dt>Authors:</dt>
-      <dd class="p-author h-card vcard" data-editor-id="59996"><span property="dc:contributor" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
-</dd>
-<dd class="p-author h-card vcard" data-editor-id="59996"><span property="dc:contributor" typeof="foaf:Person"><meta property="foaf:name" content="Sandeep Shetty"><a class="u-url url p-name fn" property="foaf:homepage" href="http://sandeep.io/">Sandeep Shetty</a></span>
 </dd>
 
     
@@ -329,9 +312,7 @@ aside.example div.example div.example-title {
     
           
           <p>
-            This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a First Public Working Draft.
-            
-              This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+            This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft.
             
             
               If you wish to make comments regarding this document, please send them to
@@ -352,7 +333,7 @@ aside.example div.example div.example-title {
           
           
             <p>
-              Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+              Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
               Membership. This is a draft document and may be updated, replaced or obsoleted by other
               documents at any time. It is inappropriate to cite this document as other than work in
               progress.
@@ -397,7 +378,7 @@ aside.example div.example div.example-title {
       
     
   
-</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.1 </span>Protocol Summary</a></li></ul></li><li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">2. </span>Webmention Protocol</a><ul class="toc"><li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">2.1 </span>Sending Webmentions</a><ul class="toc"><li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">2.1.1 </span>Sender discovers receiver webmention endpoint</a></li><li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">2.1.2 </span>Sender notifies receiver</a></li></ul></li><li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">2.2 </span>Receiving Webmentions</a><ul class="toc"><li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">2.2.1 </span>Request Verification</a></li><li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">2.2.2 </span>Webmention Verification</a></li><li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">2.2.3 </span>Error Responses</a></li><li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">2.2.4 </span>Updating existing webmentions</a></li></ul></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">3. </span>Security Considerations</a><ul class="toc"><li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">3.1 </span>Preventing Abuse</a></li><li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">3.2 </span>Limits on GET requests</a></li></ul></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">4. </span>Extensions</a><ul class="toc"><li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">4.1 </span><span class="formerLink">Vouch</span></a></li><li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">4.2 </span><span class="formerLink">Salmention</span></a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">A. </span>Resources</a></li><li class="tocline"><a href="#articles" class="tocxref"><span class="secno">B. </span>Articles</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">C. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">C.1 </span>Libraries</a><ul class="toc"><li class="tocline"><a href="#sending" class="tocxref"><span class="secno">C.1.1 </span>Sending</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">C.1.2 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#receiving" class="tocxref"><span class="secno">C.1.3 </span>Receiving</a></li><li class="tocline"><a href="#parsing" class="tocxref"><span class="secno">C.1.4 </span>Parsing</a></li></ul></li><li class="tocline"><a href="#plugins" class="tocxref"><span class="secno">C.2 </span>Plugins</a></li><li class="tocline"><a href="#tools" class="tocxref"><span class="secno">C.3 </span>Tools</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">C.4 </span>Services</a></li></ul></li></ul></section>
+</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.1 </span>Protocol Summary</a></li></ul></li><li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">2. </span>Webmention Protocol</a><ul class="toc"><li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">2.1 </span>Sending Webmentions</a><ul class="toc"><li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">2.1.1 </span>Sender discovers receiver webmention endpoint</a></li><li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">2.1.2 </span>Sender notifies receiver</a></li></ul></li><li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">2.2 </span>Receiving Webmentions</a><ul class="toc"><li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">2.2.1 </span>Request Verification</a></li><li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">2.2.2 </span>Webmention Verification</a></li><li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">2.2.3 </span>Error Responses</a></li><li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">2.2.4 </span>Updating existing webmentions</a></li></ul></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">3. </span>Security Considerations</a><ul class="toc"><li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">3.1 </span>Preventing Abuse</a></li><li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">3.2 </span>Limits on GET requests</a></li></ul></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">4. </span>Extensions</a><ul class="toc"><li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">4.1 </span><span class="formerLink">Vouch</span></a></li><li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">4.2 </span><span class="formerLink">Salmention</span></a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">A. </span>Acknowledgements</a></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">B. </span>Resources</a></li><li class="tocline"><a href="#articles" class="tocxref"><span class="secno">C. </span>Articles</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">D. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">D.1 </span>Libraries</a><ul class="toc"><li class="tocline"><a href="#sending" class="tocxref"><span class="secno">D.1.1 </span>Sending</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">D.1.2 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#receiving" class="tocxref"><span class="secno">D.1.3 </span>Receiving</a></li><li class="tocline"><a href="#parsing" class="tocxref"><span class="secno">D.1.4 </span>Parsing</a></li></ul></li><li class="tocline"><a href="#plugins" class="tocxref"><span class="secno">D.2 </span>Plugins</a></li><li class="tocline"><a href="#tools" class="tocxref"><span class="secno">D.3 </span>Tools</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">D.4 </span>Services</a></li></ul></li></ul></section>
 
     
 
@@ -684,8 +665,18 @@ The webmention is being processed</pre></div><p></p>
 
     </section>
 
+    <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Acknowledgements</span></h2>
+
+      <p>The author wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a>
+        for contributing the original draft of the webmention specification.</p>
+      <p>Additionally, the author wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
+        community and other implementers for their support, encouragement and enthusiasm,
+        including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
+    </section>
+
     <section class="appendix informative" id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Resources</span></h2><p><em>This section is non-normative.</em></p>
+      <!--OddPage--><h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Resources</span></h2><p><em>This section is non-normative.</em></p>
 
       <p>
         </p><ul>
@@ -698,7 +689,7 @@ The webmention is being processed</pre></div><p></p>
     </section>
 
     <section class="appendix informative" id="articles" typeof="bibo:Chapter" resource="#articles" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-articles" resource="#h-articles"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Articles</span></h2><p><em>This section is non-normative.</em></p>
+      <!--OddPage--><h2 id="h-articles" resource="#h-articles"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Articles</span></h2><p><em>This section is non-normative.</em></p>
 
       <ul>
         <li>2014-11-29 <a href="http://www.kryogenix.org">Stuart Langridge</a> <cite><a href="http://www.kryogenix.org/days/2014/11/29/enabling-webmentions/">Enabling Webmentions</a></cite> - inventor of <a href="http://indiewebcamp.com/Pingback">Pingback</a> enables webmentions on his blog!</li>
@@ -707,13 +698,13 @@ The webmention is being processed</pre></div><p></p>
     </section>
 
     <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Implementations</span></h2><p><em>This section is non-normative.</em></p>
+      <!--OddPage--><h2 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>Implementations</span></h2><p><em>This section is non-normative.</em></p>
 
       <section id="libraries" typeof="bibo:Chapter" resource="#libraries" property="bibo:hasPart">
-        <h3 id="h-libraries" resource="#h-libraries"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Libraries</span></h3>
+        <h3 id="h-libraries" resource="#h-libraries"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1 </span>Libraries</span></h3>
 
         <section id="sending" typeof="bibo:Chapter" resource="#sending" property="bibo:hasPart">
-          <h4 id="h-sending" resource="#h-sending"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1.1 </span>Sending</span></h4>
+          <h4 id="h-sending" resource="#h-sending"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1.1 </span>Sending</span></h4>
           <ul>
             <li><a href="https://github.com/indieweb/mention-client-php">indieweb/mention-client-php</a> - <strong>PHP</strong> library for sending webmention and pingpack notifications</li>
             <li><a href="https://github.com/indieweb/mention-client-ruby">indieweb/mention-client-ruby</a> - <strong>Ruby</strong> library for sending webmention notifications</li>
@@ -727,7 +718,7 @@ The webmention is being processed</pre></div><p></p>
         </section>
 
         <section id="endpoint-discovery" typeof="bibo:Chapter" resource="#endpoint-discovery" property="bibo:hasPart">
-          <h4 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1.2 </span>Endpoint Discovery</span></h4>
+          <h4 id="h-endpoint-discovery" resource="#h-endpoint-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1.2 </span>Endpoint Discovery</span></h4>
           <ul>
             <li><a href="https://github.com/indieweb/link-rel-parser-php/blob/master/src/IndieWeb/link_rel_parser.php">link_rel_parser</a> - <strong>PHP</strong> <code>http_rels($h)</code> &amp; <code>head_http_rels($url)</code> - HTTP header string parser for RFC5988 Link: rels (including <code>X-Pingback</code>) &amp; function to curl a HEAD request and parse it all in one.</li>
             <li><a href="https://github.com/phpish/link_header">phpish/link_header</a> - <strong>PHP</strong> Link header (RFC 5988) parser</li>
@@ -737,7 +728,7 @@ The webmention is being processed</pre></div><p></p>
         </section>
 
         <section id="receiving" typeof="bibo:Chapter" resource="#receiving" property="bibo:hasPart">
-          <h4 id="h-receiving" resource="#h-receiving"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1.3 </span>Receiving</span></h4>
+          <h4 id="h-receiving" resource="#h-receiving"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1.3 </span>Receiving</span></h4>
           <ul>
             <li>PHP Minimum Viable Webmention handler: <a href="https://gist.github.com/adactio/6484118">https://gist.github.com/adactio/6484118</a></li>
             <li><a href="https://github.com/pear2/Services_Linkback">pear2/Services_Linkback</a> - <strong>PHP</strong> pingback+webmention client + server library</li>
@@ -745,7 +736,7 @@ The webmention is being processed</pre></div><p></p>
         </section>
 
         <section id="parsing" typeof="bibo:Chapter" resource="#parsing" property="bibo:hasPart">
-          <h4 id="h-parsing" resource="#h-parsing"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1.4 </span>Parsing</span></h4>
+          <h4 id="h-parsing" resource="#h-parsing"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.1.4 </span>Parsing</span></h4>
           <ul>
             <li><a href="http://microformats.org/wiki/microformats2#Implementations">microformats2 implementations and parsers</a></li>
             <li><a href="https://github.com/barnabywalters/php-mf-cleaner">php-mf-cleaner</a> - "Takes microformats2 array structure and makes it more sane. Counterpart to indieweb/php-mf2"</li>
@@ -755,7 +746,7 @@ The webmention is being processed</pre></div><p></p>
       </section>
 
       <section id="plugins" typeof="bibo:Chapter" resource="#plugins" property="bibo:hasPart">
-        <h3 id="h-plugins" resource="#h-plugins"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Plugins</span></h3>
+        <h3 id="h-plugins" resource="#h-plugins"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.2 </span>Plugins</span></h3>
         <ul>
           <li><a href="https://wordpress.org/plugins/webmention/">Wordpress</a></li>
           <li><a href="https://www.drupal.org/project/vinculum">Drupal</a></li>
@@ -767,7 +758,7 @@ The webmention is being processed</pre></div><p></p>
       </section>
 
       <section id="tools" typeof="bibo:Chapter" resource="#tools" property="bibo:hasPart">
-        <h3 id="h-tools" resource="#h-tools"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.3 </span>Tools</span></h3>
+        <h3 id="h-tools" resource="#h-tools"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.3 </span>Tools</span></h3>
 
         <ul>
           <li><a href="https://github.com/voxpelli/node-webmention-testpinger">node-webmention-testpinger</a> is a tool to ping your site with a variety of webmentions markup. Contains copies of a couple of real world examples of mentions that it enables you to ping locally to a development copy of your site.</li>
@@ -778,7 +769,7 @@ The webmention is being processed</pre></div><p></p>
       </section>
 
       <section id="services" typeof="bibo:Chapter" resource="#services" property="bibo:hasPart">
-        <h3 id="h-services" resource="#h-services"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.4 </span>Services</span></h3>
+        <h3 id="h-services" resource="#h-services"><span property="xhv:role" resource="xhv:heading"><span class="secno">D.4 </span>Services</span></h3>
 
         <ul>
           <li><a href="http://brid.gy/">brid.gy</a> is a service that sends webmentions for comments/replies, likes, and reposts on Facebook, Twitter, Google+, and Instagram posts. It uses <a href="http://indiewebcamp.com/original_post_discovery">original post discovery</a> to find target links for the webmentions. <a href="https://github.com/snarfed/bridgy">GitHub repo here.</a></li>
