@@ -37,11 +37,21 @@
             ]
           }],
           localBiblio:  {
+            "Vouch": {
+              title:    "Vouch",
+              href:     "http://indiewebcamp.com/Vouch",
+              authors:  [
+                "Aaron Parecki",
+                "Tantek Çelik"
+              ],
+              status:   "Living Specification",
+              publisher:  "IndieWebCamp"
+            },
             "Salmention": {
               title:    "Salmention",
               href:     "http://indiewebcamp.com/Salmention",
               authors:  [
-                  "Tantek Çelik"
+                "Tantek Çelik"
               ],
               status:   "Living Specification",
               publisher:  "IndieWebCamp"
@@ -125,7 +135,7 @@
           </li>
           <li>Aaron's server receives the webmention</li>
           <li>Aaron's server verifies that <code>target</code> in the webmention is a valid permalink on Aaron's blog (if not, processing stops)</li>
-          <li>Aaron's server verifies that the <code>source</code> (when retrieved, after following redirects) in the webmention contains a hyperlink to the <code>target</code> (if not, processing stops)</li>
+          <li>Aaron's server verifies that the <code>source</code> (when retrieved, after following redirects [[!FETCH]]) in the webmention contains a hyperlink to the <code>target</code> (if not, processing stops)</li>
         </ol>
 
       </section>
@@ -389,31 +399,21 @@ The webmention is being processed</pre></p>
       </section>
     </section>
 
-    <section>
+    <section class="appendix informative">
       <h2>Extensions</h2>
 
       <p>The following Webmention Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
 
       <section>
         <h3><a href="http://indiewebcamp.com/Vouch">Vouch</a></h3>
-        <p>The <a href="http://indiewebcamp.com/Vouch">Vouch</a> protocol is an anti-spam extension to Webmention.</p>
+        <p>The [[Vouch]] protocol is an anti-spam extension to Webmention.</p>
       </section>
 
       <section>
         <h3><a href="http://indiewebcamp.com/Salmention">Salmention</a></h3>
-        <p>The <a href="http://indiewebcamp.com/Salmention">Salmention</a> protocol is an extension to Webmention to propagate comments and other interactions upstream.</p>
+        <p>The [[Salmention]] protocol is an extension to Webmention to propagate comments and other interactions upstream.</p>
       </section>
 
-    </section>
-
-    <section class="appendix">
-      <h2>Acknowledgements</h2>
-
-      <p>The author wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a>
-        for contributing the original draft of the webmention specification.</p>
-      <p>Additionally, the author wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
-        community and other implementers for their support, encouragement and enthusiasm,
-        including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
     </section>
 
     <section class="appendix informative">
@@ -523,6 +523,17 @@ The webmention is being processed</pre></p>
       </section>
 
     </section>
+
+    <section class="appendix">
+      <h2>Acknowledgements</h2>
+
+      <p>The author wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a>
+        for contributing the original draft of the webmention specification.</p>
+      <p>Additionally, the author wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
+        community and other implementers for their support, encouragement and enthusiasm,
+        including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
+    </section>
+
 
   </body>
 </html>
