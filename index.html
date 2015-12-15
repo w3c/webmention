@@ -112,9 +112,10 @@
             one of these is present, the first HTTP Link header takes precedence,
             followed by the first <code>&lt;link&gt;</code> element, and finally
             the first <code>&lt;a&gt;</code> element. Clients MUST support all
-            three options and fall back in this order. Senders MAY initially make
-            an HTTP HEAD request to check for the Link header before making a
-            GET request.</p>
+            three options and fall back in this order. The endpoint MAY be a relative
+            URL, in which case the sender MUST resolve it relative to the
+            <code>target</code> URL. Senders MAY initially make an HTTP HEAD
+            request to check for the Link header before making a GET request.</p>
 
           <p><pre class="example">GET /post-by-aaron HTTP/1.1
 Host: aaronpk.com
