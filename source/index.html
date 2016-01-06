@@ -190,19 +190,19 @@
             for both HTML and HTTP link relations.</p>
 
           <p><pre class="example">GET /post-by-aaron HTTP/1.1
-Host: aaronpk.com
+Host: aaronpk.example
 HTTP/1.1 200 OK
-Link: &lt;http://aaronpk.com/webmention-endpoint&gt;; rel="webmention"
+Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
 
 &lt;html&gt;
 &lt;head&gt;
 ...
-&lt;link href="http://aaronpk.com/webmention-endpoint" rel="webmention" /&gt;
+&lt;link href="http://aaronpk.example/webmention-endpoint" rel="webmention" /&gt;
 ...
 &lt;/head&gt;
 &lt;body&gt;
 ....
-&lt;a href="http://aaronpk.com/webmention-endpoint" rel="webmention"&gt;webmention&lt;/a&gt;
+&lt;a href="http://aaronpk.example/webmention-endpoint" rel="webmention"&gt;webmention&lt;/a&gt;
 ...
 &lt;/body&gt;
 &lt;/html&gt;</pre></p>
@@ -227,11 +227,11 @@ Link: &lt;http://aaronpk.com/webmention-endpoint&gt;; rel="webmention"
           <p>Any <code>2xx</code> response code MUST be considered a success.</p>
 
           <p><pre class="example">POST /webmention-endpoint HTTP/1.1
-Host: aaronpk.com
+Host: aaronpk.example
 Content-Type: application/x-www-form-urlencoded
 
-source=https://waterpigs.co.uk/post-by-barnaby&amp;
-target=https://aaronpk.com/post-by-aaron
+source=https://waterpigs.example/post-by-barnaby&amp;
+target=https://aaronpk.example/post-by-aaron
 
 
 HTTP/1.1 202 Accepted</pre></p>
@@ -255,10 +255,10 @@ HTTP/1.1 202 Accepted</pre></p>
           readable response is recommended.</p>
 
         <p><pre class="example">HTTP/1.1 201 Created
-Location: http://aaronpk.com/webmention/DEhB9Jme
+Location: http://aaronpk.example/webmention/DEhB9Jme
 Content-type: text/plain
 
-The webmention is being processed. You can check on its status here: http://aaronpk.com/webmention/DEhB9Jme</pre></p>
+The webmention is being processed. You can check on its status here: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
 
         <p>If the receiver processes the request asynchronously but does not
           return a status URL, the receiver MUST reply with an <code>HTTP 202 Accepted</code>
@@ -453,10 +453,7 @@ The webmention is being processed</pre></p>
     <section class="appendix informative">
       <h2>Articles</h2>
 
-      <ul>
-        <li>2014-11-29 <a href="http://www.kryogenix.org">Stuart Langridge</a> <cite><a href="http://www.kryogenix.org/days/2014/11/29/enabling-webmentions/">Enabling Webmentions</a></cite> - inventor of [[Pingback]] enables webmentions on his blog!</li>
-        <li>2014-12-21 "<a href="https://david.shanske.com/articles/2014/12/21/problem-future-mentions/">One of the building blocks of Indiewebcamp is the webmention</a>"</li>
-      </ul>
+      <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles"></a>articles about Webmention</a> on the IndieWebCamp wiki.</p>
     </section>
 
     <section class="appendix informative">
