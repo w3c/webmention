@@ -420,6 +420,34 @@ The webmention is being processed</pre></p>
       </section>
     </section>
 
+    <section>
+      <h2>IANA Considerations</h2>
+      
+      <p>The link relation type below has been registered by IANA per Section
+   6.2.1 of [[!RFC5988]]:</p>
+      
+      <dl>
+        
+        <dt>Relation Name:</dt>
+        <dd>webmention</dd>
+        
+        <dt>Description:</dt>
+        <dd>Identifies a target URI that supports the WebMention protocol. This
+        allows clients that mention a resource in some form of publishing
+        process to contact that endpoint and inform it that this resource has
+        been mentioned.</dd>
+        
+        <dt>Reference:</dt>
+        <dd><a href="http://www.w3.org/TR/webmention/">W3C WebMention
+        Specification (http://www.w3.org/TR/webmention/)</a></dd>
+        
+        <dt>Notes:</dt>
+        <dd>This is a similar "Linkback" mechanism to the ones of Refback,
+        Trackback, and Pingback. It uses a different protocol, though, and thus
+        should be discoverable through its own link relation type.</dd>
+        
+      </dl>
+      
     <section class="appendix informative">
       <h2>Extensions</h2>
 
