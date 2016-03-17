@@ -156,7 +156,7 @@ table.simple {
 }
 </style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-03-16",
+  "publishDate": "2016-03-17",
   "specStatus": "ED",
   "previousMaturity": "WD",
   "previousPublishDate": "2016-03-01",
@@ -258,7 +258,7 @@ table.simple {
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-  <h2 id="w3c-editor-s-draft-16-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-16">16 March 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-17-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-17">17 March 2016</time></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
@@ -414,7 +414,8 @@ table.simple {
         <section id="sender-discovers-receiver-webmention-endpoint" typeof="bibo:Chapter" resource="#sender-discovers-receiver-webmention-endpoint" property="bibo:hasPart">
           <h4 id="h-sender-discovers-receiver-webmention-endpoint" resource="#h-sender-discovers-receiver-webmention-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1.1 </span>Sender discovers receiver Webmention endpoint</span></h4>
 
-          <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]
+          <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL (and follow redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) 
+            and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]
             with <code>rel="webmention"</code>, or a <code>&lt;link&gt;</code> or
             <code>&lt;a&gt;</code> element with <code>rel="webmention"</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
@@ -588,10 +589,12 @@ The Webmention is being processed</pre></div><p></p>
             match of the <code>target</code> URL provided in order for it to be considered a
             valid Webmention.</p>
 
-          <p>At this point, the receiver <em class="rfc2119" title="MAY">MAY</em> publish content from this Webmention
+          <p>At this point, the receiver <em class="rfc2119" title="MAY">MAY</em> publish content from the source page
             on the target page or other pages, along with any other data it picks
             up from the source. For example, the receiver may display the
-            contents of the source as a comment on the post.</p>
+            contents of the source as a comment on the post, or may display the author's
+            profile photo in a list of others who have sent similar Webmentions, e.g.
+            showing a list of people who have all "liked" a post.</p>
         </section>
 
         <section id="error-responses" typeof="bibo:Chapter" resource="#error-responses" property="bibo:hasPart">

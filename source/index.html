@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-16",
+          publishDate: "2016-03-17",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -176,7 +176,8 @@
         <section>
           <h4>Sender discovers receiver Webmention endpoint</h4>
 
-          <p>The sender MUST fetch the target URL and check for an HTTP Link header [[!RFC5988]]
+          <p>The sender MUST fetch the target URL (and follow redirects [[!FETCH]]) 
+            and check for an HTTP Link header [[!RFC5988]]
             with <code>rel="webmention"</code>, or a <code>&lt;link&gt;</code> or
             <code>&lt;a&gt;</code> element with <code>rel="webmention"</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
@@ -350,10 +351,12 @@ The Webmention is being processed</pre></p>
             match of the <code>target</code> URL provided in order for it to be considered a
             valid Webmention.</p>
 
-          <p>At this point, the receiver MAY publish content from this Webmention
+          <p>At this point, the receiver MAY publish content from the source page
             on the target page or other pages, along with any other data it picks
             up from the source. For example, the receiver may display the
-            contents of the source as a comment on the post.</p>
+            contents of the source as a comment on the post, or may display the author's
+            profile photo in a list of others who have sent similar Webmentions, e.g.
+            showing a list of people who have all "liked" a post.</p>
         </section>
 
         <section>
