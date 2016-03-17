@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-08",
+          publishDate: "2016-03-16",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -149,19 +149,19 @@
         <h3>Protocol Summary</h3>
 
         <ol>
-          <li>User Aaron posts a blog post on his blog</li>
-          <li>User Barnaby writes post on his blog that links to Aaron's post.</li>
-          <li>After publishing the post (i.e. it has a URL), Barnaby's server notices this link as part of the publishing process</li>
-          <li>Barnaby's server does Webmention discovery on Aaron's post to find its Webmention endpoint (if not found, process stops)</li>
-          <li>Barnaby's server sends a Webmention to Aaron's post's Webmention endpoint with
+          <li>User Aaron writes a post on his blog.</li>
+          <li>User Barnaby writes a post on his blog that links to Aaron's post.</li>
+          <li>After publishing the post (i.e., after it has a URL), Barnaby's server notices the link to Aaron's post as part of the publishing process.</li>
+          <li>Barnaby's server does Webmention discovery on Aaron's post to find its Webmention endpoint (if not found, process stops).</li>
+          <li>Barnaby's server sends a Webmention notification to Aaron's post's Webmention endpoint with:
             <ul>
               <li><code>source</code> set to Barnaby's post's permalink</li>
               <li><code>target</code> set to Aaron's post's permalink.</li>
             </ul>
           </li>
-          <li>Aaron's server receives the Webmention</li>
-          <li>Aaron's server verifies that <code>target</code> in the Webmention is a valid permalink on Aaron's blog (if not, processing stops)</li>
-          <li>Aaron's server verifies that the <code>source</code> (when retrieved, after following redirects [[!FETCH]]) in the Webmention contains a hyperlink to the <code>target</code> (if not, processing stops)</li>
+          <li>Aaron's server receives the Webmention.</li>
+          <li>Aaron's server verifies that <code>target</code> in the Webmention is a valid permalink on Aaron's blog (if not, processing stops).</li>
+          <li>Aaron's server verifies that the <code>source</code> in the Webmention (when retrieved, after following redirects [[!FETCH]]) contains a hyperlink to the <code>target</code> (if not, processing stops).</li>
         </ol>
 
       </section>
@@ -257,8 +257,8 @@ HTTP/1.1 202 Accepted</pre></p>
         <p>If the receiver creates a status page which the sender can use to
           check the status, the receiver MUST reply with an <code>HTTP 201 Created</code>
           response with a <code>Location</code> header pointing to the status
-          URL. The response body MAY contain content, in which case a human
-          readable response is recommended.</p>
+          URL. The response body MAY contain content, in which case a human-readable 
+          response is recommended.</p>
 
         <p><pre class="example">HTTP/1.1 201 Created
 Location: http://aaronpk.example/webmention/DEhB9Jme
@@ -269,7 +269,7 @@ The Webmention is being processed. You can check on its status here: http://aaro
         <p>If the receiver processes the request asynchronously but does not
           return a status URL, the receiver MUST reply with an <code>HTTP 202 Accepted</code>
           response. The response body MAY contain content, in which case a
-          human readable response is recommended.</p>
+          human-readable response is recommended.</p>
 
         <p><pre class="example">HTTP/1.1 202 Accepted
 Content-type: text/plain
@@ -283,13 +283,13 @@ The Webmention is being processed</pre></p>
         <section>
           <h4>Request Verification</h4>
 
-          <p>The receiver MUST check that source and target are valid URLs [[!URL]]
+          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!URL]]
             and are of schemes that are supported by the receiver. (Most
-            commonly this means checking that the source and target
+            commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>
 
-          <p>The receiver SHOULD check that target is a valid resource that it
-            can accept Webmentions for. This check SHOULD happen
+          <p>The receiver SHOULD check that <code>target</code> is a valid resource for which
+            it can accept Webmentions. This check SHOULD happen
             synchronously to reject invalid Webmentions before more in-depth
             verification begins.</p>
 
@@ -372,7 +372,7 @@ The Webmention is being processed</pre></p>
                 If both the verification steps are successful, it SHOULD update any existing data it picked from <code>source</code> for the existing Webmention.
                 <ul>
                   <li>
-                    When a Webmention implementation does support updating (AKA a "Webmention update implementation"), MUST support updating data from properties of the primary object of the source. (e.g. properties of the [[h-entry]] of the page).
+                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), MUST support updating data from properties of the primary object of the source. (e.g. properties of the [[h-entry]] of the page).
                     <ul>
                       <li>
                         A Webmention update implementation MAY support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). If an implementation does support this, it MUST support it according to the [[!Salmention]] extension specification (AKA a "Salmention implementation").
@@ -383,7 +383,8 @@ The Webmention is being processed</pre></p>
               </li>
 
               <li>If it received a <code>410 Gone</code> status code on step 2 (performing a GET request on source), or received a <code>200 OK</code> status code and does not find a link to <code>target</code> on <code>source</code>, it SHOULD delete the existing Webmention, or mark it as deleted.</li>
-              <li>Processing Webmentions SHOULD be idempotent. For example, receiving multiple Webmentions for the same <code>source</code> and <code>target</code> with no content changes should not show as multiple replies.</li>
+
+              <li>Processing Webmentions SHOULD be idempotent. That is, receiving multiple Webmentions for the same <code>source</code> and <code>target</code> with no content changes should not show as multiple replies.</li>
             </ul>
           </p>
         </section>
@@ -503,7 +504,7 @@ The Webmention is being processed</pre></p>
           <ul>
             <li><a href="https://github.com/indieweb/mention-client-php">indieweb/mention-client-php</a> - <strong>PHP</strong> library for sending webmention and pingpack notifications</li>
             <li><a href="https://github.com/indieweb/mention-client-ruby">indieweb/mention-client-ruby</a> - <strong>Ruby</strong> library for sending webmention notifications</li>
-            <li><a href="https://github.com/phpish/webmention">phpish/webmention</a> - Simple Webmention client (non-OO) in <strong>PHP</strong> packaged as a composer package.</li>
+            <li><a href="https://github.com/phpish/webmention">phpish/webmention</a> - Simple Webmention client (non-OO) in <strong>PHP</strong> packaged as a composer package</li>
             <li><a href="https://github.com/vrypan/webmention-tools">vrypan/webmention-tools</a> - <strong>Python</strong> client library and command line webmention sender</li>
             <li><a href="https://github.com/pear2/Services_Linkback">pear2/Services_Linkback</a> - <strong>PHP</strong> Pingback and Webmention client + server library</li>
             <li><a href="https://github.com/bear/ronkyuu">bear/ronkyuu</a> - <strong>Python</strong> client library and command-line tools</li>
@@ -619,6 +620,7 @@ The Webmention is being processed</pre></p>
 
         <ul>
           <li>Update list of implementations</li>
+          <li>Non-normative language and phrasing clarifications</li>
         </ul>
       </section>
 
