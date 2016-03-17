@@ -242,6 +242,33 @@ target=https://aaronpk.example/post-by-aaron
 HTTP/1.1 202 Accepted</pre></p>
 
         </section>
+        <section>
+          <h4>Sending Webmentions for updated posts</h4>
+
+          <p>If the source URL was updated, the sender SHOULD re-send any previously sent Webmentions,
+          (including re-sending a Webmention to a URL that may have been removed from the document),
+          and SHOULD send Webmentions for any new links that appear at the URL.</p>
+
+          <p>This allows the recipients of Webmentions to update their display of the source document,
+          or otherwise notify the recipient that a post that mentioned one of their URLs was updated.</p>
+
+          <p>When sending a Webmention when a post is updated, the sender MUST re-discover the Webmention endpoint
+          of each target URL, in case the target has updated their Webmention endpoint.</p>
+        </section>
+        <section>
+          <h4>Sending Webmentions for deleted posts</h4>
+
+          <p>If the source URL was deleted, the sender SHOULD return an HTTP <code>410 Gone</code>
+          status code for the URL, and SHOULD display a "tombstone" representation of
+          the deleted post, typically by blanking out the values of any properties in the post, and/or
+          replacing the primary content of the post (e.g. the name and/or content of [[h-entry]]) 
+          with "Deleted". The sender SHOULD then re-send Webmentions for every previously sent 
+          Webmention for that document.</p>
+
+          <p>This allows receivers which may have displayed a previously received Webmention
+          as a comment or other interaction to remove it from view if they support deletes, while
+          providing a reasonable fallback for receivers which only support updates.</p>
+        </section>
       </section>
 
       <section>
@@ -320,8 +347,8 @@ The Webmention is being processed</pre></p>
             If the document is plain text, the receiver should look for the URL
             by searching for the string. Other content types may be handled at
             the implementer's discretion. The source document MUST have an exact
-            match of the target URL provided in order for it to be considered a
-            valid link.</p>
+            match of the <code>target</code> URL provided in order for it to be considered a
+            valid Webmention.</p>
 
           <p>At this point, the receiver MAY publish content from this Webmention
             on the target page or other pages, along with any other data it picks
@@ -619,8 +646,9 @@ The Webmention is being processed</pre></p>
         <h3>Changes from 1 March 2016 WD to this version</h3>
 
         <ul>
-          <li>Update list of implementations</li>
+          <li>Updated list of implementations</li>
           <li>Non-normative language and phrasing clarifications</li>
+          <li>Added section on sending Webmentions for updated and deleted posts</li>
         </ul>
       </section>
 
