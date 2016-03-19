@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-17",
+          publishDate: "2016-03-19",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-01",
@@ -168,7 +168,44 @@
     </section>
 
     <section>
+      <h2>Conformance</h2>
+
+      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in [[!RFC2119]].</p>
+
+      <section>
+        <h3>Conformance Classes</h3>
+
+        <p>Webmention implementations are either senders or receivers. This section describes the conformance criteria for both.</p>
+
+        <p>Listed below are known types of Webmention implementations.</p>
+
+        <h4>Senders</h4>
+        <p>The conformance criteria for Webmention senders is described in <a href="#sending-webmentions">Sending Webmentions</a></p>
+        <ul>
+          <li>Blogging or microblogging software</li>
+          <li>Plugins for existing CMS software</li>
+          <li>Browser plugins to send a Webmention from a context menu on behalf of the page you're viewing</li>
+          <li>Web APIs to offload the Webmention endpoint discovery and Webmention delivery</li>
+          <li>Proxy services that converts existing social media posts to HTML posts and sends Webmentions</li>
+        </ul>
+
+        <h4>Receivers</h4>
+        <p>The conformance criteria for Webmention receivers is described in <a href="#receiving-webmentions">Receiving Webmentions</a></p>
+        <ul>
+          <li>Blogging or microblogging software</li>
+          <li>Plugins for existing CMS software</li>
+          <li>Web services and APIs to receive Webmentions and display them as comments via Javascript embed</li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
       <h2>Webmention Protocol</h2>
+
+      <p>This specification uses the link rel registry as defined by [[!HTML5]]
+        for both HTML and HTTP link relations.</p>
 
       <section>
         <h3>Sending Webmentions</h3>
@@ -191,9 +228,6 @@
 
           <p>Senders MAY initially make an HTTP HEAD request [[!RFC2616]] to
             check for the Link header before making a GET request.</p>
-
-          <p>This specification uses the link rel registry as defined by [[!HTML5]]
-            for both HTML and HTTP link relations.</p>
 
           <p><pre class="example">GET /post-by-aaron HTTP/1.1
 Host: aaronpk.example
@@ -444,6 +478,7 @@ The Webmention is being processed</pre></p>
 
       <section>
         <h3>Limits on GET requests</h3>
+
         <p>The Webmention protocol relies on the sender making a GET (or HEAD)
           request to discover the receiver's endpoint, followed by the receiver
           making a GET request to the sender's web page to verify the link.
@@ -454,6 +489,20 @@ The Webmention is being processed</pre></p>
           doesn't respond within 5 seconds, it can treat that as a failure.
           Similarly, the receiver can fetch only the first 1mb of the page,
           since any reasonably HTML or JSON page will be smaller than that.</p>
+      </section>
+
+      <section>
+        <h3>Avoid sending Webmentions to localhost</h3>
+
+        <p>When the sender discovers the receiver's Webmention endpoint, there
+          is no legitimate reason for the endpoint to be localhost or any other loopback
+          address. If the sender has any services that listen on localhost that
+          don't require authentication, it's possible for a malicious Webmention 
+          receiver to craft a Webmention endpoint that could cause the sender to 
+          make a request to itself.</p>
+        <p>During the discovery step, if the sender discovers the endpoint is 
+          localhost or a loopback IP address (127.0.0.0/8), it SHOULD not send
+          the Webmention.</p>
       </section>
 
     </section>
@@ -485,6 +534,12 @@ The Webmention is being processed</pre></p>
         should be discoverable through its own link relation type.</dd>
         
       </dl>
+    </section>
+
+    <section class="appendix">
+      <h2>URIs for Form-Encoded Properties</h2>
+
+      <p>If your implementation wants to treat the <code>source</code> and <code>target</code> parameters as URIs, you can prefix the terms with <code>http://www.w3.org/ns/webmention#</code>.</p>
     </section>
       
     <section class="appendix informative">
@@ -652,6 +707,9 @@ The Webmention is being processed</pre></p>
           <li>Updated list of implementations</li>
           <li>Non-normative language and phrasing clarifications</li>
           <li>Added section on sending Webmentions for updated and deleted posts</li>
+          <li>Added conformance criteria and classes section</li>
+          <li>Added localhost security consideration</li>
+          <li>Added a note on how to convert source and target parameter names to URIs</li>
         </ul>
       </section>
 
