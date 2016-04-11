@@ -356,8 +356,8 @@ The Webmention is being processed</pre></p>
             verification begins.</p>
 
           <p>Note that a target URL may contain a fragment identifier, and if the
-            receiver limits which URLs can receive Webmentions, it SHOULD remove 
-            the fragment before checking if the URL is supported.</p>
+            receiver limits which URLs can receive Webmentions, the fragment SHOULD be
+            ignored when checking if the URL is supported.</p>
         </section>
 
         <section>
@@ -436,7 +436,7 @@ The Webmention is being processed</pre></p>
                 If both the verification steps are successful, it SHOULD update any existing data it picked from <code>source</code> for the existing Webmention.
                 <ul>
                   <li>
-                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), MUST support updating data from properties of the primary object of the source. (e.g. properties of the [[h-entry]] of the page).
+                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it MUST support updating data from properties of the primary object of the source. (e.g. properties of the [[h-entry]] of the page).
                     <ul>
                       <li>
                         A Webmention update implementation MAY support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). If an implementation does support this, it MUST support it according to the [[!Salmention]] extension specification (AKA a "Salmention implementation").
@@ -488,7 +488,7 @@ The Webmention is being processed</pre></p>
           spend fetching unverified source URLs. For example, if a source URL
           doesn't respond within 5 seconds, it can treat that as a failure.
           Similarly, the receiver can fetch only the first 1mb of the page,
-          since any reasonably HTML or JSON page will be smaller than that.</p>
+          since any reasonable HTML or JSON page will be smaller than that.</p>
       </section>
 
       <section>
