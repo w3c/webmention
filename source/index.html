@@ -7,10 +7,10 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-03-29",
+          publishDate: "2016-04-11",
           specStatus: "WD",
           previousMaturity: "WD",
-          previousPublishDate: "2016-03-01",
+          previousPublishDate: "2016-03-29",
           shortName:  "webmention",
           edDraftURI: "http://webmention.net/draft/",
           editors: [
@@ -218,8 +218,8 @@
             with <code>rel="webmention"</code>, or a <code>&lt;link&gt;</code> or
             <code>&lt;a&gt;</code> element with <code>rel="webmention"</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
-            followed by the first <code>&lt;link&gt;</code> element, and finally
-            the first <code>&lt;a&gt;</code> element. Clients MUST support all
+            followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
+            element in document order. Clients MUST support all
             three options and fall back in this order.</p>
 
           <p>The endpoint MAY be a relative
@@ -701,7 +701,16 @@ The Webmention is being processed</pre></p>
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 1 March 2016 WD to this version</h3>
+        <h3>Changes from 29 March 2016 WD to this version</h3>
+
+        <ul>
+          <li>Minor typo fixes</li>
+          <li>Updated discovery to prioritize link and a tags in document order</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 1 March 2016 WD to 29 March 2016 WD</h3>
 
         <ul>
           <li>Updated list of implementations</li>
@@ -714,7 +723,7 @@ The Webmention is being processed</pre></p>
       </section>
 
       <section>
-        <h3>Changes from 12 January 2016 FPWD to this version</h3>
+        <h3>Changes from 12 January 2016 FPWD to 1 March 2016 WD</h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-webmention-20160112/">12 January 2016 FPWD</a> to this Working Draft</p>
 
