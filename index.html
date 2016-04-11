@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<html lang="en" dir="ltr" typeof="bibo:Document w3p:WD" prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head><meta lang="" property="dc:language" content="en">
     <title>Webmention</title>
     <meta charset="utf-8">
@@ -154,12 +154,12 @@ table.simple {
         display: none;
     }
 }
-</style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
+</style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-03-28",
-  "specStatus": "ED",
+  "publishDate": "2016-04-11",
+  "specStatus": "WD",
   "previousMaturity": "WD",
-  "previousPublishDate": "2016-03-01",
+  "previousPublishDate": "2016-03-29",
   "shortName": "webmention",
   "edDraftURI": "http://webmention.net/draft/",
   "editors": [
@@ -253,19 +253,21 @@ table.simple {
     }
   }
 }</script></head>
-  <body class="h-entry toc-sidebar" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-  <h2 id="w3c-editor-s-draft-28-march-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-03-28">28 March 2016</time></h2>
+  <h2 id="w3c-working-draft-11-april-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time property="dcterms:issued" class="dt-published" datetime="2016-04-11">11 April 2016</time></h2>
   <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2016/WD-webmention-20160411/">http://www.w3.org/TR/2016/WD-webmention-20160411/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="http://www.w3.org/TR/webmention/">http://www.w3.org/TR/webmention/</a></dd>
       <dt>Latest editor's draft:</dt>
       <dd><a href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
+      <dt>Previous version:</dt>
+      <dd><a rel="dcterms:replaces" href="http://www.w3.org/TR/2016/WD-webmention-20160329/">http://www.w3.org/TR/2016/WD-webmention-20160329/</a></dd>
     <dt>Editor:</dt>
     <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
 <span property="rdf:rest" resource="rdf:nil"></span>
@@ -322,7 +324,8 @@ table.simple {
           
     
           <p>
-            This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft.
+            This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft.
+              This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
               If you wish to make comments regarding this document, please send them to
               <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a>
               (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
@@ -331,7 +334,7 @@ table.simple {
               All comments are welcome.
           </p>
             <p>
-              Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+              Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
               Membership. This is a draft document and may be updated, replaced or obsoleted by other
               documents at any time. It is inappropriate to cite this document as other than work in
               progress.
@@ -356,7 +359,7 @@ table.simple {
             <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
             </p>
           
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.1 </span>Overview</a></li><li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.2 </span>Protocol Summary</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">3. </span>Webmention Protocol</a><ul class="toc"><li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">3.1 </span>Sending Webmentions</a><ul class="toc"><li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</a></li><li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">3.1.2 </span>Sender notifies receiver</a></li><li class="tocline"><a href="#sending-webmentions-for-updated-posts" class="tocxref"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</a></li><li class="tocline"><a href="#sending-webmentions-for-deleted-posts" class="tocxref"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</a></li></ul></li><li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">3.2 </span>Receiving Webmentions</a><ul class="toc"><li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">3.2.1 </span>Request Verification</a></li><li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">3.2.2 </span>Webmention Verification</a></li><li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">3.2.3 </span>Error Responses</a></li><li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">3.2.4 </span>Updating existing Webmentions</a></li></ul></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">4. </span>Security Considerations</a><ul class="toc"><li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">4.1 </span>Preventing Abuse</a></li><li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">4.2 </span>Limits on GET requests</a></li><li class="tocline"><a href="#avoid-sending-webmentions-to-localhost" class="tocxref"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</a></li></ul></li><li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">5. </span>IANA Considerations</a></li><li class="tocline"><a href="#uris-for-form-encoded-properties" class="tocxref"><span class="secno">A. </span>URIs for Form-Encoded Properties</a></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">B. </span>Extensions</a><ul class="toc"><li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">B.1 </span><span class="formerLink">Vouch</span></a></li><li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">B.2 </span><span class="formerLink">Salmention</span></a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">C. </span>Resources</a></li><li class="tocline"><a href="#articles" class="tocxref"><span class="secno">D. </span>Articles</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">E. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">E.1 </span>Libraries</a><ul class="toc"><li class="tocline"><a href="#sending" class="tocxref"><span class="secno">E.1.1 </span>Sending</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">E.1.2 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#receiving" class="tocxref"><span class="secno">E.1.3 </span>Receiving</a></li><li class="tocline"><a href="#parsing" class="tocxref"><span class="secno">E.1.4 </span>Parsing</a></li></ul></li><li class="tocline"><a href="#publishing-software" class="tocxref"><span class="secno">E.2 </span>Publishing Software</a><ul class="toc"><li class="tocline"><a href="#plugins" class="tocxref"><span class="secno">E.2.1 </span>Plugins</a></li></ul></li><li class="tocline"><a href="#tools" class="tocxref"><span class="secno">E.3 </span>Tools</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">E.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">F. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">G. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-1-march-2016-wd-to-this-version" class="tocxref"><span class="secno">G.1 </span>Changes from 1 March 2016 WD to this version</a></li><li class="tocline"><a href="#changes-from-12-january-2016-fpwd-to-this-version" class="tocxref"><span class="secno">G.2 </span>Changes from 12 January 2016 FPWD to this version</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">H. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">H.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">H.2 </span>Informative references</a></li></ul></li></ul></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.1 </span>Overview</a></li><li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.2 </span>Protocol Summary</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li></ul></li><li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">3. </span>Webmention Protocol</a><ul class="toc"><li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">3.1 </span>Sending Webmentions</a><ul class="toc"><li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</a></li><li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">3.1.2 </span>Sender notifies receiver</a></li><li class="tocline"><a href="#sending-webmentions-for-updated-posts" class="tocxref"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</a></li><li class="tocline"><a href="#sending-webmentions-for-deleted-posts" class="tocxref"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</a></li></ul></li><li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">3.2 </span>Receiving Webmentions</a><ul class="toc"><li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">3.2.1 </span>Request Verification</a></li><li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">3.2.2 </span>Webmention Verification</a></li><li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">3.2.3 </span>Error Responses</a></li><li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">3.2.4 </span>Updating existing Webmentions</a></li></ul></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">4. </span>Security Considerations</a><ul class="toc"><li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">4.1 </span>Preventing Abuse</a></li><li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">4.2 </span>Limits on GET requests</a></li><li class="tocline"><a href="#avoid-sending-webmentions-to-localhost" class="tocxref"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</a></li></ul></li><li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">5. </span>IANA Considerations</a></li><li class="tocline"><a href="#uris-for-form-encoded-properties" class="tocxref"><span class="secno">A. </span>URIs for Form-Encoded Properties</a></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">B. </span>Extensions</a><ul class="toc"><li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">B.1 </span><span class="formerLink">Vouch</span></a></li><li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">B.2 </span><span class="formerLink">Salmention</span></a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">C. </span>Resources</a></li><li class="tocline"><a href="#articles" class="tocxref"><span class="secno">D. </span>Articles</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">E. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#libraries" class="tocxref"><span class="secno">E.1 </span>Libraries</a><ul class="toc"><li class="tocline"><a href="#sending" class="tocxref"><span class="secno">E.1.1 </span>Sending</a></li><li class="tocline"><a href="#endpoint-discovery" class="tocxref"><span class="secno">E.1.2 </span>Endpoint Discovery</a></li><li class="tocline"><a href="#receiving" class="tocxref"><span class="secno">E.1.3 </span>Receiving</a></li><li class="tocline"><a href="#parsing" class="tocxref"><span class="secno">E.1.4 </span>Parsing</a></li></ul></li><li class="tocline"><a href="#publishing-software" class="tocxref"><span class="secno">E.2 </span>Publishing Software</a><ul class="toc"><li class="tocline"><a href="#plugins" class="tocxref"><span class="secno">E.2.1 </span>Plugins</a></li></ul></li><li class="tocline"><a href="#tools" class="tocxref"><span class="secno">E.3 </span>Tools</a></li><li class="tocline"><a href="#services" class="tocxref"><span class="secno">E.4 </span>Services</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">F. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">G. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-29-march-2016-wd-to-this-version" class="tocxref"><span class="secno">G.1 </span>Changes from 29 March 2016 WD to this version</a></li><li class="tocline"><a href="#changes-from-1-march-2016-wd-to-29-march-2016-wd" class="tocxref"><span class="secno">G.2 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</a></li><li class="tocline"><a href="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" class="tocxref"><span class="secno">G.3 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">H. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">H.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">H.2 </span>Informative references</a></li></ul></li></ul></nav>
 
     
 
@@ -456,8 +459,8 @@ table.simple {
             with <code>rel="webmention"</code>, or a <code>&lt;link&gt;</code> or
             <code>&lt;a&gt;</code> element with <code>rel="webmention"</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
-            followed by the first <code>&lt;link&gt;</code> element, and finally
-            the first <code>&lt;a&gt;</code> element. Clients <em class="rfc2119" title="MUST">MUST</em> support all
+            followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
+            element in document order. Clients <em class="rfc2119" title="MUST">MUST</em> support all
             three options and fall back in this order.</p>
 
           <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative
@@ -594,8 +597,8 @@ The Webmention is being processed</pre></div><p></p>
             verification begins.</p>
 
           <p>Note that a target URL may contain a fragment identifier, and if the
-            receiver limits which URLs can receive Webmentions, it <em class="rfc2119" title="SHOULD">SHOULD</em> remove 
-            the fragment before checking if the URL is supported.</p>
+            receiver limits which URLs can receive Webmentions, the fragment <em class="rfc2119" title="SHOULD">SHOULD</em> be
+            ignored when checking if the URL is supported.</p>
         </section>
 
         <section id="webmention-verification" typeof="bibo:Chapter" resource="#webmention-verification" property="bibo:hasPart">
@@ -674,7 +677,7 @@ The Webmention is being processed</pre></div><p></p>
                 If both the verification steps are successful, it <em class="rfc2119" title="SHOULD">SHOULD</em> update any existing data it picked from <code>source</code> for the existing Webmention.
                 <ul>
                   <li>
-                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), <em class="rfc2119" title="MUST">MUST</em> support updating data from properties of the primary object of the source. (e.g. properties of the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] of the page).
+                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it <em class="rfc2119" title="MUST">MUST</em> support updating data from properties of the primary object of the source. (e.g. properties of the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] of the page).
                     <ul>
                       <li>
                         A Webmention update implementation <em class="rfc2119" title="MAY">MAY</em> support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). If an implementation does support this, it <em class="rfc2119" title="MUST">MUST</em> support it according to the [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] extension specification (AKA a "Salmention implementation").
@@ -726,7 +729,7 @@ The Webmention is being processed</pre></div><p></p>
           spend fetching unverified source URLs. For example, if a source URL
           doesn't respond within 5 seconds, it can treat that as a failure.
           Similarly, the receiver can fetch only the first 1mb of the page,
-          since any reasonably HTML or JSON page will be smaller than that.</p>
+          since any reasonable HTML or JSON page will be smaller than that.</p>
       </section>
 
       <section id="avoid-sending-webmentions-to-localhost" typeof="bibo:Chapter" resource="#avoid-sending-webmentions-to-localhost" property="bibo:hasPart">
@@ -938,8 +941,17 @@ The Webmention is being processed</pre></div><p></p>
     <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
       <!--OddPage--><h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">G. </span>Change Log</span></h2><p><em>This section is non-normative.</em></p>
 
-      <section id="changes-from-1-march-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-1-march-2016-wd-to-this-version" property="bibo:hasPart">
-        <h3 id="h-changes-from-1-march-2016-wd-to-this-version" resource="#h-changes-from-1-march-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">G.1 </span>Changes from 1 March 2016 WD to this version</span></h3>
+      <section id="changes-from-29-march-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-29-march-2016-wd-to-this-version" property="bibo:hasPart">
+        <h3 id="h-changes-from-29-march-2016-wd-to-this-version" resource="#h-changes-from-29-march-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">G.1 </span>Changes from 29 March 2016 WD to this version</span></h3>
+
+        <ul>
+          <li>Minor typo fixes</li>
+          <li>Updated discovery to prioritize link and a tags in document order</li>
+        </ul>
+      </section>
+
+      <section id="changes-from-1-march-2016-wd-to-29-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-1-march-2016-wd-to-29-march-2016-wd" property="bibo:hasPart">
+        <h3 id="h-changes-from-1-march-2016-wd-to-29-march-2016-wd" resource="#h-changes-from-1-march-2016-wd-to-29-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">G.2 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</span></h3>
 
         <ul>
           <li>Updated list of implementations</li>
@@ -951,8 +963,8 @@ The Webmention is being processed</pre></div><p></p>
         </ul>
       </section>
 
-      <section id="changes-from-12-january-2016-fpwd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-12-january-2016-fpwd-to-this-version" property="bibo:hasPart">
-        <h3 id="h-changes-from-12-january-2016-fpwd-to-this-version" resource="#h-changes-from-12-january-2016-fpwd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">G.2 </span>Changes from 12 January 2016 FPWD to this version</span></h3>
+      <section id="changes-from-12-january-2016-fpwd-to-1-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" property="bibo:hasPart">
+        <h3 id="h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd" resource="#h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">G.3 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</span></h3>
 
         <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-webmention-20160112/">12 January 2016 FPWD</a> to this Working Draft</p>
 
