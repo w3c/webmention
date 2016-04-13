@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-11",
+          publishDate: "2016-04-13",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-29",
@@ -226,6 +226,10 @@
             URL, in which case the sender MUST resolve it relative to the
             <code>target</code> URL according to the [[!URL]] specification.</p>
 
+          <p>The endpoint MAY contain query string parameters, which MUST be 
+            preserved as query string parameters and MUST NOT be sent as POST body 
+            parameters when sending the Webmention request.</p>
+
           <p>Senders MAY initially make an HTTP HEAD request [[!RFC2616]] to
             check for the Link header before making a GET request.</p>
 
@@ -255,6 +259,10 @@ Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
             <code>target</code> parameters to the Webmention endpoint, where
             <code>source</code> is the URL of the sender's page containing a link,
             and <code>target</code> is the URL of the page being linked to.</p>
+
+          <p>Note that if the Webmention endpoint URL contains query string parameters,
+            the query string parameters MUST be preserved, and MUST NOT be sent in the
+            POST body.</p>
 
           <p>The Webmention endpoint will validate and process the request, and
             return an HTTP status code [[!RFC2616]]. Most often, <code>202 Accepted</code>
@@ -499,10 +507,34 @@ The Webmention is being processed</pre></p>
           address. If the sender has any services that listen on localhost that
           don't require authentication, it's possible for a malicious Webmention 
           receiver to craft a Webmention endpoint that could cause the sender to 
-          make a request to itself.</p>
+          make an arbitrary POST request to itself.</p>
         <p>During the discovery step, if the sender discovers the endpoint is 
           localhost or a loopback IP address (127.0.0.0/8), it SHOULD NOT send
           the Webmention.</p>
+      </section>
+
+      <section>
+        <h3>Cross-Site Request Forgery</h3>
+
+        <p>This specification does not define any special handling of a Webmention request
+          that may contain additional headers or parameters such as authentication headers
+          or session cookies. However, if a Webmention endpoint does accept requests
+          with additional headers, it SHOULD protect itself against Cross-Site
+          Request Forgery (CSRF) attacks. One way to prevent CSRF attacks is by including
+          a CSRF token in a query string parameter of the Webmention endpoint, so that
+          a Webmention sender finds the token when discovering the endpoint.</p>
+
+        <p>For example, the target URL could advertise a Webmention endpoint that includes
+          a CSRF token:</p>
+
+        <p><pre class="example">GET /post-by-aaron HTTP/1.1
+Host: aaronpk.example
+HTTP/1.1 200 OK
+Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</pre></p>
+
+        <p>Then, when the Webmention endpoint is processing a request, it can first check
+          the validity of the CSRF token before any other processing.</p>
+
       </section>
 
     </section>
@@ -664,6 +696,7 @@ The Webmention is being processed</pre></p>
         <h3>Tools</h3>
 
         <ul>
+          <li><a href="https://webmention.rocks/">Webmention Rocks!</a> is a Webmention validaotr which helps you debug your webmention sending. It will provide detailed error messages to help you successfully send a Webmention, and will show your comment on the website when it's successfully processed.</li>
           <li><a href="https://github.com/voxpelli/node-webmention-testpinger">node-webmention-testpinger</a> is a tool to ping your site with a variety of Webmention markup. Contains copies of a couple of real world examples of mentions that it enables you to ping locally to a development copy of your site.</li>
           <li><a href="https://github.com/pfefferle/node-webmention-testendpoint">node-webmention-testendpoint</a> is tool to test your Webmention client. Generates a demo-post and a demo-endpoint to test if your client parses the webmention-endpoint correctly and to check if the ping body is transmitted correctly.</li>
           <li><a href="http://indiewebcamp.com/stapibas">stapibas</a> is a self-hosted service to send and receive Webmentions for websites and blogs. It can be used to send out Webmentions and Pingbacks for new posts on static sites.</li>
@@ -706,6 +739,9 @@ The Webmention is being processed</pre></p>
         <ul>
           <li>Minor typo fixes</li>
           <li>Updated discovery to prioritize link and a tags in document order</li>
+          <li>Added Webmention.rocks to the list of tools</li>
+          <li>Added note that if the Webmention endpoint contains query string parameters, they must be preserved</li>
+          <li>Added note and example of a CSRF prevention technique</li>
         </ul>
       </section>
 
