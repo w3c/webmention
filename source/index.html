@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-13",
+          publishDate: "2016-04-15",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-03-29",
@@ -215,8 +215,8 @@
 
           <p>The sender MUST fetch the target URL (and follow redirects [[!FETCH]]) 
             and check for an HTTP Link header [[!RFC5988]]
-            with <code>rel="webmention"</code>, or a <code>&lt;link&gt;</code> or
-            <code>&lt;a&gt;</code> element with <code>rel="webmention"</code>. If more than
+            with a rel value of <code>webmention</code>, or an HTML <code>&lt;link&gt;</code> or
+            <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
             followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
             element in document order. Clients MUST support all
@@ -534,7 +534,17 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
         <p>Then, when the Webmention endpoint is processing a request, it can first check
           the validity of the CSRF token before any other processing.</p>
+      </section>
 
+      <section>
+        <h3>Limit access to protected resources</h3>
+
+        <p>It is possible for an attacker to advertise a Webmention endpoint that points to an arbitrary URL. As such, if you install software that sends Webmentions on a server that is behind a firewall or otherwise has access to normally protected resources, you should be aware that an attacker can cause the server to send a POST request to an internal server. You SHOULD take precautions to ensure this server cannot access protected resources by either:</p>
+
+        <ul>
+          <li>running the client in an environment that does not have access to such internal resources</li>
+          <li>proxying all HTTP requests from this sender through a proxy that blocks access to internal resources</li>
+        </ul>
       </section>
 
     </section>
@@ -742,6 +752,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Added Webmention.rocks to the list of tools</li>
           <li>Added note that if the Webmention endpoint contains query string parameters, they must be preserved</li>
           <li>Added note and example of a CSRF prevention technique</li>
+          <li>Added security consideration about limiting access to protected resources</li>
         </ul>
       </section>
 
