@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-24",
+          publishDate: "2016-04-25",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-04-20",
@@ -120,67 +120,6 @@
     </section>
 
     <section id='sotd'>
-
-      <section>
-        <h3>Candidate Recommendation Exit Criteria</h3>
-
-        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products, there is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
-
-        <section>
-          <h4>Sender</h4>
-
-          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
-        </section>
-
-        <section>
-          <h4>Receiver</h4>
-
-          <p>A Webmention Receiver is an implementation that receives Webmentions to one or more target URLs on which the Receiver's Webmention endpoint is advertised. The conformance criteria for Receivers are described in <a href="#receiving-webmentions">Receiving Webmentions</a>. In order to receive a Webmention, there must be a URL that advertises the Receiver's Webmention endpoint. The URL is not considered part of the Receiver's implementation, as it may exist in an entirely different system or domain.</p>
-        </section>
-
-        <section>
-          <h4>Independent</h4>
-
-          <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
-        </section>
-
-        <section>
-          <h4>Interoperable</h4>
-
-          <p>A Sender and Receiver implementation are considered interoperable for a specific feature when the Sender 1) can discover the Webmention endpoint for the target URL for all specified ways of finding the endpoint (allowing the Receiver to change the way the endpoint is advertised without changing the Sender implementation), and 2) considers the Webmention request successful for all specified ways a Receiver may indicate success.</p>
-        </section>
-
-        <section>
-          <h4>Implementation</h4>
-
-          <p>An Implementation is a Webmention Sender or Receiver which:</p>
-
-          <ul>
-            <li>implements the corresponding conformance class of the specification</li>
-            <li>is available to the general public, as downloadable software or as a hosted service</li>
-            <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
-            <li>is suitable for a person to use as his/her primary implementation on a website</li>
-          </ul>
-        </section>
-
-        <section>
-          <h4>Feature</h4>
-
-          <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
-
-          <ul>
-            <li>Sending a Webmention to a given target URL</li>
-            <li>Re-sending Webmentions and sending new Webmentions when the source document is updated</li>
-            <li>Re-sending Webmentions when the source document is deleted</li>
-            <li>Receiving a Webmention request, processing it synchronously, and responding with HTTP 200</li>
-            <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
-            <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
-            <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
-            <li>Delete: Receiving a Webmention from a source URL which now respond with HTTP 410</li>
-          </ul>
-        </section>
-
-      </section>
     </section>
 
     <section>
@@ -259,6 +198,67 @@
           <li>Plugins for existing CMS software</li>
           <li>Web services and APIs to receive Webmentions and display them as comments via Javascript embed</li>
         </ul>
+      </section>
+
+      <section>
+        <h3>Candidate Recommendation Exit Criteria</h3>
+
+        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products, there is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
+
+        <section>
+          <h4>Sender</h4>
+
+          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
+        </section>
+
+        <section>
+          <h4>Receiver</h4>
+
+          <p>A Webmention Receiver is an implementation that receives Webmentions to one or more target URLs on which the Receiver's Webmention endpoint is advertised. The conformance criteria for Receivers are described in <a href="#receiving-webmentions">Receiving Webmentions</a>. In order to receive a Webmention, there must be a URL that advertises the Receiver's Webmention endpoint. The URL is not considered part of the Receiver's implementation, as it may exist in an entirely different system or domain.</p>
+        </section>
+
+        <section>
+          <h4>Independent</h4>
+
+          <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
+        </section>
+
+        <section>
+          <h4>Interoperable</h4>
+
+          <p>A Sender and Receiver implementation are considered interoperable for a specific feature when the Sender 1) can discover the Webmention endpoint for the target URL for all specified ways of finding the endpoint (allowing the Receiver to change the way the endpoint is advertised without changing the Sender implementation), and 2) considers the Webmention request successful for all specified ways a Receiver may indicate success.</p>
+        </section>
+
+        <section>
+          <h4>Implementation</h4>
+
+          <p>An Implementation is a Webmention Sender or Receiver which:</p>
+
+          <ul>
+            <li>implements the corresponding conformance class of the specification</li>
+            <li>is available to the general public, as downloadable software or as a hosted service</li>
+            <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
+            <li>is suitable for a person to use as his/her primary implementation on a website</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>Feature</h4>
+
+          <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+
+          <ul>
+            <li>Sending a Webmention to a given target URL</li>
+            <li>Re-sending Webmentions and sending new Webmentions when the source document is updated</li>
+            <li>Re-sending Webmentions when the source document is deleted</li>
+            <li>Receiving a Webmention request, processing it synchronously, and responding with HTTP 200</li>
+            <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
+            <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
+            <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
+            <li>Delete: Receiving a Webmention from a source URL which now respond with HTTP 410</li>
+          </ul>
+        </section>
+
       </section>
     </section>
 
