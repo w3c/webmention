@@ -149,6 +149,10 @@ table.simple {
     margin-bottom:  0;
 }
 
+.respec-hidden {
+    display: none;
+}
+
 @media print {
     .removeOnSave {
         display: none;
@@ -156,7 +160,7 @@ table.simple {
 }
 </style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
   "useExperimentalStyles": true,
-  "publishDate": "2016-04-20",
+  "publishDate": "2016-04-24",
   "specStatus": "ED",
   "previousMaturity": "WD",
   "previousPublishDate": "2016-04-20",
@@ -253,12 +257,12 @@ table.simple {
     }
   }
 }</script></head>
-  <body class="h-entry toc-sidebar" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
   <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-  <h2 id="w3c-editor-s-draft-20-april-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-04-20">20 April 2016</time></h2>
+  <h2 id="w3c-editor-s-draft-24-april-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-04-24">24 April 2016</time></h2>
   <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
@@ -320,6 +324,67 @@ table.simple {
           <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
         </p>
           
+
+      <section typeof="bibo:Chapter" resource="#candidate-recommendation-exit-criteria" property="bibo:hasPart">
+        <h3 id="candidate-recommendation-exit-criteria" resource="#candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading">Candidate Recommendation Exit Criteria</span></h3>
+
+        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products, there is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
+
+        <section typeof="bibo:Chapter" resource="#sender" property="bibo:hasPart">
+          <h4 id="sender" resource="#sender"><span property="xhv:role" resource="xhv:heading">Sender</span></h4>
+
+          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
+        </section>
+
+        <section typeof="bibo:Chapter" resource="#receiver" property="bibo:hasPart">
+          <h4 id="receiver" resource="#receiver"><span property="xhv:role" resource="xhv:heading">Receiver</span></h4>
+
+          <p>A Webmention Receiver is an implementation that receives Webmentions to one or more target URLs on which the Receiver's Webmention endpoint is advertised. The conformance criteria for Receivers are described in <a href="#receiving-webmentions">Receiving Webmentions</a>. In order to receive a Webmention, there must be a URL that advertises the Receiver's Webmention endpoint. The URL is not considered part of the Receiver's implementation, as it may exist in an entirely different system or domain.</p>
+        </section>
+
+        <section typeof="bibo:Chapter" resource="#independent" property="bibo:hasPart">
+          <h4 id="independent" resource="#independent"><span property="xhv:role" resource="xhv:heading">Independent</span></h4>
+
+          <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
+        </section>
+
+        <section typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
+          <h4 id="interoperable" resource="#interoperable"><span property="xhv:role" resource="xhv:heading">Interoperable</span></h4>
+
+          <p>A Sender and Receiver implementation are considered interoperable for a specific feature when the Sender 1) can discover the Webmention endpoint for the target URL for all specified ways of finding the endpoint (allowing the Receiver to change the way the endpoint is advertised without changing the Sender implementation), and 2) considers the Webmention request successful for all specified ways a Receiver may indicate success.</p>
+        </section>
+
+        <section typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
+          <h4 id="implementation" resource="#implementation"><span property="xhv:role" resource="xhv:heading">Implementation</span></h4>
+
+          <p>An Implementation is a Webmention Sender or Receiver which:</p>
+
+          <ul>
+            <li>implements the corresponding conformance class of the specification</li>
+            <li>is available to the general public, as downloadable software or as a hosted service</li>
+            <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
+            <li>is suitable for a person to use as his/her primary implementation on a website</li>
+          </ul>
+        </section>
+
+        <section typeof="bibo:Chapter" resource="#feature" property="bibo:hasPart">
+          <h4 id="feature" resource="#feature"><span property="xhv:role" resource="xhv:heading">Feature</span></h4>
+
+          <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+
+          <ul>
+            <li>Sending a Webmention to a given target URL</li>
+            <li>Re-sending Webmentions and sending new Webmentions when the source document is updated</li>
+            <li>Re-sending Webmentions when the source document is deleted</li>
+            <li>Receiving a Webmention request, processing it synchronously, and responding with HTTP 200</li>
+            <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
+            <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
+            <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
+            <li>Delete: Receiving a Webmention from a source URL which now respond with HTTP 410</li>
+          </ul>
+        </section>
+
+      </section>
     
           <p>
             This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft.
