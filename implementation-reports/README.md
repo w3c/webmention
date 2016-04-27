@@ -2,15 +2,16 @@ This file is a sample implementation report. Please copy this to a file and chan
 
 # Implementation Name
 
-Home Page: 
+Implementation Home Page URL: 
 
-Source Code (optional): 
+Source Code repo URL(s) (optional): 
+* [ ] 100% open source implementation
 
-Programming Language: 
+Programming Language(s): 
 
 Developers: [Name](http://you.example.com)
 
-Classes (Sender, Receiver): 
+Implementation Classes (Sender and/or Receiver): 
 
 
 ## Sender Tests
