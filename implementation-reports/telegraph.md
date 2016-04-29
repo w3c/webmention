@@ -1,14 +1,15 @@
 # Telegraph
 
-Home Page: https://telegraph.p3k.io
+Implementation Home Page URL: https://telegraph.p3k.io
 
-Source Code: https://github.com/aaronpk/Telegraph
+Source Code repo URL(s) (optional): https://github.com/aaronpk/Telegraph
+* [ ] 100% open source implementation
 
-Programming Language: PHP
+Programming Language(s): PHP
 
-Developers: [Aaron Parecki](http://aaronparecki.com)
+Developer(s): [Aaron Parecki](http://aaronparecki.com)
 
-Classes: Sender
+Implementation Classes (Sender and/or Receiver): Sender
 
 
 ## Sender Tests
@@ -67,4 +68,9 @@ contents and trigger sending Webmentions when the post is updated.
 SHOULD
 
 * [ ] [Delete Test #1](https://webmention.rocks/delete/1)
+
+
+### Security Considerations (4)
+
+* [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
 

@@ -1,6 +1,13 @@
-This file is a sample implementation report. Please copy this to a file and change the name to your project name (in lower case with hyphens between words), then fill out the information in the report based on your implementation. Please remove this paragraph before submitting.
+This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a <a href="https://help.github.com/articles/using-pull-requests/">pull request</a> and your report will be reviewed and added to the main repository.
 
-# Implementation Name
+Complete this report by filling out the checkboxes as appropriate. To mark one as successful/complete/true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
+
+If your implementation is only a sender or only a receiver, remove the other section from the document before submitting.
+
+When you are complete, send a pull request with the addition of your report file. Please remove this entire top section before submitting.
+
+
+# Implementation Name (Replace this header)
 
 Implementation Home Page URL: 
 
@@ -9,7 +16,7 @@ Source Code repo URL(s) (optional):
 
 Programming Language(s): 
 
-Developers: [Name](http://you.example.com)
+Developer(s): [Name](http://you.example.com)
 
 Implementation Classes (Sender and/or Receiver): 
 
@@ -46,6 +53,7 @@ MUST
 
 (Add implementation notes here, or remove this section)
 
+
 ### Sending Tests (3.1.2)
 
 MUST
@@ -78,6 +86,18 @@ SHOULD
 (Add implementation notes here, or remove this section)
 
 
+### Security Considerations (4)
+
+* [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
+
+
+### Extensions
+
+This implementation has also implemented the following extensions.
+
+* [ ] _______
+
+
 ## Receiver Tests
 
 ### Request Verification (3.2.1)
@@ -91,8 +111,14 @@ SHOULD
 * [ ] Verification is processed asynchronously (SHOULD)
 * [ ] Follows one HTTP redirect on source URL (MUST)
 * [ ] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
-* [ ] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
-* [ ] Respects a self-imposed limit on the number of bytes fetched from the source URL (SHOULD)
+
+#### Source URL content-types supported
+
+Please list the content types that your implementation supports when checking if the source document links to the target URL.
+
+* HTML
+* ...
+
 
 ### HTML Verification (3.2.2)
 
@@ -106,14 +132,11 @@ The tests below apply when the source document is HTML.
 * [ ] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
 * [ ] Rejects a Webmention where the target URL is not in the document
 
-### JSON Verification (3.2.2)
 
-The tests below apply when the source document is JSON.
+### Webmention Display/Use
 
-* [ ] Accepts exact match of the target URL in a top-level property
-* [ ] Accepts exact match of the target URL in a property nested deeply
-* [ ] Rejects partial match of the target URL in a property
-* [ ] Rejects a Webmention where the target URL is not in the document
+Describe how your implementation makes use of the data found at the source URL. For example, your implementation may display data from the source URL as a comment on the target post.
+
 
 ### Update Tests (3.2.4)
 
@@ -122,7 +145,25 @@ The tests below apply when the source document is JSON.
 * [ ] Updates and stores the information from the primary object at the source URL (MUST)
 * [ ] Updates and stores the information from children or descendant objects at the source URL (MAY)
 
+
 ### Delete Tests (3.2.4)
 
 * [ ] Recognizes an HTTP 410 response as a delete, and removes the response (SHOULD)
+
+
+### Security Considerations (4)
+
+* [ ] Webmentions are moderated before being displayed (MAY)
+* [ ] Webmentions are periodically re-verified (MAY)
+* [ ] The receiver ensures any displayed data it properly encoded/filtered to prevent XSS attacks (MUST)
+* [ ] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
+* [ ] Respects a self-imposed limit on the number of bytes fetched from the source URL (SHOULD)
+* [ ] The receiver accepts additional parameters or headers, and so has CSRF protection (SHOULD)
+
+
+### Extensions
+
+This implementation has also implemented the following extensions.
+
+* [ ] _______
 
