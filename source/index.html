@@ -7,12 +7,13 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-25",
+          publishDate: "2016-04-29",
           specStatus: "ED",
           previousMaturity: "WD",
           previousPublishDate: "2016-04-20",
           shortName:  "webmention",
           edDraftURI: "http://webmention.net/draft/",
+          testSuiteURI: "https://webmention.rocks/",
           editors: [
                 {   name:       "Aaron Parecki",
                     url:        "http://aaronparecki.com/",
@@ -203,7 +204,7 @@
       <section>
         <h3>Candidate Recommendation Exit Criteria</h3>
 
-        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products, there is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
+        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
 
         <section>
           <h4>Sender</h4>
@@ -232,7 +233,7 @@
         <section>
           <h4>Implementation</h4>
 
-          <p>An Implementation is a Webmention Sender or Receiver which:</p>
+          <p>An Implementation is a Webmention Sender or Receiver which meets all of the following criteria:</p>
 
           <ul>
             <li>implements the corresponding conformance class of the specification</li>
@@ -255,10 +256,18 @@
             <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
             <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
             <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
-            <li>Delete: Receiving a Webmention from a source URL which now respond with HTTP 410</li>
+            <li>Delete: Receiving a Webmention from a source URL which now responds with HTTP 410</li>
           </ul>
         </section>
 
+      </section>
+
+      <section>
+        <h3>Test Suite and Reporting</h3>
+
+        <p>Please submit your implementation reports at <a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
+
+        <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
       </section>
     </section>
 
@@ -539,9 +548,9 @@ The Webmention is being processed</pre></p>
 
         <ul>
           <li>The verification process SHOULD be queued and processed asynchronously to prevent DoS attacks.</li>
-          <li>Receivers SHOULD moderate or otherwise verify Webmentions before displaying them.</li>
+          <li>Receivers MAY moderate Webmentions before displaying them.</li>
           <li>Receivers MAY periodically re-verify Webmentions and update them.</li>
-          <li>If a receiver chooses to publish data it picks up from source, it should ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
+          <li>If a receiver chooses to publish data it picks up from source, it MUST ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
         </ul>
       </section>
 
@@ -767,7 +776,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         <h3>Tools</h3>
 
         <ul>
-          <li><a href="https://webmention.rocks/">Webmention Rocks!</a> is a Webmention validaotr which helps you debug your webmention sending. It will provide detailed error messages to help you successfully send a Webmention, and will show your comment on the website when it's successfully processed.</li>
+          <li><a href="https://webmention.rocks/">Webmention Rocks!</a> is a Webmention validator which helps you debug your webmention sending. It will provide detailed error messages to help you successfully send a Webmention, and will show your comment on the website when it's successfully processed.</li>
           <li><a href="https://github.com/voxpelli/node-webmention-testpinger">node-webmention-testpinger</a> is a tool to ping your site with a variety of Webmention markup. Contains copies of a couple of real world examples of mentions that it enables you to ping locally to a development copy of your site.</li>
           <li><a href="https://github.com/pfefferle/node-webmention-testendpoint">node-webmention-testendpoint</a> is tool to test your Webmention client. Generates a demo-post and a demo-endpoint to test if your client parses the webmention-endpoint correctly and to check if the ping body is transmitted correctly.</li>
           <li><a href="http://indiewebcamp.com/stapibas">stapibas</a> is a self-hosted service to send and receive Webmentions for websites and blogs. It can be used to send out Webmentions and Pingbacks for new posts on static sites.</li>
@@ -804,9 +813,14 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 29 March 2016 WD to this version</h3>
+        <h3>Changes from 20 April 2016 WD to 29 April 2016</h3>
 
         <ul>
+          <li>Added link to test suite in document header</li>
+          <li>Added section describing how to submit implementation reports</li>
+          <li>Clarified implementation must meet all listed criteria</li>
+          <li>Minor typo fixes</li>
+          <li>Clarified moderation is a MAY since verification is already a MUST in 3.2.2</li>
         </ul>
       </section>
 
