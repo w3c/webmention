@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="/styles.css">
   <style type="text/css">
     .page {
-      max-width: 500px;
+      max-width: 600px;
     }
   </style>
 </head>
