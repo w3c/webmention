@@ -428,6 +428,8 @@ The Webmention is being processed</pre></p>
             commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>
 
+          <p>The receiver MUST reject the request if the source URL is the same as the target URL.</p>
+
           <p>The receiver SHOULD check that <code>target</code> is a valid resource for which
             it can accept Webmentions. This check SHOULD happen
             synchronously to reject invalid Webmentions before more in-depth
@@ -716,6 +718,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
         <ul>
           <li>Moved list of implementations to webmention.net</li>
+          <li>MUST reject Webmentions where source == target, since most current implementations are already doing this.</li>
         </ul>
       </section>
 
