@@ -1,0 +1,42 @@
+body {
+  background-color: #fefefe;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14pt;
+}
+.page {
+  max-width: 500px;
+  margin: 0 auto;
+}
+a {
+  color: #78b35c;
+}
+a:hover {
+  color: #93c57c;
+}
+h1 {
+  text-align: center;
+}
+.subtitle {
+  padding: 20px 30px;
+  font-size: 16pt;
+  background-color: #93c57c;
+  border: 1px #78b35c solid;
+  border-radius: 4px;
+}
+ul.links {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+ul.links li {
+  margin: 0;
+  padding: 0;
+  padding-top: 16px;
+}
+ul.links .main {
+  text-align: center;
+  font-size: 18pt;
+  padding-top: 26px;
+  padding-bottom: 16px;
+}
