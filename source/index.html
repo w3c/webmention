@@ -676,125 +676,24 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
       <p>
         <ul>
+          <li><a href="https://webmention.rocks">Test Suite and Debug Tool</a></li>
           <li><a href="http://indiewebcamp.com/Webmention-faq">FAQ</a></li>
           <li><a href="http://indiewebcamp.com/webmention-implementation-guide">Implementation Guide</a></li>
           <li><a href="http://indiewebcamp.com/webmention-implementation-details">Implementation Details</a></li>
           <li><a href="http://indiewebcamp.com/Webmention-brainstorming">Brainstorming</a></li>
         </ul>
       </p>
-    </section>
 
-    <section class="appendix informative">
-      <h2>Articles</h2>
+      <section class="appendix informative">
+        <h3>Articles</h3>
 
-      <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles">articles about Webmention</a> on the IndieWebCamp wiki.</p>
-    </section>
-
-    <section class="appendix informative">
-      <h2>Implementations</h2>
-
-      <section>
-        <h3>Libraries</h3>
-
-        <section>
-          <h4>Sending</h4>
-          <ul>
-            <li><a href="https://github.com/indieweb/mention-client-php">indieweb/mention-client-php</a> - <strong>PHP</strong> library for sending webmention and pingpack notifications</li>
-            <li><a href="https://github.com/indieweb/mention-client-ruby">indieweb/mention-client-ruby</a> - <strong>Ruby</strong> library for sending webmention notifications</li>
-            <li><a href="https://github.com/phpish/webmention">phpish/webmention</a> - Simple Webmention client (non-OO) in <strong>PHP</strong> packaged as a composer package</li>
-            <li><a href="https://github.com/vrypan/webmention-tools">vrypan/webmention-tools</a> - <strong>Python</strong> client library and command line webmention sender</li>
-            <li><a href="https://github.com/pear2/Services_Linkback">pear2/Services_Linkback</a> - <strong>PHP</strong> Pingback and Webmention client + server library</li>
-            <li><a href="https://github.com/bear/ronkyuu">bear/ronkyuu</a> - <strong>Python</strong> client library and command-line tools</li>
-            <li><a href="https://github.com/glennjones/webmentions">glennjones/webmentions</a> - <strong>Node.js</strong> a helper library for endpoint discovery, pulling validating Webmentions and sending Webmention requests</li>
-            <li><a href="https://willnorris.com/go/webmention">willnorris.com/go/webmention</a> - <strong>Go</strong> client library and command-line tool for discovering and sending Webmentions.</li>
-            <li><a href="https://github.com/ckruse/webmentions-elixir">webmentions-elixir</a> - <strong>Elixir</strong> client library for sending Webmentions</li>
-          </ul>
-        </section>
-
-        <section>
-          <h4>Endpoint Discovery</h4>
-          <ul>
-            <li><a href="https://github.com/indieweb/link-rel-parser-php/blob/master/src/IndieWeb/link_rel_parser.php">link_rel_parser</a> - <strong>PHP</strong> <code>http_rels($h)</code> &amp; <code>head_http_rels($url)</code> - HTTP header string parser for RFC5988 Link: rels (including <code>X-Pingback</code>) &amp; function to curl a HEAD request and parse it all in one.</li>
-            <li><a href="https://github.com/phpish/link_header">phpish/link_header</a> - <strong>PHP</strong> Link header (RFC 5988) parser</li>
-            <li><a href="http://pear.php.net/package/HTTP2">PEAR: HTTP2</a> - <strong>PHP</strong> Link header (RFC 5988) parser (<a href="http://pear.php.net/manual/en/package.http.http2.parselinks.php">documentation</a>)</li>
-            <li><a href="http://indiewebcamp.com/ronkyuu">ronkyuu</a> - <strong>Python</strong> client library and command-line tools</li>
-          </ul>
-        </section>
-
-        <section>
-          <h4>Receiving</h4>
-          <ul>
-            <li>PHP Minimum Viable Webmention handler: <a href="https://gist.github.com/adactio/6484118">https://gist.github.com/adactio/6484118</a></li>
-            <li><a href="https://github.com/pear2/Services_Linkback">pear2/Services_Linkback</a> - <strong>PHP</strong> Pingback and Webmention client + server library</li>
-          </ul>
-        </section>
-
-        <section>
-          <h4>Parsing</h4>
-          <ul>
-            <li><a href="http://microformats.org/wiki/microformats2#Implementations">microformats2 implementations and parsers</a></li>
-            <li><a href="https://github.com/fiatjaf/went">went</a> - Webmention Endpoint Tools, a <strong>Python</strong> library that takes <strong>source</strong> and <strong>target</strong> URLs and does the rest of the job for you.</li>
-          </ul>
-        </section>
+        <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles">articles about Webmention</a> on the IndieWebCamp wiki.</p>
       </section>
 
-      <section>
-        <h3>Publishing Software</h3>
+      <section class="appendix informative">
+        <h3>Implementations</h3>
 
-        <p>Some open source publishing software supports Webmention.</p>
-
-        <ul>
-          <li><a href="http://withknown.com">Known</a> personal publishing software sends webmentions and accepts webmention comments (including webmention updates), and likes</li>
-          <li><a href="https://github.com/FrancisCMS">FrancisCMS</a> personal publishing software similarly sends and receives</li>
-          <li><a href="https://indiewebcamp.com/WWWTech">WWWTech</a> personal publishing software similarly sends and receives</li>
-          <li><a href="https://sourceforge.net/projects/phorkie/">phorkie</a> sends and accepts webmentions to notify remote instances about forks</li>
-        </ul>
-
-        <p>Some additional publishing software, portions of which are open source, supports webmentions:</p>
-
-        <ul>
-          <li><a href="http://p3k.io">p3k</a> sends and receives webmentions for all posts</li>
-          <li><a href="https://indiewebcamp.com/Taproot">Taproot</a></li>
-        </ul>
-
-        <section>
-          <h4>Plugins</h4>
-          <p>Plugins exist for some open source publishing software</p>
-          <ul>
-            <li><a href="https://wordpress.org/plugins/webmention/">Wordpress</a></li>
-            <li><a href="https://www.drupal.org/project/vinculum">Drupal</a></li>
-            <li><a href="https://github.com/mapkyca/elgg-webmention">Elgg</a></li>
-            <li><a href="https://github.com/gRegorLove/nucleus-plugin-webmention">Nucleus CMS</a></li>
-            <li><a href="https://github.com/jgarber623/craft-webmention-client">Craft CMS</a></li>
-            <li><a href="https://github.com/bastianallgeier/kirby-webmentions">Kirby</a></li>
-            <li><a href="http://modules.processwire.com/modules/webmention/">ProcessWire</a></li>
-          </ul>
-        </section>
-      </section>
-
-      <section>
-        <h3>Tools</h3>
-
-        <ul>
-          <li><a href="https://webmention.rocks/">Webmention Rocks!</a> is a Webmention validator which helps you debug your webmention sending. It will provide detailed error messages to help you successfully send a Webmention, and will show your comment on the website when it's successfully processed.</li>
-          <li><a href="https://github.com/voxpelli/node-webmention-testpinger">node-webmention-testpinger</a> is a tool to ping your site with a variety of Webmention markup. Contains copies of a couple of real world examples of mentions that it enables you to ping locally to a development copy of your site.</li>
-          <li><a href="https://github.com/pfefferle/node-webmention-testendpoint">node-webmention-testendpoint</a> is tool to test your Webmention client. Generates a demo-post and a demo-endpoint to test if your client parses the webmention-endpoint correctly and to check if the ping body is transmitted correctly.</li>
-          <li><a href="http://indiewebcamp.com/stapibas">stapibas</a> is a self-hosted service to send and receive Webmentions for websites and blogs. It can be used to send out Webmentions and Pingbacks for new posts on static sites.</li>
-          <li>A <a href="https://addons.mozilla.org/fr/firefox/addon/webmention/">Firefox Add-On</a> which allows you to send Webmentions via a context menu</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Services</h3>
-
-        <ul>
-          <li><a href="http://brid.gy/">brid.gy</a> is a service that sends Webmentions for comments/replies, likes, and reposts on Facebook, Twitter, Google+, and Instagram posts. It uses <a href="http://indiewebcamp.com/original_post_discovery">original post discovery</a> to find target links for the Webmentions. <a href="https://github.com/snarfed/bridgy">GitHub repo here.</a></li>
-          <li><a href="https://checkmention.appspot.com/">Checkmention</a> lets you test your Webmention implementation on your indieweb site, and whether it robustly detects certain types of XSS attacks. It also allows you to test for <a href="http://indiewebcamp.com/authorship#Spoofing">authorship spoofing</a>.</li>
-          <li><a href="http://mention-tech.appspot.com/">mention-tech</a> is a service that can receive Webmentions on behalf of anyone via both Webmention directly, and a web form on its home page.</li>
-          <li><a href="https://webmention.herokuapp.com/">webmention.herokuapp.com</a> receives Webmentions for any registered page and allows them to be embedded through javascript.</li>
-          <li><a href="https://webmention.io">webmention.io</a> is an open-source project and hosted service for receiving Webmentions and Pingbacks on behalf of your IndieWeb site.</li>
-          <li><a href="https://telegraph.p3k.io">Telegraph</a> is an open-source project and hosted service for sending Webmentions and Pingbacks.</li>
-        </ul>
+        <p>You can find a list of <a href="http://webmention.net/implementations/">Webmention implementations</a> on webmention.net</p>
       </section>
 
     </section>
@@ -813,7 +712,15 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 20 April 2016 WD to 29 April 2016</h3>
+        <h3>Changes from 29 April 2016 WD to this version</h3>
+
+        <ul>
+          <li>Moved list of implementations to webmention.net</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 20 April 2016 WD to 29 April 2016 WD</h3>
 
         <ul>
           <li>Added link to test suite in document header</li>
