@@ -1,2 +1,2 @@
 <?php
-header('Location: https://github.com/aaronpk/webmention/new/master/implementation-reports');
+header('Location: https://github.com/aaronpk/webmention/tree/master/implementation-reports');
