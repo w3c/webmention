@@ -165,5 +165,7 @@ Describe how your implementation makes use of the data found at the source URL. 
 
 This implementation has also implemented the following extensions.
 
-* [ ] _______
+* [ ] [Salmention](http://indiewebcamp.com/Salmention)
+* [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [ ] Other: _______
 
