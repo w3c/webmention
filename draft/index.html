@@ -258,7 +258,7 @@ table.simple {
     }
   }
 }</script></head>
-  <body class="h-entry toc-inline" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
   <p>
             <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
   </p>
@@ -764,7 +764,7 @@ The Webmention is being processed</pre></div><p></p>
                     When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it <em class="rfc2119" title="MUST">MUST</em> support updating data from properties of the primary object of the source. (e.g. properties of the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] of the page).
                     <ul>
                       <li>
-                        A Webmention update implementation <em class="rfc2119" title="MAY">MAY</em> support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page).
+                        A Webmention update implementation <em class="rfc2119" title="MAY">MAY</em> support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). Note: Implementations that support this may wish to consider supporting it according to the [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] extension.
                       </li>
                     </ul>
                   </li>
