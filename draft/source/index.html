@@ -7,10 +7,10 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-04-29",
+          publishDate: "2016-05-17",
           specStatus: "ED",
           previousMaturity: "WD",
-          previousPublishDate: "2016-04-20",
+          previousPublishDate: "2016-04-29",
           shortName:  "webmention",
           edDraftURI: "http://webmention.net/draft/",
           testSuiteURI: "https://webmention.rocks/",
@@ -365,8 +365,9 @@ HTTP/1.1 202 Accepted</pre></p>
           <p>This allows the recipients of Webmentions to update their display of the source document,
           or otherwise notify the recipient that a post that mentioned one of their URLs was updated.</p>
 
-          <p>When sending a Webmention when a post is updated, the sender MUST re-discover the Webmention endpoint
-          of each target URL, in case the target has updated their Webmention endpoint.</p>
+          <p>When sending a Webmention when a post is updated, the sender MUST re-discover the Webmention endpoint of each target URL, in case the target has updated their Webmention endpoint.</p>
+
+          <p>If a response to the source URL is shown on the source URL page, then sender SHOULD treat that as an update of the source URL and re-send any previously sent Webmentions.</p>
         </section>
         <section>
           <h4>Sending Webmentions for deleted posts</h4>
@@ -519,7 +520,7 @@ The Webmention is being processed</pre></p>
                     When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it MUST support updating data from properties of the primary object of the source. (e.g. properties of the [[h-entry]] of the page).
                     <ul>
                       <li>
-                        A Webmention update implementation MAY support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). If an implementation does support this, it MUST support it according to the [[!Salmention]] extension specification (AKA a "Salmention implementation").
+                        A Webmention update implementation MAY support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page).
                       </li>
                     </ul>
                   </li>
@@ -719,6 +720,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         <ul>
           <li>Moved list of implementations to webmention.net</li>
           <li>MUST reject Webmentions where source == target, since most current implementations are already doing this.</li>
+          <li>Remove normative requirement on Salmention.</li>
         </ul>
       </section>
 
