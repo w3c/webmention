@@ -167,6 +167,7 @@ table.simple {
   "shortName": "webmention",
   "edDraftURI": "http://webmention.net/draft/",
   "testSuiteURI": "https://webmention.rocks/",
+  "implementationReportURI": "http://webmention.net/implementation-reports/",
   "editors": [
     {
       "name": "Aaron Parecki",
@@ -237,15 +238,6 @@ table.simple {
       "status": "Living Specification",
       "publisher": "microformats.org"
     },
-    "URL": {
-      "title": "URL",
-      "href": "https://url.spec.whatwg.org/",
-      "authors": [
-        "Anne van Kesteren"
-      ],
-      "status": "Living Specification",
-      "publisher": "WHATWG"
-    },
     "Pingback": {
       "title": "Pingback 1.0",
       "href": "http://www.hixie.ch/specs/pingback/pingback",
@@ -273,6 +265,8 @@ table.simple {
       <dd><a href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
       <dt>Test suite:</dt>
       <dd><a href="https://webmention.rocks/">https://webmention.rocks/</a></dd>
+      <dt>Implementation report:</dt>
+      <dd><a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a></dd>
     <dt>Editor:</dt>
     <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
 <span property="rdf:rest" resource="rdf:nil"></span>
@@ -337,6 +331,10 @@ table.simple {
             
               All comments are welcome.
           </p>
+            <p>
+              Please see the Working Group's  <a href="http://webmention.net/implementation-reports/">implementation
+              report</a>.
+            </p>
             <p>
               Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
               Membership. This is a draft document and may be updated, replaced or obsoleted by other
@@ -538,7 +536,7 @@ table.simple {
 
           <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative
             URL, in which case the sender <em class="rfc2119" title="MUST">MUST</em> resolve it relative to the
-            <code>target</code> URL according to the [<cite><a class="bibref" href="#bib-URL">URL</a></cite>] specification.</p>
+            <code>target</code> URL according to [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].</p>
 
           <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> contain query string parameters, which <em class="rfc2119" title="MUST">MUST</em> be 
             preserved as query string parameters and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent as POST body 
@@ -668,7 +666,7 @@ The Webmention is being processed</pre></div><p></p>
         <section id="request-verification" typeof="bibo:Chapter" resource="#request-verification" property="bibo:hasPart">
           <h4 id="h-request-verification" resource="#h-request-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Request Verification</span></h4>
 
-          <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-URL">URL</a></cite>]
+          <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>]
             and are of schemes that are supported by the receiver. (Most
             commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>
@@ -1028,8 +1026,8 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 </dd><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
 </dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
 </dd><dt id="bib-RFC2616">[RFC2616]</dt><dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. IETF. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
+</dd><dt id="bib-RFC3986">[RFC3986]</dt><dd>T. Berners-Lee; R. Fielding; L. Masinter. IETF. <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires">https://tools.ietf.org/html/rfc3986</a>
 </dd><dt id="bib-RFC5988">[RFC5988]</dt><dd>M. Nottingham. IETF. <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires">https://tools.ietf.org/html/rfc5988</a>
-</dd><dt id="bib-URL">[URL]</dt><dd>Anne van Kesteren. WHATWG. <a href="https://url.spec.whatwg.org/" property="dc:requires"><cite>URL</cite></a>. Living Specification. URL: <a href="https://url.spec.whatwg.org/" property="dc:requires">https://url.spec.whatwg.org/</a>
 </dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-JSON">[JSON]</dt><dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:references"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:references">https://tools.ietf.org/html/rfc4627</a>
 </dd><dt id="bib-Salmention">[Salmention]</dt><dd>Ben Roberts; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Salmention" property="dc:references">http://indiewebcamp.com/Salmention</a>
 </dd><dt id="bib-Vouch">[Vouch]</dt><dd>Aaron Parecki; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Vouch" property="dc:references">http://indiewebcamp.com/Vouch</a>
