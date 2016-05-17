@@ -14,6 +14,7 @@
           shortName:  "webmention",
           edDraftURI: "http://webmention.net/draft/",
           testSuiteURI: "https://webmention.rocks/",
+          implementationReportURI: "http://webmention.net/implementation-reports/",
           editors: [
                 {   name:       "Aaron Parecki",
                     url:        "http://aaronparecki.com/",
@@ -79,15 +80,6 @@
               ],
               status:   "Living Specification",
               publisher:  "microformats.org"
-            },
-            "URL": {
-              title: "URL",
-              href: "https://url.spec.whatwg.org/",
-              authors: [
-                "Anne van Kesteren"
-              ],
-              status: "Living Specification",
-              publisher: "WHATWG"
             },
             "Pingback": {
               title: "Pingback 1.0",
@@ -294,7 +286,7 @@
 
           <p>The endpoint MAY be a relative
             URL, in which case the sender MUST resolve it relative to the
-            <code>target</code> URL according to the [[!URL]] specification.</p>
+            <code>target</code> URL according to [[!RFC3986]].</p>
 
           <p>The endpoint MAY contain query string parameters, which MUST be 
             preserved as query string parameters and MUST NOT be sent as POST body 
@@ -424,7 +416,7 @@ The Webmention is being processed</pre></p>
         <section>
           <h4>Request Verification</h4>
 
-          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!URL]]
+          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!RFC3986]]
             and are of schemes that are supported by the receiver. (Most
             commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>
