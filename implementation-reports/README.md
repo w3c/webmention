@@ -147,17 +147,18 @@ The tests below apply when the source document is HTML.
 ### Webmention Display/Use
 
 * [ ] The receiver displays data from the source URL on the target post (MAY)
- * [ ] The receiver recognizes that the source URL is a "comment" or "reply" to the post
-  * [ ] using HTML markup: __________
- * [ ] The receiver recognizes that the source URL is a "like" of the post
-  * [ ] using HTML markup: __________
- * [ ] The receiver recognizes that the source URL is a "repost" of the post
-  * [ ] using HTML markup: __________
- * [ ] The receiver recognizes that the source URL is an "RSVP" to the post
-  * [ ] using HTML markup: __________
- * [ ] The receiver recognizes additional response types, using markup:
-  * [ ] Response: __________ using HTML markup: __________
-  * (Please add lines like above for additional response types the receiver has implemented)
+
+* [ ] The receiver recognizes that the source URL is a "comment" or "reply" to the post
+ * [ ] using HTML markup: __________
+* [ ] The receiver recognizes that the source URL is a "like" of the post
+ * [ ] using HTML markup: __________
+* [ ] The receiver recognizes that the source URL is a "repost" of the post
+ * [ ] using HTML markup: __________
+* [ ] The receiver recognizes that the source URL is an "RSVP" to the post
+ * [ ] using HTML markup: __________
+* [ ] The receiver recognizes additional response types, using markup:
+ * [ ] Response: __________ using HTML markup: __________
+ * (Please add lines like above for additional response types the receiver has implemented)
 
 Please describe any other ways the Webmention is displayed or used if applicable.
 
