@@ -12,7 +12,7 @@ Developer(s): [Aaron Parecki](http://aaronparecki.com)
 Implementation Classes (Sender and/or Receiver): Sender
 
 
-## Sender Tests
+## Sending
 
 ### Discovery Tests (3.1.1)
 

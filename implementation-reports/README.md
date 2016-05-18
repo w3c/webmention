@@ -21,7 +21,7 @@ Developer(s): [Name](http://you.example.com)
 Implementation Classes (Sender and/or Receiver): 
 
 
-## Sender Tests
+## Sending
 
 ### Discovery Tests (3.1.1)
 
@@ -95,10 +95,21 @@ SHOULD
 
 This implementation has also implemented the following extensions.
 
-* [ ] _______
+* [ ] [Salmention](http://indiewebcamp.com/Salmention)
+* [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [ ] Other: _______
 
 
-## Receiver Tests
+## Receiving
+
+Indicate which type of response the receiver provides:
+
+* [ ] HTTP 200 - Receiver synchronously processes the Webmention request (not recommended)
+* [ ] HTTP 201 - Receiver creates a status URL the sender can use to check the status of the Webmention
+* [ ] HTTP 202 - Receiver processes the Webmention asynchronously
+
+Describe the response body (if any) which is returned in the request:
+
 
 ### Request Verification (3.2.1)
 
@@ -116,8 +127,8 @@ This implementation has also implemented the following extensions.
 
 Please list the content types that your implementation supports when checking if the source document links to the target URL.
 
-* HTML
-* ...
+* [ ] HTML
+* [ ] Other: ______
 
 
 ### HTML Verification (3.2.2)
@@ -136,6 +147,8 @@ The tests below apply when the source document is HTML.
 ### Webmention Display/Use
 
 Describe how your implementation makes use of the data found at the source URL. For example, your implementation may display data from the source URL as a comment on the target post.
+
+
 
 
 ### Update Tests (3.2.4)
