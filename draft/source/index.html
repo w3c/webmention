@@ -8,9 +8,9 @@
       var respecConfig = {
           useExperimentalStyles: true,
           publishDate: "2016-05-24",
-          specStatus: "CR",
-          previousMaturity: "WD",
-          previousPublishDate: "2016-04-17",
+          specStatus: "ED",
+          previousMaturity: "CR",
+          previousPublishDate: "2016-05-24",
           crEnd: "2016-06-21",
           shortName:  "webmention",
           edDraftURI: "http://webmention.net/draft/",
@@ -282,7 +282,7 @@
             <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
             followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
-            element in document order. Clients MUST support all
+            element in document order. Senders MUST support all
             three options and fall back in this order.</p>
 
           <p>The endpoint MAY be a relative
@@ -608,7 +608,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         <p>It is possible for an attacker to advertise a Webmention endpoint that points to an arbitrary URL. As such, if you install software that sends Webmentions on a server that is behind a firewall or otherwise has access to normally protected resources, you should be aware that an attacker can cause the server to send a POST request to an internal server. You SHOULD take precautions to ensure this server cannot access protected resources by either:</p>
 
         <ul>
-          <li>running the client in an environment that does not have access to such internal resources</li>
+          <li>running the sender in an environment that does not have access to such internal resources</li>
           <li>proxying all HTTP requests from this sender through a proxy that blocks access to internal resources</li>
         </ul>
       </section>
@@ -708,7 +708,15 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 29 April 2016 WD to this version</h3>
+        <h3>Changes from 24 May 2016 CR to this version</h3>
+
+        <ul>
+          <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 29 April 2016 WD to 24 May 2016 CR</h3>
 
         <ul>
           <li>Moved list of implementations to webmention.net</li>

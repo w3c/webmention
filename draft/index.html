@@ -1,189 +1,358 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
-<head><meta lang="" property="dc:language" content="en">
-    <title>Webmention</title>
-    <meta charset="utf-8">
-    
-    
-    <style>/* --- EXAMPLES --- */
-div.example-title {
-    min-width: 7.5em;
-    color: #b9ab2d;
-}
-div.example-title span {
-    text-transform: uppercase;
-}
-aside.example, div.example, div.illegal-example {
-    padding: 0.5em;
-    margin: 1em 0;
-    position: relative;
-    clear: both;
-}
-div.illegal-example { color: red }
-div.illegal-example p { color: black }
-aside.example, div.example {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-    border-color: #e0cb52;
-    background: #fcfaee;
-}
+<head>
+  <meta lang="" property="dc:language" content="en">
+  <style>
+    /*
 
-aside.example div.example {
-    border-left-width: .1em;
-    border-color: #999;
-    background: #fff;
-}
-aside.example div.example div.example-title {
-    color: #999;
-}
-</style><link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
-    <link rel="webmention" href="https://webmention.io/w3c/webmention">
-  <style>/*****************************************************************
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+    
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      padding: 0.5em;
+      color: #333;
+      background: #f8f8f8;
+      -webkit-text-size-adjust: none;
+    }
+    
+    .hljs-comment,
+    .diff .hljs-header {
+      color: #998;
+      font-style: italic;
+    }
+    
+    .hljs-keyword,
+    .css .rule .hljs-keyword,
+    .hljs-winutils,
+    .nginx .hljs-title,
+    .hljs-subst,
+    .hljs-request,
+    .hljs-status {
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .hljs-number,
+    .hljs-hexcolor,
+    .ruby .hljs-constant {
+      color: #008080;
+    }
+    
+    .hljs-string,
+    .hljs-tag .hljs-value,
+    .hljs-doctag,
+    .tex .hljs-formula {
+      color: #d14;
+    }
+    
+    .hljs-title,
+    .hljs-id,
+    .scss .hljs-preprocessor {
+      color: #900;
+      font-weight: bold;
+    }
+    
+    .hljs-list .hljs-keyword,
+    .hljs-subst {
+      font-weight: normal;
+    }
+    
+    .hljs-class .hljs-title,
+    .hljs-type,
+    .vhdl .hljs-literal,
+    .tex .hljs-command {
+      color: #458;
+      font-weight: bold;
+    }
+    
+    .hljs-tag,
+    .hljs-tag .hljs-title,
+    .hljs-rule .hljs-property,
+    .django .hljs-tag .hljs-keyword {
+      color: #000080;
+      font-weight: normal;
+    }
+    
+    .hljs-attribute,
+    .hljs-variable,
+    .lisp .hljs-body,
+    .hljs-name {
+      color: #008080;
+    }
+    
+    .hljs-regexp {
+      color: #009926;
+    }
+    
+    .hljs-symbol,
+    .ruby .hljs-symbol .hljs-string,
+    .lisp .hljs-keyword,
+    .clojure .hljs-keyword,
+    .scheme .hljs-keyword,
+    .tex .hljs-special,
+    .hljs-prompt {
+      color: #990073;
+    }
+    
+    .hljs-built_in {
+      color: #0086b3;
+    }
+    
+    .hljs-preprocessor,
+    .hljs-pragma,
+    .hljs-pi,
+    .hljs-doctype,
+    .hljs-shebang,
+    .hljs-cdata {
+      color: #999;
+      font-weight: bold;
+    }
+    
+    .hljs-deletion {
+      background: #fdd;
+    }
+    
+    .hljs-addition {
+      background: #dfd;
+    }
+    
+    .diff .hljs-change {
+      background: #0086b3;
+    }
+    
+    .hljs-chunk {
+      color: #aaa;
+    }
+  </style>
+  <style id="respec-mainstyle">
+    /*****************************************************************
  * ReSpec 3 CSS
  * Robin Berjon - http://berjon.com/
  *****************************************************************/
-
-/* --- INLINES --- */
-em.rfc2119 { 
-    text-transform:     lowercase;
-    font-variant:       small-caps;
-    font-style:         normal;
-    color:              #900;
-}
-
-h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
-h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
-    border: none;
-}
-
-dfn {
-    font-weight:    bold;
-}
-
-a.internalDFN {
-    color:  inherit;
-    border-bottom:  1px solid #99c;
-    text-decoration:    none;
-}
-
-a.externalDFN {
-    color:  inherit;
-    border-bottom:  1px dotted #ccc;
-    text-decoration:    none;
-}
-
-a.bibref {
-    text-decoration:    none;
-}
-
-cite .bibref {
-    font-style: normal;
-}
-
-code {
-    color:  #C83500;
-}
-
-/* --- TOC --- */
-.toc a, .tof a {
-    text-decoration:    none;
-}
-
-a .secno, a .figno {
-    color:  #000;
-}
-
-ul.tof, ol.tof {
-    list-style: none outside none;
-}
-
-.caption {
-    margin-top: 0.5em;
-    font-style:   italic;
-}
-
-/* --- TABLE --- */
-table.simple {
-    border-spacing: 0;
-    border-collapse:    collapse;
-    border-bottom:  3px solid #005a9c;
-}
-
-.simple th {
-    background: #005a9c;
-    color:  #fff;
-    padding:    3px 5px;
-    text-align: left;
-}
-
-.simple th[scope="row"] {
-    background: inherit;
-    color:  inherit;
-    border-top: 1px solid #ddd;
-}
-
-.simple td {
-    padding:    3px 10px;
-    border-top: 1px solid #ddd;
-}
-
-.simple tr:nth-child(even) {
-    background: #f0f6ff;
-}
-
-/* --- DL --- */
-.section dd > p:first-child {
-    margin-top: 0;
-}
-
-.section dd > p:last-child {
-    margin-bottom: 0;
-}
-
-.section dd {
-    margin-bottom:  1em;
-}
-
-.section dl.attrs dd, .section dl.eldef dd {
-    margin-bottom:  0;
-}
-
-.respec-hidden {
-    display: none;
-}
-
-@media print {
-    .removeOnSave {
+    /* Override code highlighter background */
+    
+    .hljs {
+      background: transparent !important;
+    }
+    /* --- INLINES --- */
+    
+    em.rfc2119 {
+      text-transform: lowercase;
+      font-variant: small-caps;
+      font-style: normal;
+      color: #900;
+    }
+    
+    h1 acronym,
+    h2 acronym,
+    h3 acronym,
+    h4 acronym,
+    h5 acronym,
+    h6 acronym,
+    a acronym,
+    h1 abbr,
+    h2 abbr,
+    h3 abbr,
+    h4 abbr,
+    h5 abbr,
+    h6 abbr,
+    a abbr {
+      border: none;
+    }
+    
+    dfn {
+      font-weight: bold;
+    }
+    
+    a.internalDFN {
+      color: inherit;
+      border-bottom: 1px solid #99c;
+      text-decoration: none;
+    }
+    
+    a.externalDFN {
+      color: inherit;
+      border-bottom: 1px dotted #ccc;
+      text-decoration: none;
+    }
+    
+    a.bibref {
+      text-decoration: none;
+    }
+    
+    cite .bibref {
+      font-style: normal;
+    }
+    
+    code {
+      color: #C83500;
+    }
+    /* --- TOC --- */
+    
+    .toc a,
+    .tof a {
+      text-decoration: none;
+    }
+    
+    a .secno,
+    a .figno {
+      color: #000;
+    }
+    
+    ul.tof,
+    ol.tof {
+      list-style: none outside none;
+    }
+    
+    .caption {
+      margin-top: 0.5em;
+      font-style: italic;
+    }
+    /* --- TABLE --- */
+    
+    table.simple {
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-bottom: 3px solid #005a9c;
+    }
+    
+    .simple th {
+      background: #005a9c;
+      color: #fff;
+      padding: 3px 5px;
+      text-align: left;
+    }
+    
+    .simple th[scope="row"] {
+      background: inherit;
+      color: inherit;
+      border-top: 1px solid #ddd;
+    }
+    
+    .simple td {
+      padding: 3px 10px;
+      border-top: 1px solid #ddd;
+    }
+    
+    .simple tr:nth-child(even) {
+      background: #f0f6ff;
+    }
+    /* --- DL --- */
+    
+    .section dd > p:first-child {
+      margin-top: 0;
+    }
+    
+    .section dd > p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .section dd {
+      margin-bottom: 1em;
+    }
+    
+    .section dl.attrs dd,
+    .section dl.eldef dd {
+      margin-bottom: 0;
+    }
+    
+    .respec-hidden {
+      display: none;
+    }
+    
+    @media print {
+      .removeOnSave {
         display: none;
+      }
     }
-}
-</style><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--><script id="initialUserConfig" type="application/json">{
-  "useExperimentalStyles": true,
-  "publishDate": "2016-05-17",
-  "specStatus": "ED",
-  "previousMaturity": "WD",
-  "previousPublishDate": "2016-04-29",
-  "shortName": "webmention",
-  "edDraftURI": "http://webmention.net/draft/",
-  "testSuiteURI": "https://webmention.rocks/",
-  "implementationReportURI": "http://webmention.net/implementation-reports/",
-  "editors": [
-    {
-      "name": "Aaron Parecki",
-      "url": "http://aaronparecki.com/",
-      "w3cid": "59996"
+  </style>
+  <title>Webmention</title>
+  <meta charset="utf-8">
+
+
+  <style>
+    /* --- EXAMPLES --- */
+    
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
     }
-  ],
-  "wg": "Social Web Working Group",
-  "wgURI": "http://www.w3.org/Social/WG",
-  "wgPublicList": "public-socialweb",
-  "wgPatentURI": "http://www.w3.org/2004/01/pp-impl/72531/status",
-  "license": "w3c-software-doc",
-  "otherLinks": [
+    
+    div.example-title span {
+      text-transform: uppercase;
+    }
+    
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    div.illegal-example {
+      color: red
+    }
+    
+    div.illegal-example p {
+      color: black
+    }
+    
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+    
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+    
+    aside.example div.example div.example-title {
+      color: #999;
+    }
+  </style>
+  <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
+  <link rel="webmention" href="https://webmention.io/w3c/webmention">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
+  <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
+  <script id="initialUserConfig" type="application/json">
     {
-      "key": "Repository",
-      "data": [
+      "useExperimentalStyles": true,
+      "publishDate": "2016-05-24",
+      "specStatus": "ED",
+      "previousMaturity": "CR",
+      "previousPublishDate": "2016-05-24",
+      "crEnd": "2016-06-21",
+      "shortName": "webmention",
+      "edDraftURI": "http://webmention.net/draft/",
+      "testSuiteURI": "https://webmention.rocks/",
+      "implementationReportURI": "http://webmention.net/implementation-reports/",
+      "editors": [
+      {
+        "name": "Aaron Parecki",
+        "url": "http://aaronparecki.com/",
+        "w3cid": "59996"
+      }],
+      "wg": "Social Web Working Group",
+      "wgURI": "http://www.w3.org/Social/WG",
+      "wgPublicList": "public-socialweb",
+      "wgPatentURI": "http://www.w3.org/2004/01/pp-impl/72531/status",
+      "license": "w3c-software-doc",
+      "otherLinks": [
+      {
+        "key": "Repository",
+        "data": [
         {
           "value": "Github",
           "href": "https://github.com/aaronpk/webmention"
@@ -195,68 +364,75 @@ table.simple {
         {
           "value": "Commits",
           "href": "https://github.com/aaronpk/webmention/commits/master"
+        }]
+      }],
+      "localBiblio":
+      {
+        "Vouch":
+        {
+          "title": "Vouch",
+          "href": "http://indiewebcamp.com/Vouch",
+          "authors": [
+            "Aaron Parecki",
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "IndieWebCamp"
+        },
+        "Salmention":
+        {
+          "title": "Salmention",
+          "href": "http://indiewebcamp.com/Salmention",
+          "authors": [
+            "Ben Roberts",
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "IndieWebCamp"
+        },
+        "microformats2-parsing":
+        {
+          "title": "Microformats2 Parsing",
+          "href": "http://microformats.org/wiki/microformats2-parsing",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "microformats.org"
+        },
+        "h-entry":
+        {
+          "title": "h-entry",
+          "href": "http://microformats.org/wiki/h-entry",
+          "authors": [
+            "Tantek Çelik"
+          ],
+          "status": "Living Specification",
+          "publisher": "microformats.org"
+        },
+        "Pingback":
+        {
+          "title": "Pingback 1.0",
+          "href": "http://www.hixie.ch/specs/pingback/pingback",
+          "authors": [
+            "Stuart Langridge",
+            "Ian Hickson"
+          ],
+          "status": "Stable Specification",
+          "publisher": "hixie.ch"
         }
-      ]
+      }
     }
-  ],
-  "localBiblio": {
-    "Vouch": {
-      "title": "Vouch",
-      "href": "http://indiewebcamp.com/Vouch",
-      "authors": [
-        "Aaron Parecki",
-        "Tantek Çelik"
-      ],
-      "status": "Living Specification",
-      "publisher": "IndieWebCamp"
-    },
-    "Salmention": {
-      "title": "Salmention",
-      "href": "http://indiewebcamp.com/Salmention",
-      "authors": [
-        "Ben Roberts",
-        "Tantek Çelik"
-      ],
-      "status": "Living Specification",
-      "publisher": "IndieWebCamp"
-    },
-    "microformats2-parsing": {
-      "title": "Microformats2 Parsing",
-      "href": "http://microformats.org/wiki/microformats2-parsing",
-      "authors": [
-        "Tantek Çelik"
-      ],
-      "status": "Living Specification",
-      "publisher": "microformats.org"
-    },
-    "h-entry": {
-      "title": "h-entry",
-      "href": "http://microformats.org/wiki/h-entry",
-      "authors": [
-        "Tantek Çelik"
-      ],
-      "status": "Living Specification",
-      "publisher": "microformats.org"
-    },
-    "Pingback": {
-      "title": "Pingback 1.0",
-      "href": "http://www.hixie.ch/specs/pingback/pingback",
-      "authors": [
-        "Stuart Langridge",
-        "Ian Hickson"
-      ],
-      "status": "Stable Specification",
-      "publisher": "hixie.ch"
-    }
-  }
-}</script></head>
-  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
-  <p>
-            <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
-  </p>
-  <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-  <h2 id="w3c-editor-s-draft-17-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-17">17 May 2016</time></h2>
-  <dl>
+  </script>
+</head>
+<body class="h-entry toc-inline" role="document" id="respecDocument">
+  <div class="head" role="contentinfo" id="respecHeader">
+    <p>
+      <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
+    </p>
+    <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
+    <h2 id="w3c-editor-s-draft-24-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-24">24 May 2016</time></h2>
+    <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
       <dt>Latest published version:</dt>
@@ -267,769 +443,815 @@ table.simple {
       <dd><a href="https://webmention.rocks/">https://webmention.rocks/</a></dd>
       <dt>Implementation report:</dt>
       <dd><a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a></dd>
-    <dt>Editor:</dt>
-    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
-<span property="rdf:rest" resource="rdf:nil"></span>
-</dd>
+      <dt>Editor:</dt>
+      <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
+        <span property="rdf:rest" resource="rdf:nil"></span>
+      </dd>
 
-          <dt>Repository:</dt>
-                  <dd>
-                    <a href="https://github.com/aaronpk/webmention">
+      <dt>Repository:</dt>
+      <dd>
+        <a href="https://github.com/aaronpk/webmention">
                       Github
                     </a>
-                  </dd>
-                  <dd>
-                    <a href="https://github.com/aaronpk/webmention/issues">
+      </dd>
+      <dd>
+        <a href="https://github.com/aaronpk/webmention/issues">
                       Issues
                     </a>
-                  </dd>
-                  <dd>
-                    <a href="https://github.com/aaronpk/webmention/commits/master">
+      </dd>
+      <dd>
+        <a href="https://github.com/aaronpk/webmention/commits/master">
                       Commits
                     </a>
-                  </dd>
-  </dl>
-      <p class="copyright">
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
-        2016
-        
-        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
-        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
-        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
-        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
-        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-            <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a>
-        rules apply.
-      </p>
-  <hr title="Separator for header">
-</div>
-    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
-      <p>
-        Webmention is a simple way to notify any URL when you link to it on your site. From the receiver's perspective, it's a way to request notifications when other sites link to it.
-      </p>
+      </dd>
+    </dl>
+    <p class="copyright">
+      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
 
-      <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
-        <h3 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading">Author's Note</span></h3><p><em>This section is non-normative.</em></p>
-        <p>This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
-          <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More
-          history and evolution of Webmention can be found on the
-          <a href="http://indiewebcamp.com/webmention">IndieWebCamp wiki</a>.</p>
-      </section>
-    </section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
-        <p>
-          <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
-        </p>
-          
-    
-          <p>
-            This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft.
-              If you wish to make comments regarding this document, please send them to
-              <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a>
-              (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
-              <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>).
-            
-              All comments are welcome.
-          </p>
-            <p>
-              Please see the Working Group's  <a href="http://webmention.net/implementation-reports/">implementation
+      <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (
+      <a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+      <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
+      <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+      <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+    </p>
+    <hr title="Separator for header">
+  </div>
+
+  <section id="abstract" class="introductory" property="dc:abstract">
+    <h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+    <p>
+      Webmention is a simple way to notify any URL when you link to it on your site. From the receiver's perspective, it's a way to request notifications when other sites link to it.
+    </p>
+
+    <section id="authorsnote" class="informative" typeof="bibo:Chapter" resource="#authorsnote" property="bibo:hasPart">
+      <h3 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading">Author's Note</span></h3>
+      <p><em>This section is non-normative.</em></p>
+      <p>This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
+        <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More history and evolution of Webmention can be found on the
+        <a href="http://indiewebcamp.com/webmention">IndieWebCamp wiki</a>.</p>
+    </section>
+  </section>
+
+  <section id="sotd" class="introductory">
+    <h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+    <p>
+      <em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em>
+    </p>
+
+
+    <p>
+      This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
+      <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (
+      <a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
+      <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
+    </p>
+    <p>
+      Please see the Working Group's <a href="http://webmention.net/implementation-reports/">implementation
               report</a>.
-            </p>
-            <p>
-              Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
-              Membership. This is a draft document and may be updated, replaced or obsoleted by other
-              documents at any time. It is inappropriate to cite this document as other than work in
-              progress.
-            </p>
-          <p>
-              This document was produced by
-              a group
-               operating under the
-              <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+    </p>
+    <p>
+      Publication as an Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.
+    </p>
+    <p>
+      This document was produced by a group operating under the
+      <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
               Policy</a>.
-                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
-                disclosures</a>
-              made in connection with the deliverables of
-              the group; that page also includes
-              instructions for disclosing a patent. An individual who has actual knowledge of a patent
-              which the individual believes contains
-              <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+      <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent
+                disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains
+      <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
               Claim(s)</a> must disclose the information in accordance with
-              <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+      <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-          </p>
-            <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-            </p>
-          
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory"><li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a><ul class="toc"><li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.1 </span>Overview</a></li><li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.2 </span>Protocol Summary</a></li></ul></li><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a><ul class="toc"><li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li><li class="tocline"><a href="#candidate-recommendation-exit-criteria" class="tocxref"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</a><ul class="toc"><li class="tocline"><a href="#sender" class="tocxref"><span class="secno">2.2.1 </span>Sender</a></li><li class="tocline"><a href="#receiver" class="tocxref"><span class="secno">2.2.2 </span>Receiver</a></li><li class="tocline"><a href="#independent" class="tocxref"><span class="secno">2.2.3 </span>Independent</a></li><li class="tocline"><a href="#interoperable" class="tocxref"><span class="secno">2.2.4 </span>Interoperable</a></li><li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2.2.5 </span>Implementation</a></li><li class="tocline"><a href="#feature" class="tocxref"><span class="secno">2.2.6 </span>Feature</a></li></ul></li><li class="tocline"><a href="#test-suite-and-reporting" class="tocxref"><span class="secno">2.3 </span>Test Suite and Reporting</a></li></ul></li><li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">3. </span>Webmention Protocol</a><ul class="toc"><li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">3.1 </span>Sending Webmentions</a><ul class="toc"><li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</a></li><li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">3.1.2 </span>Sender notifies receiver</a></li><li class="tocline"><a href="#sending-webmentions-for-updated-posts" class="tocxref"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</a></li><li class="tocline"><a href="#sending-webmentions-for-deleted-posts" class="tocxref"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</a></li></ul></li><li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">3.2 </span>Receiving Webmentions</a><ul class="toc"><li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">3.2.1 </span>Request Verification</a></li><li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">3.2.2 </span>Webmention Verification</a></li><li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">3.2.3 </span>Error Responses</a></li><li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">3.2.4 </span>Updating existing Webmentions</a></li></ul></li></ul></li><li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">4. </span>Security Considerations</a><ul class="toc"><li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">4.1 </span>Preventing Abuse</a></li><li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">4.2 </span>Limits on GET requests</a></li><li class="tocline"><a href="#avoid-sending-webmentions-to-localhost" class="tocxref"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</a></li><li class="tocline"><a href="#cross-site-request-forgery" class="tocxref"><span class="secno">4.4 </span>Cross-Site Request Forgery</a></li><li class="tocline"><a href="#limit-access-to-protected-resources" class="tocxref"><span class="secno">4.5 </span>Limit access to protected resources</a></li></ul></li><li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">5. </span>IANA Considerations</a></li><li class="tocline"><a href="#uris-for-form-encoded-properties" class="tocxref"><span class="secno">A. </span>URIs for Form-Encoded Properties</a></li><li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">B. </span>Extensions</a><ul class="toc"><li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">B.1 </span><span class="formerLink">Vouch</span></a></li><li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">B.2 </span><span class="formerLink">Salmention</span></a></li></ul></li><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">C. </span>Resources</a><ul class="toc"><li class="tocline"><a href="#articles" class="tocxref"><span class="secno">C.1 </span>Articles</a></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">C.2 </span>Implementations</a></li></ul></li><li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">D. </span>Acknowledgements</a></li><li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">E. </span>Change Log</a><ul class="toc"><li class="tocline"><a href="#changes-from-29-april-2016-wd-to-this-version" class="tocxref"><span class="secno">E.1 </span>Changes from 29 April 2016 WD to this version</a></li><li class="tocline"><a href="#changes-from-20-april-2016-wd-to-29-april-2016-wd" class="tocxref"><span class="secno">E.2 </span>Changes from 20 April 2016 WD to 29 April 2016 WD</a></li><li class="tocline"><a href="#changes-from-29-march-2016-wd-to-20-april-2016-wd" class="tocxref"><span class="secno">E.3 </span>Changes from 29 March 2016 WD to 20 April 2016 WD</a></li><li class="tocline"><a href="#changes-from-1-march-2016-wd-to-29-march-2016-wd" class="tocxref"><span class="secno">E.4 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</a></li><li class="tocline"><a href="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" class="tocxref"><span class="secno">E.5 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">F. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">F.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">F.2 </span>Informative references</a></li></ul></li></ul></nav>
+    </p>
+    <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+    </p>
 
-    
-
-    <section id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2>
-
-      <p>At a basic level, a Webmention is a notification that one URL links
-      to another.</p>
-
-      <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>",
-      "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this
-      document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
-
-      <section class="informative" id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
-        <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Overview</span></h3><p><em>This section is non-normative.</em></p>
-
-        <p>A typical Webmention flow is as follows:
-          </p><ol>
-            <li>Alice posts some interesting content on her site (which is set up to receive Webmentions).</li>
-            <li>Bob sees this content and comments about it on his site, linking back to Alice's original post.</li>
-            <li>Using Webmention, Bob's publishing software automatically notifies Alice's server that her post has been linked to by the URL of Bob's post.</li>
-            <li>Alice's publishing software verifies that Bob's post actually contains a link to her post and then includes this information on her site.</li>
-          </ol>
-        <p></p>
-      </section>
-
-      <section class="informative" id="protocol-summary" typeof="bibo:Chapter" resource="#protocol-summary" property="bibo:hasPart">
-        <h3 id="h-protocol-summary" resource="#h-protocol-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Protocol Summary</span></h3><p><em>This section is non-normative.</em></p>
-
-        <ol>
-          <li>User Aaron writes a post on his blog.</li>
-          <li>User Barnaby writes a post on his blog that links to Aaron's post.</li>
-          <li>After publishing the post (i.e., after it has a URL), Barnaby's server notices the link to Aaron's post as part of the publishing process.</li>
-          <li>Barnaby's server does Webmention discovery on Aaron's post to find its Webmention endpoint (if not found, process stops).</li>
-          <li>Barnaby's server sends a Webmention notification to Aaron's post's Webmention endpoint with:
-            <ul>
-              <li><code>source</code> set to Barnaby's post's permalink</li>
-              <li><code>target</code> set to Aaron's post's permalink.</li>
+  </section>
+  <nav id="toc">
+    <h2 class="introductory" id="table-of-contents" resource="#table-of-contents"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2>
+    <ul class="toc" role="directory">
+      <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.1 </span>Overview</a></li>
+          <li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.2 </span>Protocol Summary</a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#conformance-classes" class="tocxref"><span class="secno">2.1 </span>Conformance Classes</a></li>
+          <li class="tocline"><a href="#candidate-recommendation-exit-criteria" class="tocxref"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</a>
+            <ul class="toc">
+              <li class="tocline"><a href="#sender" class="tocxref"><span class="secno">2.2.1 </span>Sender</a></li>
+              <li class="tocline"><a href="#receiver" class="tocxref"><span class="secno">2.2.2 </span>Receiver</a></li>
+              <li class="tocline"><a href="#independent" class="tocxref"><span class="secno">2.2.3 </span>Independent</a></li>
+              <li class="tocline"><a href="#interoperable" class="tocxref"><span class="secno">2.2.4 </span>Interoperable</a></li>
+              <li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2.2.5 </span>Implementation</a></li>
+              <li class="tocline"><a href="#feature" class="tocxref"><span class="secno">2.2.6 </span>Feature</a></li>
             </ul>
           </li>
-          <li>Aaron's server receives the Webmention.</li>
-          <li>Aaron's server verifies that <code>target</code> in the Webmention is a valid permalink on Aaron's blog (if not, processing stops).</li>
-          <li>Aaron's server verifies that the <code>source</code> in the Webmention (when retrieved, after following redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) contains a hyperlink to the <code>target</code> (if not, processing stops).</li>
-        </ol>
+          <li class="tocline"><a href="#test-suite-and-reporting" class="tocxref"><span class="secno">2.3 </span>Test Suite and Reporting</a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#webmention-protocol" class="tocxref"><span class="secno">3. </span>Webmention Protocol</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#sending-webmentions" class="tocxref"><span class="secno">3.1 </span>Sending Webmentions</a>
+            <ul class="toc">
+              <li class="tocline"><a href="#sender-discovers-receiver-webmention-endpoint" class="tocxref"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</a></li>
+              <li class="tocline"><a href="#sender-notifies-receiver" class="tocxref"><span class="secno">3.1.2 </span>Sender notifies receiver</a></li>
+              <li class="tocline"><a href="#sending-webmentions-for-updated-posts" class="tocxref"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</a></li>
+              <li class="tocline"><a href="#sending-webmentions-for-deleted-posts" class="tocxref"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</a></li>
+            </ul>
+          </li>
+          <li class="tocline"><a href="#receiving-webmentions" class="tocxref"><span class="secno">3.2 </span>Receiving Webmentions</a>
+            <ul class="toc">
+              <li class="tocline"><a href="#request-verification" class="tocxref"><span class="secno">3.2.1 </span>Request Verification</a></li>
+              <li class="tocline"><a href="#webmention-verification" class="tocxref"><span class="secno">3.2.2 </span>Webmention Verification</a></li>
+              <li class="tocline"><a href="#error-responses" class="tocxref"><span class="secno">3.2.3 </span>Error Responses</a></li>
+              <li class="tocline"><a href="#updating-existing-webmentions" class="tocxref"><span class="secno">3.2.4 </span>Updating existing Webmentions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#security-considerations" class="tocxref"><span class="secno">4. </span>Security Considerations</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#preventing-abuse" class="tocxref"><span class="secno">4.1 </span>Preventing Abuse</a></li>
+          <li class="tocline"><a href="#limits-on-get-requests" class="tocxref"><span class="secno">4.2 </span>Limits on GET requests</a></li>
+          <li class="tocline"><a href="#avoid-sending-webmentions-to-localhost" class="tocxref"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</a></li>
+          <li class="tocline"><a href="#cross-site-request-forgery" class="tocxref"><span class="secno">4.4 </span>Cross-Site Request Forgery</a></li>
+          <li class="tocline"><a href="#limit-access-to-protected-resources" class="tocxref"><span class="secno">4.5 </span>Limit access to protected resources</a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">5. </span>IANA Considerations</a></li>
+      <li class="tocline"><a href="#uris-for-form-encoded-properties" class="tocxref"><span class="secno">A. </span>URIs for Form-Encoded Properties</a></li>
+      <li class="tocline"><a href="#extensions" class="tocxref"><span class="secno">B. </span>Extensions</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#vouch" class="tocxref"><span class="secno">B.1 </span><span class="formerLink">Vouch</span></a></li>
+          <li class="tocline"><a href="#salmention" class="tocxref"><span class="secno">B.2 </span><span class="formerLink">Salmention</span></a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#resources" class="tocxref"><span class="secno">C. </span>Resources</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#articles" class="tocxref"><span class="secno">C.1 </span>Articles</a></li>
+          <li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">C.2 </span>Implementations</a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#acknowledgements" class="tocxref"><span class="secno">D. </span>Acknowledgements</a></li>
+      <li class="tocline"><a href="#change-log" class="tocxref"><span class="secno">E. </span>Change Log</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#changes-from-24-may-2016-cr-to-this-version" class="tocxref"><span class="secno">E.1 </span>Changes from 24 May 2016 CR to this version</a></li>
+          <li class="tocline"><a href="#changes-from-29-april-2016-wd-to-24-may-2016-cr" class="tocxref"><span class="secno">E.2 </span>Changes from 29 April 2016 WD to 24 May 2016 CR</a></li>
+          <li class="tocline"><a href="#changes-from-20-april-2016-wd-to-29-april-2016-wd" class="tocxref"><span class="secno">E.3 </span>Changes from 20 April 2016 WD to 29 April 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-29-march-2016-wd-to-20-april-2016-wd" class="tocxref"><span class="secno">E.4 </span>Changes from 29 March 2016 WD to 20 April 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-1-march-2016-wd-to-29-march-2016-wd" class="tocxref"><span class="secno">E.5 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</a></li>
+          <li class="tocline"><a href="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" class="tocxref"><span class="secno">E.6 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</a></li>
+        </ul>
+      </li>
+      <li class="tocline"><a href="#references" class="tocxref"><span class="secno">F. </span>References</a>
+        <ul class="toc">
+          <li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">F.1 </span>Normative references</a></li>
+          <li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">F.2 </span>Informative references</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
-      </section>
+
+
+  <section id="introduction" typeof="bibo:Chapter" resource="#introduction" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span></h2>
+
+    <p>At a basic level, a Webmention is a notification that one URL links to another.</p>
+
+    <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
+      <em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+
+    <section class="informative" id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
+      <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Overview</span></h3>
+      <p><em>This section is non-normative.</em></p>
+
+      <p>A typical Webmention flow is as follows:
+      </p>
+      <ol>
+        <li>Alice posts some interesting content on her site (which is set up to receive Webmentions).</li>
+        <li>Bob sees this content and comments about it on his site, linking back to Alice's original post.</li>
+        <li>Using Webmention, Bob's publishing software automatically notifies Alice's server that her post has been linked to by the URL of Bob's post.</li>
+        <li>Alice's publishing software verifies that Bob's post actually contains a link to her post and then includes this information on her site.</li>
+      </ol>
+      <p></p>
     </section>
 
-    <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span></h2>
+    <section class="informative" id="protocol-summary" typeof="bibo:Chapter" resource="#protocol-summary" property="bibo:hasPart">
+      <h3 id="h-protocol-summary" resource="#h-protocol-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Protocol Summary</span></h3>
+      <p><em>This section is non-normative.</em></p>
 
-      <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>",
-      "<em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this
-      document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
-
-      <section id="conformance-classes" typeof="bibo:Chapter" resource="#conformance-classes" property="bibo:hasPart">
-        <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span></h3>
-
-        <p>Webmention implementations are either senders or receivers. This section describes the conformance criteria for both.</p>
-
-        <p>Listed below are known types of Webmention implementations.</p>
-
-        <h3 id="senders">Senders</h3>
-        <p>The conformance criteria for Webmention senders is described in <a href="#sending-webmentions">Sending Webmentions</a></p>
-        <ul>
-          <li>Blogging or microblogging software</li>
-          <li>Plugins for existing CMS software</li>
-          <li>Browser plugins to send a Webmention from a context menu on behalf of the page you're viewing</li>
-          <li>Web APIs to offload the Webmention endpoint discovery and Webmention delivery</li>
-          <li>Proxy services that converts existing social media posts to HTML posts and sends Webmentions</li>
-        </ul>
-
-        <h3 id="receivers">Receivers</h3>
-        <p>The conformance criteria for Webmention receivers is described in <a href="#receiving-webmentions">Receiving Webmentions</a></p>
-        <ul>
-          <li>Blogging or microblogging software</li>
-          <li>Plugins for existing CMS software</li>
-          <li>Web services and APIs to receive Webmentions and display them as comments via Javascript embed</li>
-        </ul>
-      </section>
-
-      <section id="candidate-recommendation-exit-criteria" typeof="bibo:Chapter" resource="#candidate-recommendation-exit-criteria" property="bibo:hasPart">
-        <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span></h3>
-
-        <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
-
-        <section id="sender" typeof="bibo:Chapter" resource="#sender" property="bibo:hasPart">
-          <h4 id="h-sender" resource="#h-sender"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Sender</span></h4>
-
-          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
-        </section>
-
-        <section id="receiver" typeof="bibo:Chapter" resource="#receiver" property="bibo:hasPart">
-          <h4 id="h-receiver" resource="#h-receiver"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Receiver</span></h4>
-
-          <p>A Webmention Receiver is an implementation that receives Webmentions to one or more target URLs on which the Receiver's Webmention endpoint is advertised. The conformance criteria for Receivers are described in <a href="#receiving-webmentions">Receiving Webmentions</a>. In order to receive a Webmention, there must be a URL that advertises the Receiver's Webmention endpoint. The URL is not considered part of the Receiver's implementation, as it may exist in an entirely different system or domain.</p>
-        </section>
-
-        <section id="independent" typeof="bibo:Chapter" resource="#independent" property="bibo:hasPart">
-          <h4 id="h-independent" resource="#h-independent"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Independent</span></h4>
-
-          <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
-        </section>
-
-        <section id="interoperable" typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
-          <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span></h4>
-
-          <p>A Sender and Receiver implementation are considered interoperable for a specific feature when the Sender 1) can discover the Webmention endpoint for the target URL for all specified ways of finding the endpoint (allowing the Receiver to change the way the endpoint is advertised without changing the Sender implementation), and 2) considers the Webmention request successful for all specified ways a Receiver may indicate success.</p>
-        </section>
-
-        <section id="implementation" typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
-          <h4 id="h-implementation" resource="#h-implementation"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.5 </span>Implementation</span></h4>
-
-          <p>An Implementation is a Webmention Sender or Receiver which meets all of the following criteria:</p>
-
+      <ol>
+        <li>User Aaron writes a post on his blog.</li>
+        <li>User Barnaby writes a post on his blog that links to Aaron's post.</li>
+        <li>After publishing the post (i.e., after it has a URL), Barnaby's server notices the link to Aaron's post as part of the publishing process.</li>
+        <li>Barnaby's server does Webmention discovery on Aaron's post to find its Webmention endpoint (if not found, process stops).</li>
+        <li>Barnaby's server sends a Webmention notification to Aaron's post's Webmention endpoint with:
           <ul>
-            <li>implements the corresponding conformance class of the specification</li>
-            <li>is available to the general public, as downloadable software or as a hosted service</li>
-            <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
-            <li>is suitable for a person to use as his/her primary implementation on a website</li>
+            <li><code>source</code> set to Barnaby's post's permalink</li>
+            <li><code>target</code> set to Aaron's post's permalink.</li>
           </ul>
-        </section>
+        </li>
+        <li>Aaron's server receives the Webmention.</li>
+        <li>Aaron's server verifies that <code>target</code> in the Webmention is a valid permalink on Aaron's blog (if not, processing stops).</li>
+        <li>Aaron's server verifies that the <code>source</code> in the Webmention (when retrieved, after following redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) contains a hyperlink to the <code>target</code> (if not, processing stops).</li>
+      </ol>
 
-        <section id="feature" typeof="bibo:Chapter" resource="#feature" property="bibo:hasPart">
-          <h4 id="h-feature" resource="#h-feature"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.6 </span>Feature</span></h4>
+    </section>
+  </section>
 
-          <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+  <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Conformance</span></h2>
 
-          <ul>
-            <li>Sending a Webmention to a given target URL</li>
-            <li>Re-sending Webmentions and sending new Webmentions when the source document is updated</li>
-            <li>Re-sending Webmentions when the source document is deleted</li>
-            <li>Receiving a Webmention request, processing it synchronously, and responding with HTTP 200</li>
-            <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
-            <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
-            <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
-            <li>Delete: Receiving a Webmention from a source URL which now responds with HTTP 410</li>
-          </ul>
-        </section>
+    <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
+      <em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
 
-      </section>
+    <section id="conformance-classes" typeof="bibo:Chapter" resource="#conformance-classes" property="bibo:hasPart">
+      <h3 id="h-conformance-classes" resource="#h-conformance-classes"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.1 </span>Conformance Classes</span></h3>
 
-      <section id="test-suite-and-reporting" typeof="bibo:Chapter" resource="#test-suite-and-reporting" property="bibo:hasPart">
-        <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span></h3>
+      <p>Webmention implementations are either senders or receivers. This section describes the conformance criteria for both.</p>
 
-        <p>Please submit your implementation reports at <a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
+      <p>Listed below are known types of Webmention implementations.</p>
 
-        <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
-      </section>
+      <h3 id="senders">Senders</h3>
+      <p>The conformance criteria for Webmention senders is described in <a href="#sending-webmentions">Sending Webmentions</a></p>
+      <ul>
+        <li>Blogging or microblogging software</li>
+        <li>Plugins for existing CMS software</li>
+        <li>Browser plugins to send a Webmention from a context menu on behalf of the page you're viewing</li>
+        <li>Web APIs to offload the Webmention endpoint discovery and Webmention delivery</li>
+        <li>Proxy services that converts existing social media posts to HTML posts and sends Webmentions</li>
+      </ul>
+
+      <h3 id="receivers">Receivers</h3>
+      <p>The conformance criteria for Webmention receivers is described in <a href="#receiving-webmentions">Receiving Webmentions</a></p>
+      <ul>
+        <li>Blogging or microblogging software</li>
+        <li>Plugins for existing CMS software</li>
+        <li>Web services and APIs to receive Webmentions and display them as comments via Javascript embed</li>
+      </ul>
     </section>
 
-    <section id="webmention-protocol" typeof="bibo:Chapter" resource="#webmention-protocol" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-webmention-protocol" resource="#h-webmention-protocol"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Webmention Protocol</span></h2>
+    <section id="candidate-recommendation-exit-criteria" typeof="bibo:Chapter" resource="#candidate-recommendation-exit-criteria" property="bibo:hasPart">
+      <h3 id="h-candidate-recommendation-exit-criteria" resource="#h-candidate-recommendation-exit-criteria"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2 </span>Candidate Recommendation Exit Criteria</span></h3>
 
-      <p>This specification uses the link rel registry as defined by [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>]
-        for both HTML and HTTP link relations.</p>
+      <p>For this specification to exit the CR stage, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product. For the purposes of this criterion, we define the following terms:</p>
 
-      <section id="sending-webmentions" typeof="bibo:Chapter" resource="#sending-webmentions" property="bibo:hasPart">
-        <h3 id="h-sending-webmentions" resource="#h-sending-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Sending Webmentions</span></h3>
+      <section id="sender" typeof="bibo:Chapter" resource="#sender" property="bibo:hasPart">
+        <h4 id="h-sender" resource="#h-sender"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.1 </span>Sender</span></h4>
 
-        <section id="sender-discovers-receiver-webmention-endpoint" typeof="bibo:Chapter" resource="#sender-discovers-receiver-webmention-endpoint" property="bibo:hasPart">
-          <h4 id="h-sender-discovers-receiver-webmention-endpoint" resource="#h-sender-discovers-receiver-webmention-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</span></h4>
+        <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
+      </section>
 
-          <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL (and follow redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) 
-            and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]
-            with a rel value of <code>webmention</code>, or an HTML <code>&lt;link&gt;</code> or
-            <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than
-            one of these is present, the first HTTP Link header takes precedence,
-            followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
-            element in document order. Clients <em class="rfc2119" title="MUST">MUST</em> support all
-            three options and fall back in this order.</p>
+      <section id="receiver" typeof="bibo:Chapter" resource="#receiver" property="bibo:hasPart">
+        <h4 id="h-receiver" resource="#h-receiver"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.2 </span>Receiver</span></h4>
 
-          <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative
-            URL, in which case the sender <em class="rfc2119" title="MUST">MUST</em> resolve it relative to the
-            <code>target</code> URL according to [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].</p>
+        <p>A Webmention Receiver is an implementation that receives Webmentions to one or more target URLs on which the Receiver's Webmention endpoint is advertised. The conformance criteria for Receivers are described in <a href="#receiving-webmentions">Receiving Webmentions</a>. In order to receive a Webmention, there must be a URL that advertises the Receiver's Webmention endpoint. The URL is not considered part of the Receiver's implementation, as it may exist in an entirely different system or domain.</p>
+      </section>
 
-          <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> contain query string parameters, which <em class="rfc2119" title="MUST">MUST</em> be 
-            preserved as query string parameters and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent as POST body 
-            parameters when sending the Webmention request.</p>
+      <section id="independent" typeof="bibo:Chapter" resource="#independent" property="bibo:hasPart">
+        <h4 id="h-independent" resource="#h-independent"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.3 </span>Independent</span></h4>
 
-          <p>Senders <em class="rfc2119" title="MAY">MAY</em> initially make an HTTP HEAD request [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>] to
-            check for the Link header before making a GET request.</p>
+        <p>Each implementation must be developed by a different party and cannot share, reuse, or derive from code used by another qualifying implementation. Sections of code that have no bearing on the implementation of this specification are exempt from this requirement.</p>
+      </section>
 
-          <p></p><div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="">GET /post-by-aaron HTTP/1.1
-Host: aaronpk.example
-HTTP/1.1 200 OK
-Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
+      <section id="interoperable" typeof="bibo:Chapter" resource="#interoperable" property="bibo:hasPart">
+        <h4 id="h-interoperable" resource="#h-interoperable"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.4 </span>Interoperable</span></h4>
 
-&lt;html&gt;
-&lt;head&gt;
+        <p>A Sender and Receiver implementation are considered interoperable for a specific feature when the Sender 1) can discover the Webmention endpoint for the target URL for all specified ways of finding the endpoint (allowing the Receiver to change the way the endpoint is advertised without changing the Sender implementation), and 2) considers the Webmention request successful for all specified ways a Receiver may indicate success.</p>
+      </section>
+
+      <section id="implementation" typeof="bibo:Chapter" resource="#implementation" property="bibo:hasPart">
+        <h4 id="h-implementation" resource="#h-implementation"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.5 </span>Implementation</span></h4>
+
+        <p>An Implementation is a Webmention Sender or Receiver which meets all of the following criteria:</p>
+
+        <ul>
+          <li>implements the corresponding conformance class of the specification</li>
+          <li>is available to the general public, as downloadable software or as a hosted service</li>
+          <li>is not experimental (i.e. is intended for a wide audience and could be used on a daily basis)</li>
+          <li>is suitable for a person to use as his/her primary implementation on a website</li>
+        </ul>
+      </section>
+
+      <section id="feature" typeof="bibo:Chapter" resource="#feature" property="bibo:hasPart">
+        <h4 id="h-feature" resource="#h-feature"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.2.6 </span>Feature</span></h4>
+
+        <p>For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+
+        <ul>
+          <li>Sending a Webmention to a given target URL</li>
+          <li>Re-sending Webmentions and sending new Webmentions when the source document is updated</li>
+          <li>Re-sending Webmentions when the source document is deleted</li>
+          <li>Receiving a Webmention request, processing it synchronously, and responding with HTTP 200</li>
+          <li>Receiving a Webmention request, processing it asynchronously, creating a status URL and responding with HTTP 201</li>
+          <li>Receiving a Webmention request, processing it asynchronously, and responding with HTTP 202 and no other feedback</li>
+          <li>Updates: Receiving a Webmention from a source URL that was previously seen and updating the data it picked up from the source URL</li>
+          <li>Delete: Receiving a Webmention from a source URL which now responds with HTTP 410</li>
+        </ul>
+      </section>
+
+    </section>
+
+    <section id="test-suite-and-reporting" typeof="bibo:Chapter" resource="#test-suite-and-reporting" property="bibo:hasPart">
+      <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span></h3>
+
+      <p>Please submit your implementation reports at <a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
+
+      <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
+    </section>
+  </section>
+
+  <section id="webmention-protocol" typeof="bibo:Chapter" resource="#webmention-protocol" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-webmention-protocol" resource="#h-webmention-protocol"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>Webmention Protocol</span></h2>
+
+    <p>This specification uses the link rel registry as defined by [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] for both HTML and HTTP link relations.</p>
+
+    <section id="sending-webmentions" typeof="bibo:Chapter" resource="#sending-webmentions" property="bibo:hasPart">
+      <h3 id="h-sending-webmentions" resource="#h-sending-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Sending Webmentions</span></h3>
+
+      <section id="sender-discovers-receiver-webmention-endpoint" typeof="bibo:Chapter" resource="#sender-discovers-receiver-webmention-endpoint" property="bibo:hasPart">
+        <h4 id="h-sender-discovers-receiver-webmention-endpoint" resource="#h-sender-discovers-receiver-webmention-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</span></h4>
+
+        <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL (and follow redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with a rel value of <code>webmention</code>, or an HTML <code>&lt;link&gt;</code> or
+          <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than one of these is present, the first HTTP Link header takes precedence, followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> element in document order. Senders <em class="rfc2119" title="MUST">MUST</em> support all three options and fall back in this order.</p>
+
+        <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative URL, in which case the sender <em class="rfc2119" title="MUST">MUST</em> resolve it relative to the
+          <code>target</code> URL according to [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>].</p>
+
+        <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> contain query string parameters, which <em class="rfc2119" title="MUST">MUST</em> be preserved as query string parameters and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent as POST body parameters when sending the Webmention request.</p>
+
+        <p>Senders <em class="rfc2119" title="MAY">MAY</em> initially make an HTTP HEAD request [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>] to check for the Link header before making a GET request.</p>
+
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs http"><span class="hljs-request">GET <span class="hljs-string">/post-by-aaron</span> HTTP/1.1</span>
+<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
+<span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span>
+<span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"</span>
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
 ...
-&lt;link href="http://aaronpk.example/webmention-endpoint" rel="webmention" /&gt;
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"webmention"</span> /&gt;</span>
 ...
-&lt;/head&gt;
-&lt;body&gt;
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
 ....
-&lt;a href="http://aaronpk.example/webmention-endpoint" rel="webmention"&gt;webmention&lt;/a&gt;
+<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"webmention"</span>&gt;</span>webmention<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 ...
-&lt;/body&gt;
-&lt;/html&gt;</pre></div><p></p>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></pre></div>
+        <p></p>
 
-        </section>
-        <section id="sender-notifies-receiver" typeof="bibo:Chapter" resource="#sender-notifies-receiver" property="bibo:hasPart">
-          <h4 id="h-sender-notifies-receiver" resource="#h-sender-notifies-receiver"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.2 </span>Sender notifies receiver</span></h4>
-
-          <p>The sender <em class="rfc2119" title="MUST">MUST</em> post x-www-form-urlencoded [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] <code>source</code> and
-            <code>target</code> parameters to the Webmention endpoint, where
-            <code>source</code> is the URL of the sender's page containing a link,
-            and <code>target</code> is the URL of the page being linked to.</p>
-
-          <p>Note that if the Webmention endpoint URL contains query string parameters,
-            the query string parameters <em class="rfc2119" title="MUST">MUST</em> be preserved, and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent in the
-            POST body.</p>
-
-          <p>The Webmention endpoint will validate and process the request, and
-            return an HTTP status code [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]. Most often, <code>202 Accepted</code>
-            or <code>201 Created</code> will be returned, indicating that the
-            request is queued and being processed asynchronously to prevent
-            DoS attacks. If the response code is 201, the <code>Location</code>
-            header will include a URL that can be used to monitor the
-            status of the request.</p>
-
-          <p>Any <code>2xx</code> response code <em class="rfc2119" title="MUST">MUST</em> be considered a success.</p>
-
-          <p></p><div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="">POST /webmention-endpoint HTTP/1.1
-Host: aaronpk.example
-Content-Type: application/x-www-form-urlencoded
-
-source=https://waterpigs.example/post-by-barnaby&amp;
-target=https://aaronpk.example/post-by-aaron
-
-
-HTTP/1.1 202 Accepted</pre></div><p></p>
-
-        </section>
-        <section id="sending-webmentions-for-updated-posts" typeof="bibo:Chapter" resource="#sending-webmentions-for-updated-posts" property="bibo:hasPart">
-          <h4 id="h-sending-webmentions-for-updated-posts" resource="#h-sending-webmentions-for-updated-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</span></h4>
-
-          <p>If the source URL was updated, the sender <em class="rfc2119" title="SHOULD">SHOULD</em> re-send any previously sent Webmentions,
-          (including re-sending a Webmention to a URL that may have been removed from the document),
-          and <em class="rfc2119" title="SHOULD">SHOULD</em> send Webmentions for any new links that appear at the URL.</p>
-
-          <p>This allows the recipients of Webmentions to update their display of the source document,
-          or otherwise notify the recipient that a post that mentioned one of their URLs was updated.</p>
-
-          <p>When sending a Webmention when a post is updated, the sender <em class="rfc2119" title="MUST">MUST</em> re-discover the Webmention endpoint of each target URL, in case the target has updated their Webmention endpoint.</p>
-
-          <p>If a response to the source URL is shown on the source URL page (e.g. as a comment), then sender <em class="rfc2119" title="SHOULD">SHOULD</em> treat that as an update of the source URL and re-send any previously sent Webmentions.</p>
-        </section>
-        <section id="sending-webmentions-for-deleted-posts" typeof="bibo:Chapter" resource="#sending-webmentions-for-deleted-posts" property="bibo:hasPart">
-          <h4 id="h-sending-webmentions-for-deleted-posts" resource="#h-sending-webmentions-for-deleted-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</span></h4>
-
-          <p>If the source URL was deleted, the sender <em class="rfc2119" title="SHOULD">SHOULD</em> return an HTTP <code>410 Gone</code>
-          status code for the URL, and <em class="rfc2119" title="SHOULD">SHOULD</em> display a "tombstone" representation of
-          the deleted post, typically by blanking out the values of any properties in the post, and/or
-          replacing the primary content of the post (e.g. the name and/or content of [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>]) 
-          with "Deleted". The sender <em class="rfc2119" title="SHOULD">SHOULD</em> then re-send Webmentions for every previously sent 
-          Webmention for that document.</p>
-
-          <p>This allows receivers which may have displayed a previously received Webmention
-          as a comment or other interaction to remove it from view if they support deletes, while
-          providing a reasonable fallback for receivers which only support updates.</p>
-        </section>
       </section>
 
-      <section id="receiving-webmentions" typeof="bibo:Chapter" resource="#receiving-webmentions" property="bibo:hasPart">
-        <h3 id="h-receiving-webmentions" resource="#h-receiving-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Receiving Webmentions</span></h3>
+      <section id="sender-notifies-receiver" typeof="bibo:Chapter" resource="#sender-notifies-receiver" property="bibo:hasPart">
+        <h4 id="h-sender-notifies-receiver" resource="#h-sender-notifies-receiver"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.2 </span>Sender notifies receiver</span></h4>
 
-        <p>Upon receipt of a POST request containing the <code>source</code> and
-          <code>target</code> parameters, the receiver <em class="rfc2119" title="SHOULD">SHOULD</em> verify the parameters 
-          (see <a href="#request-verification">Request Verification</a> below) and then
-          <em class="rfc2119" title="SHOULD">SHOULD</em> queue and process the request asynchronously, prevent DoS attacks. 
-          There are three possible responses to the request, depending on how the receiver
-          processes it.</p>
+        <p>The sender <em class="rfc2119" title="MUST">MUST</em> post x-www-form-urlencoded [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] <code>source</code> and
+          <code>target</code> parameters to the Webmention endpoint, where
+          <code>source</code> is the URL of the sender's page containing a link, and <code>target</code> is the URL of the page being linked to.</p>
 
-        <p>If the receiver creates a status page which the sender can use to
-          check the status, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 201 Created</code>
-          response with a <code>Location</code> header pointing to the status
-          URL. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable 
-          response is recommended.</p>
+        <p>Note that if the Webmention endpoint URL contains query string parameters, the query string parameters <em class="rfc2119" title="MUST">MUST</em> be preserved, and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent in the POST body.</p>
 
-        <p></p><div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="">HTTP/1.1 201 Created
-Location: http://aaronpk.example/webmention/DEhB9Jme
-Content-type: text/plain
+        <p>The Webmention endpoint will validate and process the request, and return an HTTP status code [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]. Most often, <code>202 Accepted</code> or <code>201 Created</code> will be returned, indicating that the request is queued and being processed asynchronously to prevent DoS attacks. If the response code is 201, the <code>Location</code> header will include a URL that can be used to monitor the status of the request.</p>
 
-The Webmention is being processed. You can check on its status here: http://aaronpk.example/webmention/DEhB9Jme</pre></div><p></p>
+        <p>Any <code>2xx</code> response code <em class="rfc2119" title="MUST">MUST</em> be considered a success.</p>
 
-        <p>If the receiver processes the request asynchronously but does not
-          return a status URL, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 202 Accepted</code>
-          response. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a
-          human-readable response is recommended.</p>
+        <p></p>
+        <div class="example">
+          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1</span>
+<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
+<span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
 
-        <p></p><div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="">HTTP/1.1 202 Accepted
-Content-type: text/plain
+<span class="livecodeserver">source=<span class="hljs-keyword">https</span>://waterpigs.example/<span class="hljs-built_in">post</span>-<span class="hljs-keyword">by</span>-barnaby&amp;
+target=<span class="hljs-keyword">https</span>://aaronpk.example/<span class="hljs-built_in">post</span>-<span class="hljs-keyword">by</span>-aaron
 
-The Webmention is being processed</pre></div><p></p>
 
-        <p>If the receiver chooses to process the request and perform the
-          verification step synchronously (not recommended), it <em class="rfc2119" title="MUST">MUST</em> respond
-          with a <code>200 OK</code> status on success.</p>
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> Accepted</span></pre></div>
+        <p></p>
 
-        <section id="request-verification" typeof="bibo:Chapter" resource="#request-verification" property="bibo:hasPart">
-          <h4 id="h-request-verification" resource="#h-request-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Request Verification</span></h4>
+      </section>
 
-          <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>]
-            and are of schemes that are supported by the receiver. (Most
-            commonly this means checking that the <code>source</code> and <code>target</code>
-            schemes are http or https).</p>
+      <section id="sending-webmentions-for-updated-posts" typeof="bibo:Chapter" resource="#sending-webmentions-for-updated-posts" property="bibo:hasPart">
+        <h4 id="h-sending-webmentions-for-updated-posts" resource="#h-sending-webmentions-for-updated-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.3 </span>Sending Webmentions for updated posts</span></h4>
 
-          <p>The receiver <em class="rfc2119" title="MUST">MUST</em> reject the request if the source URL is the same as the target URL.</p>
+        <p>If the source URL was updated, the sender <em class="rfc2119" title="SHOULD">SHOULD</em> re-send any previously sent Webmentions, (including re-sending a Webmention to a URL that may have been removed from the document), and <em class="rfc2119" title="SHOULD">SHOULD</em> send Webmentions for any new links that appear at the URL.</p>
 
-          <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> check that <code>target</code> is a valid resource for which
-            it can accept Webmentions. This check <em class="rfc2119" title="SHOULD">SHOULD</em> happen
-            synchronously to reject invalid Webmentions before more in-depth
-            verification begins.</p>
+        <p>This allows the recipients of Webmentions to update their display of the source document, or otherwise notify the recipient that a post that mentioned one of their URLs was updated.</p>
 
-          <p>Note that a target URL may contain a fragment identifier, and if the
-            receiver limits which URLs can receive Webmentions, the fragment <em class="rfc2119" title="SHOULD">SHOULD</em> be
-            ignored when checking if the URL is supported.</p>
-        </section>
+        <p>When sending a Webmention when a post is updated, the sender <em class="rfc2119" title="MUST">MUST</em> re-discover the Webmention endpoint of each target URL, in case the target has updated their Webmention endpoint.</p>
 
-        <section id="webmention-verification" typeof="bibo:Chapter" resource="#webmention-verification" property="bibo:hasPart">
-          <h4 id="h-webmention-verification" resource="#h-webmention-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Webmention Verification</span></h4>
+        <p>If a response to the source URL is shown on the source URL page (e.g. as a comment), then sender <em class="rfc2119" title="SHOULD">SHOULD</em> treat that as an update of the source URL and re-send any previously sent Webmentions.</p>
+      </section>
 
-          <p>Webmention verification <em class="rfc2119" title="SHOULD">SHOULD</em> be handled asynchronously to
-            prevent DoS attacks.</p>
+      <section id="sending-webmentions-for-deleted-posts" typeof="bibo:Chapter" resource="#sending-webmentions-for-deleted-posts" property="bibo:hasPart">
+        <h4 id="h-sending-webmentions-for-deleted-posts" resource="#h-sending-webmentions-for-deleted-posts"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.4 </span>Sending Webmentions for deleted posts</span></h4>
 
-          <p>If the receiver is going to use the Webmention in some way,
-            (displaying it as a comment on a post, incrementing a "like"
-            counter, notifying the author of a post), then it <em class="rfc2119" title="MUST">MUST</em> perform an
-            HTTP GET request on source, and follow any HTTP redirects
-            (up to a self-imposed limit such as 20) and confirm that it actually
-            links to the target.</p>
+        <p>If the source URL was deleted, the sender <em class="rfc2119" title="SHOULD">SHOULD</em> return an HTTP <code>410 Gone</code> status code for the URL, and <em class="rfc2119" title="SHOULD">SHOULD</em> display a "tombstone" representation of the deleted post, typically by blanking out the values of any properties in the post, and/or replacing the primary content of the post (e.g. the name and/or content of [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>]) with "Deleted". The sender <em class="rfc2119" title="SHOULD">SHOULD</em> then re-send Webmentions for every previously sent Webmention for that document.</p>
 
-          <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> use per-media-type rules to determine whether
-            the source document links to the target URL. For example, in an
-            [<cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] document, the receiver should look for <code>&lt;a href="*"&gt;</code>,
-            <code>&lt;img href="*"&gt;</code>, <code>&lt;video src="*"&gt;</code>
-            and other similar links. In a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] document, the receiver should
-            look for properties whose values are an exact match for the URL.
-            If the document is plain text, the receiver should look for the URL
-            by searching for the string. Other content types may be handled at
-            the implementer's discretion. The source document <em class="rfc2119" title="MUST">MUST</em> have an exact
-            match of the <code>target</code> URL provided in order for it to be considered a
-            valid Webmention.</p>
+        <p>This allows receivers which may have displayed a previously received Webmention as a comment or other interaction to remove it from view if they support deletes, while providing a reasonable fallback for receivers which only support updates.</p>
+      </section>
+    </section>
 
-          <p>At this point, the receiver <em class="rfc2119" title="MAY">MAY</em> publish content from the source page
-            on the target page or other pages, along with any other data it picks
-            up from the source. For example, the receiver may display the
-            contents of the source as a comment on the post, or may display the author's
-            profile photo in a list of others who have sent similar Webmentions, e.g.
-            showing a list of people who have all "liked" a post.</p>
-        </section>
+    <section id="receiving-webmentions" typeof="bibo:Chapter" resource="#receiving-webmentions" property="bibo:hasPart">
+      <h3 id="h-receiving-webmentions" resource="#h-receiving-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Receiving Webmentions</span></h3>
 
-        <section id="error-responses" typeof="bibo:Chapter" resource="#error-responses" property="bibo:hasPart">
-          <h4 id="h-error-responses" resource="#h-error-responses"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Error Responses</span></h4>
+      <p>Upon receipt of a POST request containing the <code>source</code> and
+        <code>target</code> parameters, the receiver <em class="rfc2119" title="SHOULD">SHOULD</em> verify the parameters (see <a href="#request-verification">Request Verification</a> below) and then
+        <em class="rfc2119" title="SHOULD">SHOULD</em> queue and process the request asynchronously, prevent DoS attacks. There are three possible responses to the request, depending on how the receiver processes it.</p>
 
-          <p>If the Webmention was not successful because of something the
-            <i>sender</i> did, it <em class="rfc2119" title="MUST">MUST</em> return a <code>400 Bad Request</code>
-            status code and <em class="rfc2119" title="MAY">MAY</em> include a description of the error in the response body.</p>
+      <p>If the receiver creates a status page which the sender can use to check the status, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 201 Created</code> response with a <code>Location</code> header pointing to the status URL. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
 
-          <p>Possible sender-related errors that can be returned synchronously
-            before making a GET request to the source:
+      <p></p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 3</span></div><pre class="hljs http"><span class="hljs-status">HTTP/1.1 <span class="hljs-number">201</span> Created</span>
+<span class="hljs-attribute">Location</span>: <span class="hljs-string">http://aaronpk.example/webmention/DEhB9Jme</span>
+<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">text/plain</span>
 
-            </p><ul>
-              <li>Specified <code>target</code> URL not found.</li>
-              <li>Specified <code>target</code> URL does not accept Webmentions.</li>
-              <li><code>source</code> URL was malformed or is not a supported URL scheme (e.g. a mailto: link)</li>
-            </ul>
-          <p></p>
+<span class="smali">The Webmention is being processed. You can<span class="hljs-instruction"> check </span>on its status here: http://aaronpk.example/webmention/DEhB9Jme</span></pre></div>
+      <p></p>
 
-          <p>Possible sender-related errors that can occur after fetching the
-            contents of the source URL:
+      <p>If the receiver processes the request asynchronously but does not return a status URL, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 202 Accepted</code> response. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
 
-            </p><ul>
-              <li><code>source</code> URL not found.</li>
-              <li><code>source</code> URL does not contain a link to the <code>target</code> URL.</li>
-            </ul>
-          <p></p>
+      <p></p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-status">HTTP/1.1 <span class="hljs-number">202</span> Accepted</span>
+<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">text/plain</span>
 
-          <p>If the Webmention was not successful because of an error on
-            the receiver's server, it <em class="rfc2119" title="SHOULD">SHOULD</em> return a <code>500 Internal Server Error</code>
-            status code and <em class="rfc2119" title="MAY">MAY</em> include a description of the error in the response body.</p>
+<span class="mizar">The Webmention <span class="hljs-keyword">is</span> <span class="hljs-keyword">being</span> processed</span></pre></div>
+      <p></p>
 
-        </section>
+      <p>If the receiver chooses to process the request and perform the verification step synchronously (not recommended), it <em class="rfc2119" title="MUST">MUST</em> respond with a <code>200 OK</code> status on success.</p>
 
-        <section id="updating-existing-webmentions" typeof="bibo:Chapter" resource="#updating-existing-webmentions" property="bibo:hasPart">
-          <h4 id="h-updating-existing-webmentions" resource="#h-updating-existing-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.4 </span>Updating existing Webmentions</span></h4>
+      <section id="request-verification" typeof="bibo:Chapter" resource="#request-verification" property="bibo:hasPart">
+        <h4 id="h-request-verification" resource="#h-request-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Request Verification</span></h4>
 
-          <p>If receiver had received a Webmention in the past with the same
-            <code>source</code> and <code>target</code> then,
+        <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-RFC3986">RFC3986</a></cite>] and are of schemes that are supported by the receiver. (Most commonly this means checking that the <code>source</code> and <code>target</code> schemes are http or https).</p>
 
-            </p><ul>
+        <p>The receiver <em class="rfc2119" title="MUST">MUST</em> reject the request if the source URL is the same as the target URL.</p>
+
+        <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> check that <code>target</code> is a valid resource for which it can accept Webmentions. This check <em class="rfc2119" title="SHOULD">SHOULD</em> happen synchronously to reject invalid Webmentions before more in-depth verification begins.</p>
+
+        <p>Note that a target URL may contain a fragment identifier, and if the receiver limits which URLs can receive Webmentions, the fragment <em class="rfc2119" title="SHOULD">SHOULD</em> be ignored when checking if the URL is supported.</p>
+      </section>
+
+      <section id="webmention-verification" typeof="bibo:Chapter" resource="#webmention-verification" property="bibo:hasPart">
+        <h4 id="h-webmention-verification" resource="#h-webmention-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Webmention Verification</span></h4>
+
+        <p>Webmention verification <em class="rfc2119" title="SHOULD">SHOULD</em> be handled asynchronously to prevent DoS attacks.</p>
+
+        <p>If the receiver is going to use the Webmention in some way, (displaying it as a comment on a post, incrementing a "like" counter, notifying the author of a post), then it <em class="rfc2119" title="MUST">MUST</em> perform an HTTP GET request on source, and follow any HTTP redirects (up to a self-imposed limit such as 20) and confirm that it actually links to the target.</p>
+
+        <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> use per-media-type rules to determine whether the source document links to the target URL. For example, in an [
+          <cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] document, the receiver should look for <code>&lt;a href="*"&gt;</code>,
+          <code>&lt;img href="*"&gt;</code>, <code>&lt;video src="*"&gt;</code> and other similar links. In a [<cite><a class="bibref" href="#bib-JSON">JSON</a></cite>] document, the receiver should look for properties whose values are an exact match for the URL. If the document is plain text, the receiver should look for the URL by searching for the string. Other content types may be handled at the implementer's discretion. The source document <em class="rfc2119" title="MUST">MUST</em> have an exact match of the <code>target</code> URL provided in order for it to be considered a valid Webmention.</p>
+
+        <p>At this point, the receiver <em class="rfc2119" title="MAY">MAY</em> publish content from the source page on the target page or other pages, along with any other data it picks up from the source. For example, the receiver may display the contents of the source as a comment on the post, or may display the author's profile photo in a list of others who have sent similar Webmentions, e.g. showing a list of people who have all "liked" a post.</p>
+      </section>
+
+      <section id="error-responses" typeof="bibo:Chapter" resource="#error-responses" property="bibo:hasPart">
+        <h4 id="h-error-responses" resource="#h-error-responses"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.3 </span>Error Responses</span></h4>
+
+        <p>If the Webmention was not successful because of something the
+          <i>sender</i> did, it <em class="rfc2119" title="MUST">MUST</em> return a <code>400 Bad Request</code> status code and <em class="rfc2119" title="MAY">MAY</em> include a description of the error in the response body.</p>
+
+        <p>Possible sender-related errors that can be returned synchronously before making a GET request to the source:
+
+        </p>
+        <ul>
+          <li>Specified <code>target</code> URL not found.</li>
+          <li>Specified <code>target</code> URL does not accept Webmentions.</li>
+          <li><code>source</code> URL was malformed or is not a supported URL scheme (e.g. a mailto: link)</li>
+        </ul>
+        <p></p>
+
+        <p>Possible sender-related errors that can occur after fetching the contents of the source URL:
+
+        </p>
+        <ul>
+          <li><code>source</code> URL not found.</li>
+          <li><code>source</code> URL does not contain a link to the <code>target</code> URL.</li>
+        </ul>
+        <p></p>
+
+        <p>If the Webmention was not successful because of an error on the receiver's server, it <em class="rfc2119" title="SHOULD">SHOULD</em> return a <code>500 Internal Server Error</code> status code and <em class="rfc2119" title="MAY">MAY</em> include a description of the error in the response body.</p>
+
+      </section>
+
+      <section id="updating-existing-webmentions" typeof="bibo:Chapter" resource="#updating-existing-webmentions" property="bibo:hasPart">
+        <h4 id="h-updating-existing-webmentions" resource="#h-updating-existing-webmentions"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.4 </span>Updating existing Webmentions</span></h4>
+
+        <p>If receiver had received a Webmention in the past with the same
+          <code>source</code> and <code>target</code> then,
+
+        </p>
+        <ul>
+          <li>
+            If both the verification steps are successful, it <em class="rfc2119" title="SHOULD">SHOULD</em> update any existing data it picked from <code>source</code> for the existing Webmention.
+            <ul>
               <li>
-                If both the verification steps are successful, it <em class="rfc2119" title="SHOULD">SHOULD</em> update any existing data it picked from <code>source</code> for the existing Webmention.
+                When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it <em class="rfc2119" title="MUST">MUST</em> support updating data from properties of the primary object of the source. (e.g. properties of the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] of the page).
                 <ul>
                   <li>
-                    When a Webmention implementation does support updating (i.e., a "Webmention update implementation"), it <em class="rfc2119" title="MUST">MUST</em> support updating data from properties of the primary object of the source. (e.g. properties of the [<cite><a class="bibref" href="#bib-h-entry">h-entry</a></cite>] of the page).
-                    <ul>
-                      <li>
-                        A Webmention update implementation <em class="rfc2119" title="MAY">MAY</em> support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). Note: Implementations that support this may wish to consider supporting it according to the [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] extension.
-                      </li>
-                    </ul>
+                    A Webmention update implementation <em class="rfc2119" title="MAY">MAY</em> support updating data from children, or other descendant objects of the primary object (e.g. a comment h-entry inside the h-entry of the page). Note: Implementations that support this may wish to consider supporting it according to the [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] extension.
                   </li>
                 </ul>
               </li>
-
-              <li>If it received a <code>410 Gone</code> status code on step 2 (performing a GET request on source), or received a <code>200 OK</code> status code and does not find a link to <code>target</code> on <code>source</code>, it <em class="rfc2119" title="SHOULD">SHOULD</em> delete the existing Webmention, or mark it as deleted.</li>
-
-              <li>Processing Webmentions <em class="rfc2119" title="SHOULD">SHOULD</em> be idempotent. That is, receiving multiple Webmentions for the same <code>source</code> and <code>target</code> with no content changes should not show as multiple replies.</li>
             </ul>
-          <p></p>
-        </section>
+          </li>
 
+          <li>If it received a <code>410 Gone</code> status code on step 2 (performing a GET request on source), or received a <code>200 OK</code> status code and does not find a link to <code>target</code> on <code>source</code>, it <em class="rfc2119" title="SHOULD">SHOULD</em> delete the existing Webmention, or mark it as deleted.</li>
+
+          <li>Processing Webmentions <em class="rfc2119" title="SHOULD">SHOULD</em> be idempotent. That is, receiving multiple Webmentions for the same <code>source</code> and <code>target</code> with no content changes should not show as multiple replies.</li>
+        </ul>
+        <p></p>
       </section>
-    </section>
 
-    <!--
+    </section>
+  </section>
+
+  <!--
     <section>
       <h2>Privacy Considerations</h2>
     </section>
   -->
 
-    <section id="security-considerations" typeof="bibo:Chapter" resource="#security-considerations" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-security-considerations" resource="#h-security-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Security Considerations</span></h2>
+  <section id="security-considerations" typeof="bibo:Chapter" resource="#security-considerations" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-security-considerations" resource="#h-security-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>Security Considerations</span></h2>
 
-      <section id="preventing-abuse" typeof="bibo:Chapter" resource="#preventing-abuse" property="bibo:hasPart">
-        <h3 id="h-preventing-abuse" resource="#h-preventing-abuse"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Preventing Abuse</span></h3>
+    <section id="preventing-abuse" typeof="bibo:Chapter" resource="#preventing-abuse" property="bibo:hasPart">
+      <h3 id="h-preventing-abuse" resource="#h-preventing-abuse"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.1 </span>Preventing Abuse</span></h3>
 
-        <ul>
-          <li>The verification process <em class="rfc2119" title="SHOULD">SHOULD</em> be queued and processed asynchronously to prevent DoS attacks.</li>
-          <li>Receivers <em class="rfc2119" title="MAY">MAY</em> moderate Webmentions before displaying them.</li>
-          <li>Receivers <em class="rfc2119" title="MAY">MAY</em> periodically re-verify Webmentions and update them.</li>
-          <li>If a receiver chooses to publish data it picks up from source, it <em class="rfc2119" title="MUST">MUST</em> ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
-        </ul>
-      </section>
-
-      <section id="limits-on-get-requests" typeof="bibo:Chapter" resource="#limits-on-get-requests" property="bibo:hasPart">
-        <h3 id="h-limits-on-get-requests" resource="#h-limits-on-get-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Limits on GET requests</span></h3>
-
-        <p>The Webmention protocol relies on the sender making a GET (or HEAD)
-          request to discover the receiver's endpoint, followed by the receiver
-          making a GET request to the sender's web page to verify the link.
-          This means a sender can cause a receiver to make GET requests to
-          arbitrary URLs, opening up a potential DoS vector.</p>
-        <p>Receivers <em class="rfc2119" title="SHOULD">SHOULD</em> place limits on the amount of data and time they
-          spend fetching unverified source URLs. For example, if a source URL
-          doesn't respond within 5 seconds, it can treat that as a failure.
-          Similarly, the receiver can fetch only the first 1mb of the page,
-          since any reasonable HTML or JSON page will be smaller than that.</p>
-      </section>
-
-      <section id="avoid-sending-webmentions-to-localhost" typeof="bibo:Chapter" resource="#avoid-sending-webmentions-to-localhost" property="bibo:hasPart">
-        <h3 id="h-avoid-sending-webmentions-to-localhost" resource="#h-avoid-sending-webmentions-to-localhost"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</span></h3>
-
-        <p>When the sender discovers the receiver's Webmention endpoint, there
-          is no legitimate reason for the endpoint to be localhost or any other loopback
-          address. If the sender has any services that listen on localhost that
-          don't require authentication, it's possible for a malicious Webmention 
-          receiver to craft a Webmention endpoint that could cause the sender to 
-          make an arbitrary POST request to itself.</p>
-        <p>During the discovery step, if the sender discovers the endpoint is 
-          localhost or a loopback IP address (127.0.0.0/8), it <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> send
-          the Webmention.</p>
-      </section>
-
-      <section id="cross-site-request-forgery" typeof="bibo:Chapter" resource="#cross-site-request-forgery" property="bibo:hasPart">
-        <h3 id="h-cross-site-request-forgery" resource="#h-cross-site-request-forgery"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>Cross-Site Request Forgery</span></h3>
-
-        <p>This specification does not define any special handling of a Webmention request
-          that may contain additional headers or parameters such as authentication headers
-          or session cookies. However, if a Webmention endpoint does accept requests
-          with additional headers, it <em class="rfc2119" title="SHOULD">SHOULD</em> protect itself against Cross-Site
-          Request Forgery (CSRF) attacks. One way to prevent CSRF attacks is by including
-          a CSRF token in a query string parameter of the Webmention endpoint, so that
-          a Webmention sender finds the token when discovering the endpoint.</p>
-
-        <p>For example, the target URL could advertise a Webmention endpoint that includes
-          a CSRF token:</p>
-
-        <p></p><div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="">GET /post-by-aaron HTTP/1.1
-Host: aaronpk.example
-HTTP/1.1 200 OK
-Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</pre></div><p></p>
-
-        <p>Then, when the Webmention endpoint is processing a request, it can first check
-          the validity of the CSRF token before any other processing.</p>
-      </section>
-
-      <section id="limit-access-to-protected-resources" typeof="bibo:Chapter" resource="#limit-access-to-protected-resources" property="bibo:hasPart">
-        <h3 id="h-limit-access-to-protected-resources" resource="#h-limit-access-to-protected-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>Limit access to protected resources</span></h3>
-
-        <p>It is possible for an attacker to advertise a Webmention endpoint that points to an arbitrary URL. As such, if you install software that sends Webmentions on a server that is behind a firewall or otherwise has access to normally protected resources, you should be aware that an attacker can cause the server to send a POST request to an internal server. You <em class="rfc2119" title="SHOULD">SHOULD</em> take precautions to ensure this server cannot access protected resources by either:</p>
-
-        <ul>
-          <li>running the client in an environment that does not have access to such internal resources</li>
-          <li>proxying all HTTP requests from this sender through a proxy that blocks access to internal resources</li>
-        </ul>
-      </section>
-
+      <ul>
+        <li>The verification process <em class="rfc2119" title="SHOULD">SHOULD</em> be queued and processed asynchronously to prevent DoS attacks.</li>
+        <li>Receivers <em class="rfc2119" title="MAY">MAY</em> moderate Webmentions before displaying them.</li>
+        <li>Receivers <em class="rfc2119" title="MAY">MAY</em> periodically re-verify Webmentions and update them.</li>
+        <li>If a receiver chooses to publish data it picks up from source, it <em class="rfc2119" title="MUST">MUST</em> ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
+      </ul>
     </section>
 
-    <section id="iana-considerations" typeof="bibo:Chapter" resource="#iana-considerations" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>IANA Considerations</span></h2>
-      
-      <p>The link relation type below has been registered by IANA per Section
-   6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
-      
-      <dl>
-        
-        <dt>Relation Name:</dt>
-        <dd>webmention</dd>
-        
-        <dt>Description:</dt>
-        <dd>Identifies a target URI that supports the Webmention protocol. This
-        allows clients that mention a resource in some form of publishing
-        process to contact that endpoint and inform it that this resource has
-        been mentioned.</dd>
-        
-        <dt>Reference:</dt>
-        <dd><a href="http://www.w3.org/TR/webmention/"><abbr title="World Wide Web Consortium">W3C</abbr> Webmention
+    <section id="limits-on-get-requests" typeof="bibo:Chapter" resource="#limits-on-get-requests" property="bibo:hasPart">
+      <h3 id="h-limits-on-get-requests" resource="#h-limits-on-get-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Limits on GET requests</span></h3>
+
+      <p>The Webmention protocol relies on the sender making a GET (or HEAD) request to discover the receiver's endpoint, followed by the receiver making a GET request to the sender's web page to verify the link. This means a sender can cause a receiver to make GET requests to arbitrary URLs, opening up a potential DoS vector.</p>
+      <p>Receivers <em class="rfc2119" title="SHOULD">SHOULD</em> place limits on the amount of data and time they spend fetching unverified source URLs. For example, if a source URL doesn't respond within 5 seconds, it can treat that as a failure. Similarly, the receiver can fetch only the first 1mb of the page, since any reasonable HTML or JSON page will be smaller than that.</p>
+    </section>
+
+    <section id="avoid-sending-webmentions-to-localhost" typeof="bibo:Chapter" resource="#avoid-sending-webmentions-to-localhost" property="bibo:hasPart">
+      <h3 id="h-avoid-sending-webmentions-to-localhost" resource="#h-avoid-sending-webmentions-to-localhost"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</span></h3>
+
+      <p>When the sender discovers the receiver's Webmention endpoint, there is no legitimate reason for the endpoint to be localhost or any other loopback address. If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious Webmention receiver to craft a Webmention endpoint that could cause the sender to make an arbitrary POST request to itself.</p>
+      <p>During the discovery step, if the sender discovers the endpoint is localhost or a loopback IP address (127.0.0.0/8), it <em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em> send the Webmention.</p>
+    </section>
+
+    <section id="cross-site-request-forgery" typeof="bibo:Chapter" resource="#cross-site-request-forgery" property="bibo:hasPart">
+      <h3 id="h-cross-site-request-forgery" resource="#h-cross-site-request-forgery"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.4 </span>Cross-Site Request Forgery</span></h3>
+
+      <p>This specification does not define any special handling of a Webmention request that may contain additional headers or parameters such as authentication headers or session cookies. However, if a Webmention endpoint does accept requests with additional headers, it <em class="rfc2119" title="SHOULD">SHOULD</em> protect itself against Cross-Site Request Forgery (CSRF) attacks. One way to prevent CSRF attacks is by including a CSRF token in a query string parameter of the Webmention endpoint, so that a Webmention sender finds the token when discovering the endpoint.</p>
+
+      <p>For example, the target URL could advertise a Webmention endpoint that includes a CSRF token:</p>
+
+      <p></p>
+      <div class="example">
+        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http"><span class="hljs-request">GET <span class="hljs-string">/post-by-aaron</span> HTTP/1.1</span>
+<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
+<span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span>
+<span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</span></pre></div>
+      <p></p>
+
+      <p>Then, when the Webmention endpoint is processing a request, it can first check the validity of the CSRF token before any other processing.</p>
+    </section>
+
+    <section id="limit-access-to-protected-resources" typeof="bibo:Chapter" resource="#limit-access-to-protected-resources" property="bibo:hasPart">
+      <h3 id="h-limit-access-to-protected-resources" resource="#h-limit-access-to-protected-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.5 </span>Limit access to protected resources</span></h3>
+
+      <p>It is possible for an attacker to advertise a Webmention endpoint that points to an arbitrary URL. As such, if you install software that sends Webmentions on a server that is behind a firewall or otherwise has access to normally protected resources, you should be aware that an attacker can cause the server to send a POST request to an internal server. You <em class="rfc2119" title="SHOULD">SHOULD</em> take precautions to ensure this server cannot access protected resources by either:</p>
+
+      <ul>
+        <li>running the sender in an environment that does not have access to such internal resources</li>
+        <li>proxying all HTTP requests from this sender through a proxy that blocks access to internal resources</li>
+      </ul>
+    </section>
+
+  </section>
+
+  <section id="iana-considerations" typeof="bibo:Chapter" resource="#iana-considerations" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-iana-considerations" resource="#h-iana-considerations"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>IANA Considerations</span></h2>
+
+    <p>The link relation type below has been registered by IANA per Section 6.2.1 of [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>]:</p>
+
+    <dl>
+
+      <dt>Relation Name:</dt>
+      <dd>webmention</dd>
+
+      <dt>Description:</dt>
+      <dd>Identifies a target URI that supports the Webmention protocol. This allows clients that mention a resource in some form of publishing process to contact that endpoint and inform it that this resource has been mentioned.</dd>
+
+      <dt>Reference:</dt>
+      <dd><a href="http://www.w3.org/TR/webmention/"><abbr title="World Wide Web Consortium">W3C</abbr> Webmention
         Specification (http://www.w3.org/TR/webmention/)</a></dd>
-        
-        <dt>Notes:</dt>
-        <dd>This is a similar "Linkback" mechanism to the ones of Refback,
-        Trackback, and Pingback. It uses a different protocol, though, and thus
-        should be discoverable through its own link relation type.</dd>
-        
+
+      <dt>Notes:</dt>
+      <dd>This is a similar "Linkback" mechanism to the ones of Refback, Trackback, and Pingback. It uses a different protocol, though, and thus should be discoverable through its own link relation type.</dd>
+
+    </dl>
+  </section>
+
+  <section class="appendix" id="uris-for-form-encoded-properties" typeof="bibo:Chapter" resource="#uris-for-form-encoded-properties" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-uris-for-form-encoded-properties" resource="#h-uris-for-form-encoded-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>URIs for Form-Encoded Properties</span></h2>
+
+    <p>If your implementation wants to treat the <code>source</code> and <code>target</code> parameters as URIs, you can prefix the terms with <code>http://www.w3.org/ns/webmention#</code>.</p>
+  </section>
+
+  <section class="appendix informative" id="extensions" typeof="bibo:Chapter" resource="#extensions" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-extensions" resource="#h-extensions"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Extensions</span></h2>
+    <p><em>This section is non-normative.</em></p>
+
+    <p>The following Webmention Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
+
+    <section id="vouch" typeof="bibo:Chapter" resource="#vouch" property="bibo:hasPart">
+      <h3 id="h-vouch" resource="#h-vouch"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span><a href="http://indiewebcamp.com/Vouch">Vouch</a></span></h3>
+      <p>The [<cite><a class="bibref" href="#bib-Vouch">Vouch</a></cite>] protocol is an anti-spam extension to Webmention.</p>
+    </section>
+
+    <section id="salmention" typeof="bibo:Chapter" resource="#salmention" property="bibo:hasPart">
+      <h3 id="h-salmention" resource="#h-salmention"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span><a href="http://indiewebcamp.com/Salmention">Salmention</a></span></h3>
+      <p>The [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] protocol is an extension to Webmention to propagate comments and other interactions upstream.</p>
+    </section>
+
+  </section>
+
+  <section class="appendix informative" id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Resources</span></h2>
+    <p><em>This section is non-normative.</em></p>
+
+    <p>
+    </p>
+    <ul>
+      <li><a href="https://webmention.rocks">Test Suite and Debug Tool</a></li>
+      <li><a href="http://indiewebcamp.com/Webmention-faq">FAQ</a></li>
+      <li><a href="http://indiewebcamp.com/webmention-implementation-guide">Implementation Guide</a></li>
+      <li><a href="http://indiewebcamp.com/webmention-implementation-details">Implementation Details</a></li>
+      <li><a href="http://indiewebcamp.com/Webmention-brainstorming">Brainstorming</a></li>
+    </ul>
+    <p></p>
+
+    <section class="appendix informative" id="articles" typeof="bibo:Chapter" resource="#articles" property="bibo:hasPart">
+      <h3 id="h-articles" resource="#h-articles"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Articles</span></h3>
+      <p><em>This section is non-normative.</em></p>
+
+      <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles">articles about Webmention</a> on the IndieWebCamp wiki.</p>
+    </section>
+
+    <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
+      <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Implementations</span></h3>
+      <p><em>This section is non-normative.</em></p>
+
+      <p>You can find a list of <a href="http://webmention.net/implementations/">Webmention implementations</a> on webmention.net</p>
+    </section>
+
+  </section>
+
+  <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>Acknowledgements</span></h2>
+
+    <p>The editor wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a> for contributing the original draft of the Webmention specification.</p>
+    <p>Additionally, the editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a> community and other implementers for their support, encouragement and enthusiasm, including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
+  </section>
+
+  <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">E. </span>Change Log</span></h2>
+    <p><em>This section is non-normative.</em></p>
+
+    <section id="changes-from-24-may-2016-cr-to-this-version" typeof="bibo:Chapter" resource="#changes-from-24-may-2016-cr-to-this-version" property="bibo:hasPart">
+      <h3 id="h-changes-from-24-may-2016-cr-to-this-version" resource="#h-changes-from-24-may-2016-cr-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.1 </span>Changes from 24 May 2016 CR to this version</span></h3>
+
+      <ul>
+        <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-29-april-2016-wd-to-24-may-2016-cr" typeof="bibo:Chapter" resource="#changes-from-29-april-2016-wd-to-24-may-2016-cr" property="bibo:hasPart">
+      <h3 id="h-changes-from-29-april-2016-wd-to-24-may-2016-cr" resource="#h-changes-from-29-april-2016-wd-to-24-may-2016-cr"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.2 </span>Changes from 29 April 2016 WD to 24 May 2016 CR</span></h3>
+
+      <ul>
+        <li>Moved list of implementations to webmention.net</li>
+        <li><em class="rfc2119" title="MUST">MUST</em> reject Webmentions where source == target, since most current implementations are already doing this.</li>
+        <li>Remove normative requirement on Salmention.</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-20-april-2016-wd-to-29-april-2016-wd" typeof="bibo:Chapter" resource="#changes-from-20-april-2016-wd-to-29-april-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-20-april-2016-wd-to-29-april-2016-wd" resource="#h-changes-from-20-april-2016-wd-to-29-april-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.3 </span>Changes from 20 April 2016 WD to 29 April 2016 WD</span></h3>
+
+      <ul>
+        <li>Added link to test suite in document header</li>
+        <li>Added section describing how to submit implementation reports</li>
+        <li>Clarified implementation must meet all listed criteria</li>
+        <li>Minor typo fixes</li>
+        <li>Clarified moderation is a <em class="rfc2119" title="MAY">MAY</em> since verification is already a <em class="rfc2119" title="MUST">MUST</em> in 3.2.2</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-29-march-2016-wd-to-20-april-2016-wd" typeof="bibo:Chapter" resource="#changes-from-29-march-2016-wd-to-20-april-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-29-march-2016-wd-to-20-april-2016-wd" resource="#h-changes-from-29-march-2016-wd-to-20-april-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.4 </span>Changes from 29 March 2016 WD to 20 April 2016 WD</span></h3>
+
+      <ul>
+        <li>Minor typo fixes</li>
+        <li>Updated discovery to prioritize link and a tags in document order</li>
+        <li>Added Webmention.rocks to the list of tools</li>
+        <li>Added note that if the Webmention endpoint contains query string parameters, they must be preserved</li>
+        <li>Added note and example of a CSRF prevention technique</li>
+        <li>Added security consideration about limiting access to protected resources</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-1-march-2016-wd-to-29-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-1-march-2016-wd-to-29-march-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-1-march-2016-wd-to-29-march-2016-wd" resource="#h-changes-from-1-march-2016-wd-to-29-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.5 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</span></h3>
+
+      <ul>
+        <li>Updated list of implementations</li>
+        <li>Non-normative language and phrasing clarifications</li>
+        <li>Added section on sending Webmentions for updated and deleted posts</li>
+        <li>Added conformance criteria and classes section</li>
+        <li>Added localhost security consideration</li>
+        <li>Added a note on how to convert source and target parameter names to URIs</li>
+      </ul>
+    </section>
+
+    <section id="changes-from-12-january-2016-fpwd-to-1-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" property="bibo:hasPart">
+      <h3 id="h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd" resource="#h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.6 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</span></h3>
+
+      <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-webmention-20160112/">12 January 2016 FPWD</a> to this Working Draft</p>
+
+      <ul>
+        <li>Minor typo and formatting corrections</li>
+        <li>Add IANA Considerations section to register rel=webmention with IANA</li>
+        <li>Add a note that receivers <em class="rfc2119" title="SHOULD">SHOULD</em> remove the fragment before checking if it is a supported URL. <a href="https://github.com/aaronpk/webmention/issues/24">Issue #24</a></li>
+        <li>Clarify "Receiving Webmentions" introduction paragraph</li>
+        <li>Update list of implementations</li>
+        <li>Correct the capitalization of Webmention and Pingback</li>
+      </ul>
+    </section>
+  </section>
+
+
+
+  <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+    <!--OddPage-->
+    <h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F. </span>References</span></h2>
+
+    <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+      <h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.1 </span>Normative references</span></h3>
+      <dl class="bibliography" resource=""><dt id="bib-FETCH">[FETCH]</dt>
+        <dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
+        </dd><dt id="bib-HTML5">[HTML5]</dt>
+        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+        </dd><dt id="bib-RFC2119">[RFC2119]</dt>
+        <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+        </dd><dt id="bib-RFC2616">[RFC2616]</dt>
+        <dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. IETF. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
+        </dd><dt id="bib-RFC3986">[RFC3986]</dt>
+        <dd>T. Berners-Lee; R. Fielding; L. Masinter. IETF. <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires">https://tools.ietf.org/html/rfc3986</a>
+        </dd><dt id="bib-RFC5988">[RFC5988]</dt>
+        <dd>M. Nottingham. IETF. <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires">https://tools.ietf.org/html/rfc5988</a>
+        </dd>
       </dl>
     </section>
 
-    <section class="appendix" id="uris-for-form-encoded-properties" typeof="bibo:Chapter" resource="#uris-for-form-encoded-properties" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-uris-for-form-encoded-properties" resource="#h-uris-for-form-encoded-properties"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>URIs for Form-Encoded Properties</span></h2>
-
-      <p>If your implementation wants to treat the <code>source</code> and <code>target</code> parameters as URIs, you can prefix the terms with <code>http://www.w3.org/ns/webmention#</code>.</p>
+    <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+      <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.2 </span>Informative references</span></h3>
+      <dl class="bibliography" resource=""><dt id="bib-JSON">[JSON]</dt>
+        <dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:references"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:references">https://tools.ietf.org/html/rfc4627</a>
+        </dd><dt id="bib-Salmention">[Salmention]</dt>
+        <dd>Ben Roberts; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Salmention" property="dc:references">http://indiewebcamp.com/Salmention</a>
+        </dd><dt id="bib-Vouch">[Vouch]</dt>
+        <dd>Aaron Parecki; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Vouch" property="dc:references">http://indiewebcamp.com/Vouch</a>
+        </dd><dt id="bib-h-entry">[h-entry]</dt>
+        <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
+        </dd>
+      </dl>
     </section>
-      
-    <section class="appendix informative" id="extensions" typeof="bibo:Chapter" resource="#extensions" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-extensions" resource="#h-extensions"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Extensions</span></h2><p><em>This section is non-normative.</em></p>
-
-      <p>The following Webmention Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
-
-      <section id="vouch" typeof="bibo:Chapter" resource="#vouch" property="bibo:hasPart">
-        <h3 id="h-vouch" resource="#h-vouch"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span><a href="http://indiewebcamp.com/Vouch">Vouch</a></span></h3>
-        <p>The [<cite><a class="bibref" href="#bib-Vouch">Vouch</a></cite>] protocol is an anti-spam extension to Webmention.</p>
-      </section>
-
-      <section id="salmention" typeof="bibo:Chapter" resource="#salmention" property="bibo:hasPart">
-        <h3 id="h-salmention" resource="#h-salmention"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span><a href="http://indiewebcamp.com/Salmention">Salmention</a></span></h3>
-        <p>The [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] protocol is an extension to Webmention to propagate comments and other interactions upstream.</p>
-      </section>
-
-    </section>
-
-    <section class="appendix informative" id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>Resources</span></h2><p><em>This section is non-normative.</em></p>
-
-      <p>
-        </p><ul>
-          <li><a href="https://webmention.rocks">Test Suite and Debug Tool</a></li>
-          <li><a href="http://indiewebcamp.com/Webmention-faq">FAQ</a></li>
-          <li><a href="http://indiewebcamp.com/webmention-implementation-guide">Implementation Guide</a></li>
-          <li><a href="http://indiewebcamp.com/webmention-implementation-details">Implementation Details</a></li>
-          <li><a href="http://indiewebcamp.com/Webmention-brainstorming">Brainstorming</a></li>
-        </ul>
-      <p></p>
-
-      <section class="appendix informative" id="articles" typeof="bibo:Chapter" resource="#articles" property="bibo:hasPart">
-        <h3 id="h-articles" resource="#h-articles"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Articles</span></h3><p><em>This section is non-normative.</em></p>
-
-        <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles">articles about Webmention</a> on the IndieWebCamp wiki.</p>
-      </section>
-
-      <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
-        <h3 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Implementations</span></h3><p><em>This section is non-normative.</em></p>
-
-        <p>You can find a list of <a href="http://webmention.net/implementations/">Webmention implementations</a> on webmention.net</p>
-      </section>
-
-    </section>
-
-    <section class="appendix" id="acknowledgements" typeof="bibo:Chapter" resource="#acknowledgements" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>Acknowledgements</span></h2>
-
-      <p>The editor wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a>
-        for contributing the original draft of the Webmention specification.</p>
-      <p>Additionally, the editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a>
-        community and other implementers for their support, encouragement and enthusiasm,
-        including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
-    </section>
-
-    <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-change-log" resource="#h-change-log"><span property="xhv:role" resource="xhv:heading"><span class="secno">E. </span>Change Log</span></h2><p><em>This section is non-normative.</em></p>
-
-      <section id="changes-from-29-april-2016-wd-to-this-version" typeof="bibo:Chapter" resource="#changes-from-29-april-2016-wd-to-this-version" property="bibo:hasPart">
-        <h3 id="h-changes-from-29-april-2016-wd-to-this-version" resource="#h-changes-from-29-april-2016-wd-to-this-version"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.1 </span>Changes from 29 April 2016 WD to this version</span></h3>
-
-        <ul>
-          <li>Moved list of implementations to webmention.net</li>
-          <li><em class="rfc2119" title="MUST">MUST</em> reject Webmentions where source == target, since most current implementations are already doing this.</li>
-          <li>Remove normative requirement on Salmention.</li>
-        </ul>
-      </section>
-
-      <section id="changes-from-20-april-2016-wd-to-29-april-2016-wd" typeof="bibo:Chapter" resource="#changes-from-20-april-2016-wd-to-29-april-2016-wd" property="bibo:hasPart">
-        <h3 id="h-changes-from-20-april-2016-wd-to-29-april-2016-wd" resource="#h-changes-from-20-april-2016-wd-to-29-april-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.2 </span>Changes from 20 April 2016 WD to 29 April 2016 WD</span></h3>
-
-        <ul>
-          <li>Added link to test suite in document header</li>
-          <li>Added section describing how to submit implementation reports</li>
-          <li>Clarified implementation must meet all listed criteria</li>
-          <li>Minor typo fixes</li>
-          <li>Clarified moderation is a <em class="rfc2119" title="MAY">MAY</em> since verification is already a <em class="rfc2119" title="MUST">MUST</em> in 3.2.2</li>
-        </ul>
-      </section>
-
-      <section id="changes-from-29-march-2016-wd-to-20-april-2016-wd" typeof="bibo:Chapter" resource="#changes-from-29-march-2016-wd-to-20-april-2016-wd" property="bibo:hasPart">
-        <h3 id="h-changes-from-29-march-2016-wd-to-20-april-2016-wd" resource="#h-changes-from-29-march-2016-wd-to-20-april-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.3 </span>Changes from 29 March 2016 WD to 20 April 2016 WD</span></h3>
-
-        <ul>
-          <li>Minor typo fixes</li>
-          <li>Updated discovery to prioritize link and a tags in document order</li>
-          <li>Added Webmention.rocks to the list of tools</li>
-          <li>Added note that if the Webmention endpoint contains query string parameters, they must be preserved</li>
-          <li>Added note and example of a CSRF prevention technique</li>
-          <li>Added security consideration about limiting access to protected resources</li>
-        </ul>
-      </section>
-
-      <section id="changes-from-1-march-2016-wd-to-29-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-1-march-2016-wd-to-29-march-2016-wd" property="bibo:hasPart">
-        <h3 id="h-changes-from-1-march-2016-wd-to-29-march-2016-wd" resource="#h-changes-from-1-march-2016-wd-to-29-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.4 </span>Changes from 1 March 2016 WD to 29 March 2016 WD</span></h3>
-
-        <ul>
-          <li>Updated list of implementations</li>
-          <li>Non-normative language and phrasing clarifications</li>
-          <li>Added section on sending Webmentions for updated and deleted posts</li>
-          <li>Added conformance criteria and classes section</li>
-          <li>Added localhost security consideration</li>
-          <li>Added a note on how to convert source and target parameter names to URIs</li>
-        </ul>
-      </section>
-
-      <section id="changes-from-12-january-2016-fpwd-to-1-march-2016-wd" typeof="bibo:Chapter" resource="#changes-from-12-january-2016-fpwd-to-1-march-2016-wd" property="bibo:hasPart">
-        <h3 id="h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd" resource="#h-changes-from-12-january-2016-fpwd-to-1-march-2016-wd"><span property="xhv:role" resource="xhv:heading"><span class="secno">E.5 </span>Changes from 12 January 2016 FPWD to 1 March 2016 WD</span></h3>
-
-        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-webmention-20160112/">12 January 2016 FPWD</a> to this Working Draft</p>
-
-        <ul>
-          <li>Minor typo and formatting corrections</li>
-          <li>Add IANA Considerations section to register rel=webmention with IANA</li>
-          <li>Add a note that receivers <em class="rfc2119" title="SHOULD">SHOULD</em> remove the fragment before checking if it is a supported URL. <a href="https://github.com/aaronpk/webmention/issues/24">Issue #24</a></li>
-          <li>Clarify "Receiving Webmentions" introduction paragraph</li>
-          <li>Update list of implementations</li>
-          <li>Correct the capitalization of Webmention and Pingback</li>
-        </ul>
-      </section>
-    </section>
-
-  
-
-<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-FETCH">[FETCH]</dt><dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
-</dd><dt id="bib-HTML5">[HTML5]</dt><dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
-</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
-</dd><dt id="bib-RFC2616">[RFC2616]</dt><dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. IETF. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
-</dd><dt id="bib-RFC3986">[RFC3986]</dt><dd>T. Berners-Lee; R. Fielding; L. Masinter. IETF. <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires">https://tools.ietf.org/html/rfc3986</a>
-</dd><dt id="bib-RFC5988">[RFC5988]</dt><dd>M. Nottingham. IETF. <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires">https://tools.ietf.org/html/rfc5988</a>
-</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-JSON">[JSON]</dt><dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:references"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:references">https://tools.ietf.org/html/rfc4627</a>
-</dd><dt id="bib-Salmention">[Salmention]</dt><dd>Ben Roberts; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Salmention" property="dc:references">http://indiewebcamp.com/Salmention</a>
-</dd><dt id="bib-Vouch">[Vouch]</dt><dd>Aaron Parecki; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Vouch" property="dc:references">http://indiewebcamp.com/Vouch</a>
-</dd><dt id="bib-h-entry">[h-entry]</dt><dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
-</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p><script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+  </section>
+  <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+  <script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+</body>
+</html>
