@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta lang="" property="dc:language" content="en">
   <style>
     /*
@@ -242,11 +244,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
     /* --- DL --- */
     
-    .section dd > p:first-child {
+    .section dd> p:first-child {
       margin-top: 0;
     }
     
-    .section dd > p:last-child {
+    .section dd> p:last-child {
       margin-bottom: 0;
     }
     
@@ -270,7 +272,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </style>
   <title>Webmention</title>
-  <meta charset="utf-8">
+
 
 
   <style>
@@ -323,13 +325,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   </style>
   <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-05-24",
+      "publishDate": "2016-06-20",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-05-24",
@@ -425,13 +426,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   </script>
 </head>
-<body class="h-entry toc-inline" role="document" id="respecDocument">
+<body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-    <h2 id="w3c-editor-s-draft-24-may-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-05-24">24 May 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-20-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-20">20 June 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
@@ -468,8 +469,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <p class="copyright">
       <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
 
-      <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (
-      <a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
       <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
       <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>).
       <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
@@ -503,8 +503,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
     <p>
       This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as an Editor's Draft. If you wish to make comments regarding this document, please send them to
-      <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (
-      <a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
+      <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>,
       <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
     </p>
     <p>
@@ -781,7 +780,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <section id="sender-discovers-receiver-webmention-endpoint" typeof="bibo:Chapter" resource="#sender-discovers-receiver-webmention-endpoint" property="bibo:hasPart">
         <h4 id="h-sender-discovers-receiver-webmention-endpoint" resource="#h-sender-discovers-receiver-webmention-endpoint"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Sender discovers receiver Webmention endpoint</span></h4>
 
-        <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL (and follow redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with a rel value of <code>webmention</code>, or an HTML <code>&lt;link&gt;</code> or
+        <p>The sender <em class="rfc2119" title="MUST">MUST</em> fetch the target URL (and follow redirects [<cite><a class="bibref" href="#bib-FETCH">FETCH</a></cite>]) and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with a rel value of <code>webmention</code>. If the content type of the document is HTML, then the sender <em class="rfc2119" title="MUST">MUST</em> look for an HTML <code>&lt;link&gt;</code> and
           <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than one of these is present, the first HTTP Link header takes precedence, followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> element in document order. Senders <em class="rfc2119" title="MUST">MUST</em> support all three options and fall back in this order.</p>
 
         <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative URL, in which case the sender <em class="rfc2119" title="MUST">MUST</em> resolve it relative to the
@@ -900,7 +899,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
         <p>The receiver <em class="rfc2119" title="MUST">MUST</em> reject the request if the source URL is the same as the target URL.</p>
 
-        <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> check that <code>target</code> is a valid resource for which it can accept Webmentions. This check <em class="rfc2119" title="SHOULD">SHOULD</em> happen synchronously to reject invalid Webmentions before more in-depth verification begins.</p>
+        <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> check that <code>target</code> is a valid resource for which it can accept Webmentions. This check <em class="rfc2119" title="SHOULD">SHOULD</em> happen synchronously to reject invalid Webmentions before more in-depth verification begins. What a 'valid resource' means is up to the receiver. For example, some receivers may accept Webmentions for multiple domains, others may accept Webmentions for only the same domain the endpoint is on.</p>
 
         <p>Note that a target URL may contain a fragment identifier, and if the receiver limits which URLs can receive Webmentions, the fragment <em class="rfc2119" title="SHOULD">SHOULD</em> be ignored when checking if the URL is supported.</p>
       </section>
@@ -910,7 +909,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
         <p>Webmention verification <em class="rfc2119" title="SHOULD">SHOULD</em> be handled asynchronously to prevent DoS attacks.</p>
 
-        <p>If the receiver is going to use the Webmention in some way, (displaying it as a comment on a post, incrementing a "like" counter, notifying the author of a post), then it <em class="rfc2119" title="MUST">MUST</em> perform an HTTP GET request on source, and follow any HTTP redirects (up to a self-imposed limit such as 20) and confirm that it actually links to the target.</p>
+        <p>If the receiver is going to use the Webmention in some way, (displaying it as a comment on a post, incrementing a "like" counter, notifying the author of a post), then it <em class="rfc2119" title="MUST">MUST</em> perform an HTTP GET request on source, following any HTTP redirects (and <em class="rfc2119" title="SHOULD">SHOULD</em> limit the number of redirects it follows) to confirm that it actually links to the target. The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> include an HTTP Accept header indicating its preference of content types that are acceptable.</p>
 
         <p>The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> use per-media-type rules to determine whether the source document links to the target URL. For example, in an [
           <cite><a class="bibref" href="#bib-HTML5">HTML5</a></cite>] document, the receiver should look for <code>&lt;a href="*"&gt;</code>,
@@ -1005,6 +1004,8 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       <h3 id="h-limits-on-get-requests" resource="#h-limits-on-get-requests"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.2 </span>Limits on GET requests</span></h3>
 
       <p>The Webmention protocol relies on the sender making a GET (or HEAD) request to discover the receiver's endpoint, followed by the receiver making a GET request to the sender's web page to verify the link. This means a sender can cause a receiver to make GET requests to arbitrary URLs, opening up a potential DoS vector.</p>
+      <p>Receivers <em class="rfc2119" title="MAY">MAY</em> make an initial HTTP HEAD request when verifying the link and decide whether to make a full GET request after initially inspecting the content type, length, or other HTTP headers returned.</p>
+      <p>Receivers <em class="rfc2119" title="SHOULD">SHOULD</em> place limits on the number of HTTP redirects they follow, for example limiting the number to 20, in order to prevent being stuck in a redirect loop if the sender continues to send redirects.</p>
       <p>Receivers <em class="rfc2119" title="SHOULD">SHOULD</em> place limits on the amount of data and time they spend fetching unverified source URLs. For example, if a source URL doesn't respond within 5 seconds, it can treat that as a failure. Similarly, the receiver can fetch only the first 1mb of the page, since any reasonable HTML or JSON page will be smaller than that.</p>
     </section>
 
@@ -1146,6 +1147,9 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
       <ul>
         <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
+        <li>Clarify that senders should only look for HTML <code>link</code> and <code>a</code> tags in HTML documents</li>
+        <li>Added text to security considerations for Webmention to clarify that it allowed to use HEAD request during verification</li>
+        <li>Moved suggest specific limit of number of redirects to follow to security considerations</li>
       </ul>
     </section>
 
@@ -1224,7 +1228,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       <dl class="bibliography" resource=""><dt id="bib-FETCH">[FETCH]</dt>
         <dd>Anne van Kesteren. WHATWG. <a href="https://fetch.spec.whatwg.org/" property="dc:requires"><cite>Fetch Standard</cite></a>. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/" property="dc:requires">https://fetch.spec.whatwg.org/</a>
         </dd><dt id="bib-HTML5">[HTML5]</dt>
-        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="http://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/html5/" property="dc:requires">http://www.w3.org/TR/html5/</a>
+        <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Edward O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
         </dd><dt id="bib-RFC2119">[RFC2119]</dt>
         <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
         </dd><dt id="bib-RFC2616">[RFC2616]</dt>
