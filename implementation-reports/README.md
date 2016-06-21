@@ -120,7 +120,7 @@ Describe the response body (if any) which is returned in the request:
 ### Webmention Verification (3.2.2)
 
 * [ ] Verification is processed asynchronously (SHOULD)
-* [ ] Follows one HTTP redirect on source URL (MUST)
+* [ ] Follows at least one HTTP redirect on source URL (MUST)
 * [ ] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
 
 #### Source URL content-types supported
