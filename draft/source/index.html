@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-05-24",
+          publishDate: "2016-06-20",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-05-24",
@@ -278,7 +278,8 @@
 
           <p>The sender MUST fetch the target URL (and follow redirects [[!FETCH]]) 
             and check for an HTTP Link header [[!RFC5988]]
-            with a rel value of <code>webmention</code>, or an HTML <code>&lt;link&gt;</code> or
+            with a rel value of <code>webmention</code>. If the content type of the document
+            is HTML, then the sender MUST look for an HTML <code>&lt;link&gt;</code> and
             <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than
             one of these is present, the first HTTP Link header takes precedence,
             followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> 
@@ -427,7 +428,9 @@ The Webmention is being processed</pre></p>
           <p>The receiver SHOULD check that <code>target</code> is a valid resource for which
             it can accept Webmentions. This check SHOULD happen
             synchronously to reject invalid Webmentions before more in-depth
-            verification begins.</p>
+            verification begins. What a 'valid resource' means is up to the receiver. For example, 
+            some receivers may accept Webmentions for multiple domains, others may accept
+            Webmentions for only the same domain the endpoint is on.</p>
 
           <p>Note that a target URL may contain a fragment identifier, and if the
             receiver limits which URLs can receive Webmentions, the fragment SHOULD be
@@ -443,9 +446,10 @@ The Webmention is being processed</pre></p>
           <p>If the receiver is going to use the Webmention in some way,
             (displaying it as a comment on a post, incrementing a "like"
             counter, notifying the author of a post), then it MUST perform an
-            HTTP GET request on source, and follow any HTTP redirects
-            (up to a self-imposed limit such as 20) and confirm that it actually
-            links to the target.</p>
+            HTTP GET request on source, following any HTTP redirects (and SHOULD 
+            limit the number of redirects it follows) to confirm that it actually
+            links to the target. The receiver SHOULD include an HTTP Accept header
+            indicating its preference of content types that are acceptable.</p>
 
           <p>The receiver SHOULD use per-media-type rules to determine whether
             the source document links to the target URL. For example, in an
@@ -558,6 +562,12 @@ The Webmention is being processed</pre></p>
           making a GET request to the sender's web page to verify the link.
           This means a sender can cause a receiver to make GET requests to
           arbitrary URLs, opening up a potential DoS vector.</p>
+        <p>Receivers MAY make an initial HTTP HEAD request when verifying the link
+          and decide whether to make a full GET request after initially inspecting
+          the content type, length, or other HTTP headers returned.</p>
+        <p>Receivers SHOULD place limits on the number of HTTP redirects they follow,
+          for example limiting the number to 20, in order to prevent being stuck
+          in a redirect loop if the sender continues to send redirects.</p>
         <p>Receivers SHOULD place limits on the amount of data and time they
           spend fetching unverified source URLs. For example, if a source URL
           doesn't respond within 5 seconds, it can treat that as a failure.
@@ -712,6 +722,9 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
         <ul>
           <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
+          <li>Clarify that senders should only look for HTML <code>link</code> and <code>a</code> tags in HTML documents</li>
+          <li>Added text to security considerations for Webmention to clarify that it allowed to use HEAD request during verification</li>
+          <li>Moved suggest specific limit of number of redirects to follow to security considerations</li>
         </ul>
       </section>
 
