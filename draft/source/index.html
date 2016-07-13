@@ -340,7 +340,7 @@ Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
 
           <p><pre class="example">POST /webmention-endpoint HTTP/1.1
 Host: aaronpk.example
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
 
 source=https://waterpigs.example/post-by-barnaby&amp;
 target=https://aaronpk.example/post-by-aaron
@@ -397,7 +397,7 @@ HTTP/1.1 202 Accepted</pre></p>
 
         <p><pre class="example">HTTP/1.1 201 Created
 Location: http://aaronpk.example/webmention/DEhB9Jme
-Content-type: text/plain
+Content-type: text/plain; charset=utf-8
 
 The Webmention is being processed. You can check on its status here: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
 
@@ -407,7 +407,7 @@ The Webmention is being processed. You can check on its status here: http://aaro
           human-readable response is recommended.</p>
 
         <p><pre class="example">HTTP/1.1 202 Accepted
-Content-type: text/plain
+Content-type: text/plain; charset=utf-8
 
 The Webmention is being processed</pre></p>
 
