@@ -17,98 +17,74 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       padding: 0.5em;
       color: #333;
       background: #f8f8f8;
-      -webkit-text-size-adjust: none;
     }
     
     .hljs-comment,
-    .diff .hljs-header {
+    .hljs-quote {
       color: #998;
       font-style: italic;
     }
     
     .hljs-keyword,
-    .css .rule .hljs-keyword,
-    .hljs-winutils,
-    .nginx .hljs-title,
-    .hljs-subst,
-    .hljs-request,
-    .hljs-status {
+    .hljs-selector-tag,
+    .hljs-subst {
       color: #333;
       font-weight: bold;
     }
     
     .hljs-number,
-    .hljs-hexcolor,
-    .ruby .hljs-constant {
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
       color: #008080;
     }
     
     .hljs-string,
-    .hljs-tag .hljs-value,
-    .hljs-doctag,
-    .tex .hljs-formula {
+    .hljs-doctag {
       color: #d14;
     }
     
     .hljs-title,
-    .hljs-id,
-    .scss .hljs-preprocessor {
+    .hljs-section,
+    .hljs-selector-id {
       color: #900;
       font-weight: bold;
     }
     
-    .hljs-list .hljs-keyword,
     .hljs-subst {
       font-weight: normal;
     }
     
-    .hljs-class .hljs-title,
     .hljs-type,
-    .vhdl .hljs-literal,
-    .tex .hljs-command {
+    .hljs-class .hljs-title {
       color: #458;
       font-weight: bold;
     }
     
     .hljs-tag,
-    .hljs-tag .hljs-title,
-    .hljs-rule .hljs-property,
-    .django .hljs-tag .hljs-keyword {
+    .hljs-name,
+    .hljs-attribute {
       color: #000080;
       font-weight: normal;
     }
     
-    .hljs-attribute,
-    .hljs-variable,
-    .lisp .hljs-body,
-    .hljs-name {
-      color: #008080;
-    }
-    
-    .hljs-regexp {
+    .hljs-regexp,
+    .hljs-link {
       color: #009926;
     }
     
     .hljs-symbol,
-    .ruby .hljs-symbol .hljs-string,
-    .lisp .hljs-keyword,
-    .clojure .hljs-keyword,
-    .scheme .hljs-keyword,
-    .tex .hljs-special,
-    .hljs-prompt {
+    .hljs-bullet {
       color: #990073;
     }
     
-    .hljs-built_in {
+    .hljs-built_in,
+    .hljs-builtin-name {
       color: #0086b3;
     }
     
-    .hljs-preprocessor,
-    .hljs-pragma,
-    .hljs-pi,
-    .hljs-doctype,
-    .hljs-shebang,
-    .hljs-cdata {
+    .hljs-meta {
       color: #999;
       font-weight: bold;
     }
@@ -121,12 +97,60 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       background: #dfd;
     }
     
-    .diff .hljs-change {
-      background: #0086b3;
+    .hljs-emphasis {
+      font-style: italic;
     }
     
-    .hljs-chunk {
-      color: #aaa;
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
+  <style>
+    /* --- EXAMPLES --- */
+    
+    div.example-title {
+      min-width: 7.5em;
+      color: #b9ab2d;
+    }
+    
+    div.example-title span {
+      text-transform: uppercase;
+    }
+    
+    aside.example,
+    div.example,
+    div.illegal-example {
+      padding: 0.5em;
+      margin: 1em 0;
+      position: relative;
+      clear: both;
+    }
+    
+    div.illegal-example {
+      color: red
+    }
+    
+    div.illegal-example p {
+      color: black
+    }
+    
+    aside.example,
+    div.example {
+      padding: .5em;
+      border-left-width: .5em;
+      border-left-style: solid;
+      border-color: #e0cb52;
+      background: #fcfaee;
+    }
+    
+    aside.example div.example {
+      border-left-width: .1em;
+      border-color: #999;
+      background: #fff;
+    }
+    
+    aside.example div.example div.example-title {
+      color: #999;
     }
   </style>
   <style id="respec-mainstyle">
@@ -275,54 +299,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
 
-  <style>
-    /* --- EXAMPLES --- */
-    
-    div.example-title {
-      min-width: 7.5em;
-      color: #b9ab2d;
-    }
-    
-    div.example-title span {
-      text-transform: uppercase;
-    }
-    
-    aside.example,
-    div.example,
-    div.illegal-example {
-      padding: 0.5em;
-      margin: 1em 0;
-      position: relative;
-      clear: both;
-    }
-    
-    div.illegal-example {
-      color: red
-    }
-    
-    div.illegal-example p {
-      color: black
-    }
-    
-    aside.example,
-    div.example {
-      padding: .5em;
-      border-left-width: .5em;
-      border-left-style: solid;
-      border-color: #e0cb52;
-      background: #fcfaee;
-    }
-    
-    aside.example div.example {
-      border-left-width: .1em;
-      border-color: #999;
-      background: #fff;
-    }
-    
-    aside.example div.example div.example-title {
-      color: #999;
-    }
-  </style>
   <link rel="pingback" href="https://webmention.io/w3c/xmlrpc">
   <link rel="webmention" href="https://webmention.io/w3c/webmention">
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED">
@@ -330,7 +306,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-06-20",
+      "publishDate": "2016-07-13",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-05-24",
@@ -356,15 +332,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "data": [
         {
           "value": "Github",
-          "href": "https://github.com/aaronpk/webmention"
+          "href": "https://github.com/w3c/webmention"
         },
         {
           "value": "Issues",
-          "href": "https://github.com/aaronpk/webmention/issues"
+          "href": "https://github.com/w3c/webmention/issues"
         },
         {
           "value": "Commits",
-          "href": "https://github.com/aaronpk/webmention/commits/master"
+          "href": "https://github.com/w3c/webmention/commits/master"
         }]
       }],
       "localBiblio":
@@ -372,24 +348,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "Vouch":
         {
           "title": "Vouch",
-          "href": "http://indiewebcamp.com/Vouch",
+          "href": "https://indieweb.org/Vouch",
           "authors": [
             "Aaron Parecki",
             "Tantek Çelik"
           ],
           "status": "Living Specification",
-          "publisher": "IndieWebCamp"
+          "publisher": "IndieWeb"
         },
         "Salmention":
         {
           "title": "Salmention",
-          "href": "http://indiewebcamp.com/Salmention",
+          "href": "https://indieweb.org/Salmention",
           "authors": [
             "Ben Roberts",
             "Tantek Çelik"
           ],
           "status": "Living Specification",
-          "publisher": "IndieWebCamp"
+          "publisher": "IndieWeb"
         },
         "microformats2-parsing":
         {
@@ -432,7 +408,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-    <h2 id="w3c-editor-s-draft-20-june-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-06-20">20 June 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-13-july-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-07-13">13 July 2016</time></h2>
     <dl>
       <dt>This version:</dt>
       <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
@@ -451,17 +427,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
       <dt>Repository:</dt>
       <dd>
-        <a href="https://github.com/aaronpk/webmention">
+        <a href="https://github.com/w3c/webmention">
                       Github
                     </a>
       </dd>
       <dd>
-        <a href="https://github.com/aaronpk/webmention/issues">
+        <a href="https://github.com/w3c/webmention/issues">
                       Issues
                     </a>
       </dd>
       <dd>
-        <a href="https://github.com/aaronpk/webmention/commits/master">
+        <a href="https://github.com/w3c/webmention/commits/master">
                       Commits
                     </a>
       </dd>
@@ -489,8 +465,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-authorsnote" resource="#h-authorsnote"><span property="xhv:role" resource="xhv:heading">Author's Note</span></h3>
       <p><em>This section is non-normative.</em></p>
       <p>This specification was contributed to the <abbr title="World Wide Web Consortium">W3C</abbr> from the
-        <a href="http://indiewebcamp.com/">IndieWebCamp</a> community. More history and evolution of Webmention can be found on the
-        <a href="http://indiewebcamp.com/webmention">IndieWebCamp wiki</a>.</p>
+        <a href="https://indieweb.org/">IndieWeb</a> community. More history and evolution of Webmention can be found on the
+        <a href="https://indieweb.org/webmention">IndieWeb wiki</a>.</p>
     </section>
   </section>
 
@@ -792,23 +768,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs http"><span class="hljs-request">GET <span class="hljs-string">/post-by-aaron</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span>
-<span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"</span>
+          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Link</span>: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+<span class="javascript">&lt;html&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
 ...
-<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"webmention"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"webmention"</span> /&gt;</span>
 ...
-<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 ....
-<span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"webmention"</span>&gt;</span>webmention<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"webmention"</span>&gt;</span>webmention<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 ...
-<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></span></pre></div>
         <p></p>
 
       </section>
@@ -828,12 +804,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs http"><span class="hljs-request">POST <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span>
+          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+<span class="hljs-attribute">Content-Type</span>: application/x-www-form-urlencoded; charset=utf-8
 
-<span class="livecodeserver">source=<span class="hljs-keyword">https</span>://waterpigs.example/<span class="hljs-built_in">post</span>-<span class="hljs-keyword">by</span>-barnaby&amp;
-target=<span class="hljs-keyword">https</span>://aaronpk.example/<span class="hljs-built_in">post</span>-<span class="hljs-keyword">by</span>-aaron
+<span class="javascript">source=https:<span class="hljs-comment">//waterpigs.example/post-by-barnaby&amp;</span>
+target=https:<span class="hljs-comment">//aaronpk.example/post-by-aaron</span>
 
 
 HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> Accepted</span></pre></div>
@@ -873,21 +849,21 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 3</span></div><pre class="hljs http"><span class="hljs-status">HTTP/1.1 <span class="hljs-number">201</span> Created</span>
-<span class="hljs-attribute">Location</span>: <span class="hljs-string">http://aaronpk.example/webmention/DEhB9Jme</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">text/plain</span>
+        <div class="example-title marker"><span>Example 3</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Location</span>: http://aaronpk.example/webmention/DEhB9Jme
+<span class="hljs-attribute">Content-type</span>: text/plain; charset=utf-8
 
-<span class="smali">The Webmention is being processed. You can<span class="hljs-instruction"> check </span>on its status here: http://aaronpk.example/webmention/DEhB9Jme</span></pre></div>
+<span class="javascript">The Webmention is being processed. You can check on its status here: http:<span class="hljs-comment">//aaronpk.example/webmention/DEhB9Jme</span></span></pre></div>
       <p></p>
 
       <p>If the receiver processes the request asynchronously but does not return a status URL, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 202 Accepted</code> response. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http"><span class="hljs-status">HTTP/1.1 <span class="hljs-number">202</span> Accepted</span>
-<span class="hljs-attribute">Content-type</span>: <span class="hljs-string">text/plain</span>
+        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">202</span> Accepted
+<span class="hljs-attribute">Content-type</span>: text/plain; charset=utf-8
 
-<span class="mizar">The Webmention <span class="hljs-keyword">is</span> <span class="hljs-keyword">being</span> processed</span></pre></div>
+<span class="undefined">The Webmention is being processed</span></pre></div>
       <p></p>
 
       <p>If the receiver chooses to process the request and perform the verification step synchronously (not recommended), it <em class="rfc2119" title="MUST">MUST</em> respond with a <code>200 OK</code> status on success.</p>
@@ -1025,10 +1001,10 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http"><span class="hljs-request">GET <span class="hljs-string">/post-by-aaron</span> HTTP/1.1</span>
-<span class="hljs-attribute">Host</span>: <span class="hljs-string">aaronpk.example</span>
-<span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span>
-<span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</span></pre></div>
+        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: aaronpk.example
+HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Link</span>: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</pre></div>
       <p></p>
 
       <p>Then, when the Webmention endpoint is processing a request, it can first check the validity of the CSRF token before any other processing.</p>
@@ -1086,12 +1062,12 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
     <p>The following Webmention Extension Specifications have 2+ interoperable implementations live on the web and are thus listed here:</p>
 
     <section id="vouch" typeof="bibo:Chapter" resource="#vouch" property="bibo:hasPart">
-      <h3 id="h-vouch" resource="#h-vouch"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span><a href="http://indiewebcamp.com/Vouch">Vouch</a></span></h3>
+      <h3 id="h-vouch" resource="#h-vouch"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span><a href="https://indieweb.org/Vouch">Vouch</a></span></h3>
       <p>The [<cite><a class="bibref" href="#bib-Vouch">Vouch</a></cite>] protocol is an anti-spam extension to Webmention.</p>
     </section>
 
     <section id="salmention" typeof="bibo:Chapter" resource="#salmention" property="bibo:hasPart">
-      <h3 id="h-salmention" resource="#h-salmention"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span><a href="http://indiewebcamp.com/Salmention">Salmention</a></span></h3>
+      <h3 id="h-salmention" resource="#h-salmention"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span><a href="https://indieweb.org/Salmention">Salmention</a></span></h3>
       <p>The [<cite><a class="bibref" href="#bib-Salmention">Salmention</a></cite>] protocol is an extension to Webmention to propagate comments and other interactions upstream.</p>
     </section>
 
@@ -1106,10 +1082,10 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
     </p>
     <ul>
       <li><a href="https://webmention.rocks">Test Suite and Debug Tool</a></li>
-      <li><a href="http://indiewebcamp.com/Webmention-faq">FAQ</a></li>
-      <li><a href="http://indiewebcamp.com/webmention-implementation-guide">Implementation Guide</a></li>
-      <li><a href="http://indiewebcamp.com/webmention-implementation-details">Implementation Details</a></li>
-      <li><a href="http://indiewebcamp.com/Webmention-brainstorming">Brainstorming</a></li>
+      <li><a href="https://indieweb.org/Webmention-faq">FAQ</a></li>
+      <li><a href="https://indieweb.org/webmention-implementation-guide">Implementation Guide</a></li>
+      <li><a href="https://indieweb.org/webmention-implementation-details">Implementation Details</a></li>
+      <li><a href="https://indieweb.org/Webmention-brainstorming">Brainstorming</a></li>
     </ul>
     <p></p>
 
@@ -1117,7 +1093,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       <h3 id="h-articles" resource="#h-articles"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Articles</span></h3>
       <p><em>This section is non-normative.</em></p>
 
-      <p>You can find a list of <a href="http://indiewebcamp.com/webmention#Articles">articles about Webmention</a> on the IndieWebCamp wiki.</p>
+      <p>You can find a list of <a href="https://indieweb.org/webmention#Articles">articles about Webmention</a> on the IndieWeb wiki.</p>
     </section>
 
     <section class="appendix informative" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
@@ -1134,7 +1110,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
     <h2 id="h-acknowledgements" resource="#h-acknowledgements"><span property="xhv:role" resource="xhv:heading"><span class="secno">D. </span>Acknowledgements</span></h2>
 
     <p>The editor wishes to thank <a href="http://sandeep.io/">Sandeep Shetty</a> for contributing the original draft of the Webmention specification.</p>
-    <p>Additionally, the editor wishes to thank the <a href="http://indiewebcamp.com/">IndieWebCamp</a> community and other implementers for their support, encouragement and enthusiasm, including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
+    <p>Additionally, the editor wishes to thank the <a href="https://indieweb.org/">IndieWeb</a> community and other implementers for their support, encouragement and enthusiasm, including but not limited to: Amy Guy, Benjamin Roberts, Ben Werdmüller, Dave Wilkinson, Rob Sanderson, and Tantek Çelik.</p>
   </section>
 
   <section class="appendix informative" id="change-log" typeof="bibo:Chapter" resource="#change-log" property="bibo:hasPart">
@@ -1209,7 +1185,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       <ul>
         <li>Minor typo and formatting corrections</li>
         <li>Add IANA Considerations section to register rel=webmention with IANA</li>
-        <li>Add a note that receivers <em class="rfc2119" title="SHOULD">SHOULD</em> remove the fragment before checking if it is a supported URL. <a href="https://github.com/aaronpk/webmention/issues/24">Issue #24</a></li>
+        <li>Add a note that receivers <em class="rfc2119" title="SHOULD">SHOULD</em> remove the fragment before checking if it is a supported URL. <a href="https://github.com/w3c/webmention/issues/24">Issue #24</a></li>
         <li>Clarify "Receiving Webmentions" introduction paragraph</li>
         <li>Update list of implementations</li>
         <li>Correct the capitalization of Webmention and Pingback</li>
@@ -1246,9 +1222,9 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       <dl class="bibliography" resource=""><dt id="bib-JSON">[JSON]</dt>
         <dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:references"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:references">https://tools.ietf.org/html/rfc4627</a>
         </dd><dt id="bib-Salmention">[Salmention]</dt>
-        <dd>Ben Roberts; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Salmention" property="dc:references">http://indiewebcamp.com/Salmention</a>
+        <dd>Ben Roberts; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Salmention" property="dc:references">https://indieweb.org/Salmention</a>
         </dd><dt id="bib-Vouch">[Vouch]</dt>
-        <dd>Aaron Parecki; Tantek Çelik. IndieWebCamp. <a href="http://indiewebcamp.com/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="http://indiewebcamp.com/Vouch" property="dc:references">http://indiewebcamp.com/Vouch</a>
+        <dd>Aaron Parecki; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Vouch" property="dc:references">https://indieweb.org/Vouch</a>
         </dd><dt id="bib-h-entry">[h-entry]</dt>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
         </dd>
@@ -1256,6 +1232,6 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
     </section>
   </section>
   <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
-  <script async="" defer="" src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+  <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 </body>
 </html>
