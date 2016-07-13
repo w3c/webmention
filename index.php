@@ -17,7 +17,7 @@
     <li class="main"><a href="https://www.w3.org/TR/webmention/">Latest published version</a></li>
     <li class="main"><a href="http://webmention.net/draft/">Latest editor's draft</a></li>
     <li class="main"><a href="http://webmention.net/implementations/">Implementations</a></li>
-    <li>The specification was contributed to the W3C by the IndieWebCamp community. More information and history of the spec can be found on the <a href="http://indiewebcamp.com/webmention">IndieWebCamp wiki</a>.</li>
+    <li>The specification was contributed to the W3C by the IndieWeb community. More information and history of the spec can be found on the <a href="https://indieweb.org/webmention">IndieWeb wiki</a>.</li>
   </ul>
   
 </div>
