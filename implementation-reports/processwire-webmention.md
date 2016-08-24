@@ -62,7 +62,7 @@ SHOULD
 
 SHOULD
 
-* [ ] [Delete Test #1](https://webmention.rocks/delete/1)
+* [x] [Delete Test #1](https://webmention.rocks/delete/1)
 
 
 ### Security Considerations (4)
