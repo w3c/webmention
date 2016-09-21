@@ -202,7 +202,7 @@
         <section>
           <h4>Sender</h4>
 
-          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order to send a Webmention, the Sender first creates a document at a URL that is accessible to the Receiver.</p>
+          <p>A Webmention Sender is an implementation that sends Webmentions, the conformance criteria are described in <a href="#sending-webmentions">Sending Webmentions</a>. In order for a Sender to send a Webmention, there must first be a document at a URL that is accessible to the Receiver.</p>
         </section>
 
         <section>
@@ -724,7 +724,8 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
           <li>Clarify that senders should only look for HTML <code>link</code> and <code>a</code> tags in HTML documents</li>
           <li>Added text to security considerations for Webmention to clarify that it allowed to use HEAD request during verification</li>
-          <li>Moved suggest specific limit of number of redirects to follow to security considerations</li>
+          <li>Moved suggested specific limit of number of redirects to follow into the security considerations section</li>
+          <li>In conformance criteria, clarify that the Sender does not need to be the one creating the source document</li>
         </ul>
       </section>
 
