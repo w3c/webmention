@@ -101,7 +101,7 @@
   <body>
     <section id='abstract'>
       <p>
-        Webmention is a simple way to notify any URL when you link to it on your site. From the receiver's perspective, it's a way to request notifications when other sites link to it.
+        Webmention is a simple way to notify any URL when you mention it on your site. From the receiver's perspective, it's a way to request notifications when other sites mention it.
       </p>
 
       <section id="authorsnote" class="informative">
@@ -134,7 +134,7 @@
             <li>Alice posts some interesting content on her site (which is set up to receive Webmentions).</li>
             <li>Bob sees this content and comments about it on his site, linking back to Alice's original post.</li>
             <li>Using Webmention, Bob's publishing software automatically notifies Alice's server that her post has been linked to by the URL of Bob's post.</li>
-            <li>Alice's publishing software verifies that Bob's post actually contains a link to her post and then includes this information on her site.</li>
+            <li>Alice's publishing software verifies that Bob's post actually contains a mention of her post and then includes this information on her site.</li>
           </ol>
         </p>
       </section>
@@ -147,7 +147,7 @@
         <ol>
           <li>User Aaron writes a post on his blog.</li>
           <li>User Barnaby writes a post on his blog that links to Aaron's post.</li>
-          <li>After publishing the post (i.e., after it has a URL), Barnaby's server notices the link to Aaron's post as part of the publishing process.</li>
+          <li>After publishing the post (i.e., after it has a URL), Barnaby's server notices the mention of Aaron's post as part of the publishing process.</li>
           <li>Barnaby's server does Webmention discovery on Aaron's post to find its Webmention endpoint (if not found, process stops).</li>
           <li>Barnaby's server sends a Webmention notification to Aaron's post's Webmention endpoint with:
             <ul>
@@ -288,8 +288,6 @@
   &lt;/body&gt;
 &lt;/html&gt;
           </pre></p>
-
-          <p>
         </section>
 
         <section>
@@ -467,11 +465,11 @@ The Webmention is being processed</pre></p>
             counter, notifying the author of a post), then it MUST perform an
             HTTP GET request on source, following any HTTP redirects (and SHOULD 
             limit the number of redirects it follows) to confirm that it actually
-            links to the target. The receiver SHOULD include an HTTP Accept header
+            mentions the target. The receiver SHOULD include an HTTP Accept header
             indicating its preference of content types that are acceptable.</p>
 
           <p>The receiver SHOULD use per-media-type rules to determine whether
-            the source document links to the target URL. For example, in an
+            the source document mentions the target URL. For example, in an
             [[HTML5]] document, the receiver should look for <code>&lt;a href="*"&gt;</code>,
             <code>&lt;img href="*"&gt;</code>, <codE>&lt;video src="*"&gt;</code>
             and other similar links. In a [[JSON]] document, the receiver should
@@ -543,7 +541,7 @@ The Webmention is being processed</pre></p>
                 </ul>
               </li>
 
-              <li>If it received a <code>410 Gone</code> status code on step 2 (performing a GET request on source), or received a <code>200 OK</code> status code and does not find a link to <code>target</code> on <code>source</code>, it SHOULD delete the existing Webmention, or mark it as deleted.</li>
+              <li>If it received a <code>410 Gone</code> status code on step 2 (performing a GET request on source), or received a <code>200 OK</code> status code and does not find a mention of <code>target</code> on <code>source</code>, it SHOULD delete the existing Webmention, or mark it as deleted.</li>
 
               <li>Processing Webmentions SHOULD be idempotent. That is, receiving multiple Webmentions for the same <code>source</code> and <code>target</code> with no content changes should not show as multiple replies.</li>
             </ul>
@@ -746,6 +744,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Moved suggested specific limit of number of redirects to follow into the security considerations section</li>
           <li>In conformance criteria, clarify that the Sender does not need to be the one creating the source document</li>
           <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
+          <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
         </ul>
       </section>
 
