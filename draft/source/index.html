@@ -551,12 +551,6 @@ The Webmention is being processed</pre></p>
       </section>
     </section>
 
-    <!--
-    <section>
-      <h2>Privacy Considerations</h2>
-    </section>
-  -->
-
     <section>
       <h2>Security Considerations</h2>
 
@@ -640,6 +634,18 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         </ul>
       </section>
 
+    </section>
+
+    <section>
+      <h2>Other Considerations</h2>
+
+      <section>
+        <h3>Sending Webmentions from non-HTML content</h3>
+
+        <p>If your source document is not HTML, (such as a PDF), or is otherwise restricted from fetching the raw source via a plain HTTP GET request, (such as behind a paywall, or requires a click-through license agreement), you will need to set up an HTML "landing page" that lists all the targets you wish to send Webmentions to. After creating this HTML landing page, you can use its URL as the source URL when sending Webmentions. This gives receivers a URL they can fetch to verify the link to their target URL, while avoiding making the complete source document public.</p>
+
+        <p>Creating an HTML landing page can help increase the number of inbound links to your content, by providing people with a useful place to link to when referencing otherwise restricted content such as scholarly articles. In the case of a scholarly article, the landing page should include the list of references in the HTML, so that you can use them as Webmention target URLs.</p>
+      </section>
     </section>
 
     <section>
@@ -745,6 +751,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>In conformance criteria, clarify that the Sender does not need to be the one creating the source document</li>
           <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
           <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
+          <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
         </ul>
       </section>
 
