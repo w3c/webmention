@@ -142,6 +142,8 @@
       <section class="informative">
         <h3>Protocol Summary</h3>
 
+        <p>Webmentions are sent "from" a source URL "to" a target URL to notify the target that it has been mentioned at the source URL.</p>
+
         <ol>
           <li>User Aaron writes a post on his blog.</li>
           <li>User Barnaby writes a post on his blog that links to Aaron's post.</li>
@@ -272,6 +274,23 @@
 
       <section>
         <h3>Sending Webmentions</h3>
+
+        <section>
+          <h4>Create a source document that mentions the target</h4>
+
+          <p>Webmentions are sent "from" a source URL "to" a target URL to notify the target that it has been mentioned at the source URL. Before a Webmention can be sent, there needs to be a source URL to send the Webmention "from", often a blog post but may be any type of content.</p>
+
+          <p>For example, the URL at https://waterpigs.example/post-by-barnaby may contain the following HTML that has a link to Aaron's post.</p>
+          <p><pre class="example">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;a href="https://aaronpk.example/post-by-aaron"&gt;This is a great post&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+          </pre></p>
+
+          <p>
+        </section>
 
         <section>
           <h4>Sender discovers receiver Webmention endpoint</h4>
@@ -726,6 +745,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Added text to security considerations for Webmention to clarify that it allowed to use HEAD request during verification</li>
           <li>Moved suggested specific limit of number of redirects to follow into the security considerations section</li>
           <li>In conformance criteria, clarify that the Sender does not need to be the one creating the source document</li>
+          <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
         </ul>
       </section>
 
