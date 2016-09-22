@@ -409,24 +409,17 @@ HTTP/1.1 202 Accepted</pre></p>
         <p>If the receiver creates a status page which the sender can use to
           check the status, the receiver MUST reply with an <code>HTTP 201 Created</code>
           response with a <code>Location</code> header pointing to the status
-          URL. The response body MAY contain content, in which case a human-readable 
-          response is recommended.</p>
+          URL. The response body MAY contain content.</p>
 
         <p><pre class="example">HTTP/1.1 201 Created
-Location: http://aaronpk.example/webmention/DEhB9Jme
-Content-type: text/plain; charset=utf-8
-
-The Webmention is being processed. You can check on its status here: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
+Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
 
         <p>If the receiver processes the request asynchronously but does not
           return a status URL, the receiver MUST reply with an <code>HTTP 202 Accepted</code>
           response. The response body MAY contain content, in which case a
           human-readable response is recommended.</p>
 
-        <p><pre class="example">HTTP/1.1 202 Accepted
-Content-type: text/plain; charset=utf-8
-
-The Webmention is being processed</pre></p>
+        <p><pre class="example">HTTP/1.1 202 Accepted</pre></p>
 
         <p>If the receiver chooses to process the request and perform the
           verification step synchronously (not recommended), it MUST respond
@@ -752,6 +745,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
           <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
           <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
+          <li>Removed plaintext English example from response body</li>
         </ul>
       </section>
 
