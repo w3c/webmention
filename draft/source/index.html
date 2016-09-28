@@ -7,7 +7,7 @@
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-09-21",
+          publishDate: "2016-09-28",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-05-24",
@@ -119,12 +119,15 @@
     <section>
       <h2>Introduction</h2>
 
-      <p>At a basic level, a Webmention is a notification that one URL links
-      to another.</p>
+      <p>A Webmention is a notification that one URL links to another. For example, Alice writes an interesting post on her blog. Bob then writes a response to her post on his own site, linking back to Alice's original post. Bob's publishing software sends a Webmention to Alice notifying that her article was replied to, and Alice's software can show that reply as a comment on the original post.</p>
 
-      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-      document are to be interpreted as described in [[!RFC2119]].</p>
+      <p>Sending a Webmention is not limited to blog posts, and can be used for additional kinds of content and responses as well. For example, a response can be an RSVP to an event, an indication that someone "likes" another post, a "bookmark" of another post, and many others. Webmention enables these interactions to happen across different websites, enabling a distributed social web.</p>
+
+      <section class="informative">
+        <h3>Social Web Working Group</h3>
+
+        <p><a href="https://www.w3.org/TR/webmention">Webmention</a> is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document [[social-web-protocols]].</p>
+      </section>
 
       <section class="informative">
         <h3>Overview</h3>
@@ -746,6 +749,8 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
           <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
           <li>Removed plaintext English example from response body</li>
+          <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
+          <li></li>
         </ul>
       </section>
 
