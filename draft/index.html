@@ -311,19 +311,19 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-09-21",
+      "publishDate": "2016-09-28",
       "specStatus": "ED",
       "previousMaturity": "CR",
       "previousPublishDate": "2016-05-24",
       "crEnd": "2016-06-21",
       "shortName": "webmention",
-      "edDraftURI": "http://webmention.net/draft/",
+      "edDraftURI": "https://webmention.net/draft/",
       "testSuiteURI": "https://webmention.rocks/",
-      "implementationReportURI": "http://webmention.net/implementation-reports/",
+      "implementationReportURI": "https://webmention.net/implementation-reports/",
       "editors": [
       {
         "name": "Aaron Parecki",
-        "url": "http://aaronparecki.com/",
+        "url": "https://aaronparecki.com/",
         "w3cid": "59996"
       }],
       "wg": "Social Web Working Group",
@@ -413,20 +413,20 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-    <h2 id="w3c-editor-s-draft-21-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-21">21 September 2016</time></h2>
+    <h2 id="w3c-editor-s-draft-28-september-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Editor's Draft <time property="dcterms:issued" class="dt-published" datetime="2016-09-28">28 September 2016</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
+      <dd><a class="u-url" href="https://webmention.net/draft/">https://webmention.net/draft/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/webmention/">https://www.w3.org/TR/webmention/</a></dd>
       <dt>Latest editor's draft:</dt>
-      <dd><a href="http://webmention.net/draft/">http://webmention.net/draft/</a></dd>
+      <dd><a href="https://webmention.net/draft/">https://webmention.net/draft/</a></dd>
       <dt>Test suite:</dt>
       <dd><a href="https://webmention.rocks/">https://webmention.rocks/</a></dd>
       <dt>Implementation report:</dt>
-      <dd><a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a></dd>
+      <dd><a href="https://webmention.net/implementation-reports/">https://webmention.net/implementation-reports/</a></dd>
       <dt>Editor:</dt>
-      <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="http://aaronparecki.com/">Aaron Parecki</a></span>
+      <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0" data-editor-id="59996"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Aaron Parecki"><a class="u-url url p-name fn" property="foaf:homepage" href="https://aaronparecki.com/">Aaron Parecki</a></span>
         <span property="rdf:rest" resource="rdf:nil"></span>
       </dd>
 
@@ -488,7 +488,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.
     </p>
     <p>
-      Please see the Working Group's <a href="http://webmention.net/implementation-reports/">implementation
+      Please see the Working Group's <a href="https://webmention.net/implementation-reports/">implementation
               report</a>.
     </p>
     <p>
@@ -514,8 +514,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <ol class="toc" role="directory">
       <li class="tocline"><a href="#introduction" class="tocxref"><span class="secno">1. </span>Introduction</a>
         <ol class="toc">
-          <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.1 </span>Overview</a></li>
-          <li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.2 </span>Protocol Summary</a></li>
+          <li class="tocline"><a href="#social-web-working-group" class="tocxref"><span class="secno">1.1 </span>Social Web Working Group</a></li>
+          <li class="tocline"><a href="#overview" class="tocxref"><span class="secno">1.2 </span>Overview</a></li>
+          <li class="tocline"><a href="#protocol-summary" class="tocxref"><span class="secno">1.3 </span>Protocol Summary</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">2. </span>Conformance</a>
@@ -567,6 +568,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <li class="tocline"><a href="#other-considerations" class="tocxref"><span class="secno">5. </span>Other Considerations</a>
         <ol class="toc">
           <li class="tocline"><a href="#sending-webmentions-from-non-html-content" class="tocxref"><span class="secno">5.1 </span>Sending Webmentions from non-HTML content</a></li>
+          <li class="tocline"><a href="#respecting-cache-headers-on-discovery" class="tocxref"><span class="secno">5.2 </span>Respecting cache headers on discovery</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#iana-considerations" class="tocxref"><span class="secno">6. </span>IANA Considerations</a></li>
@@ -610,13 +612,20 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <h2 id="h-introduction" resource="#h-introduction"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Introduction</span>
     </h2>
 
-    <p>At a basic level, a Webmention is a notification that one URL links to another.</p>
+    <p>A Webmention is a notification that one URL links to another. For example, Alice writes an interesting post on her blog. Bob then writes a response to her post on his own site, linking back to Alice's original post. Bob's publishing software sends a Webmention to Alice notifying that her article was replied to, and Alice's software can show that reply as a comment on the original post.</p>
 
-    <p>The key words "<em class="rfc2119" title="MUST">MUST</em>", "<em class="rfc2119" title="MUST NOT">MUST NOT</em>", "<em class="rfc2119" title="REQUIRED">REQUIRED</em>", "<em class="rfc2119" title="SHALL">SHALL</em>", "<em class="rfc2119" title="SHALL NOT">SHALL NOT</em>", "
-      <em class="rfc2119" title="SHOULD">SHOULD</em>", "<em class="rfc2119" title="SHOULD NOT">SHOULD NOT</em>", "<em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em>", "<em class="rfc2119" title="MAY">MAY</em>", and "<em class="rfc2119" title="OPTIONAL">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+    <p>Sending a Webmention is not limited to blog posts, and can be used for additional kinds of content and responses as well. For example, a response can be an RSVP to an event, an indication that someone "likes" another post, a "bookmark" of another post, and many others. Webmention enables these interactions to happen across different websites, enabling a distributed social web.</p>
+
+    <section class="informative" id="social-web-working-group" typeof="bibo:Chapter" resource="#social-web-working-group" property="bibo:hasPart">
+      <h3 id="h-social-web-working-group" resource="#h-social-web-working-group"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Social Web Working Group</span>
+      </h3>
+      <p><em>This section is non-normative.</em></p>
+
+      <p><a href="https://www.w3.org/TR/webmention">Webmention</a> is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document [<cite><a class="bibref" href="#bib-social-web-protocols">social-web-protocols</a></cite>].</p>
+    </section>
 
     <section class="informative" id="overview" typeof="bibo:Chapter" resource="#overview" property="bibo:hasPart">
-      <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.1 </span>Overview</span>
+      <h3 id="h-overview" resource="#h-overview"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Overview</span>
       </h3>
       <p><em>This section is non-normative.</em></p>
 
@@ -632,7 +641,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
     <section class="informative" id="protocol-summary" typeof="bibo:Chapter" resource="#protocol-summary" property="bibo:hasPart">
-      <h3 id="h-protocol-summary" resource="#h-protocol-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.2 </span>Protocol Summary</span>
+      <h3 id="h-protocol-summary" resource="#h-protocol-summary"><span property="xhv:role" resource="xhv:heading"><span class="secno">1.3 </span>Protocol Summary</span>
       </h3>
       <p><em>This section is non-normative.</em></p>
 
@@ -764,7 +773,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <h3 id="h-test-suite-and-reporting" resource="#h-test-suite-and-reporting"><span property="xhv:role" resource="xhv:heading"><span class="secno">2.3 </span>Test Suite and Reporting</span>
       </h3>
 
-      <p>Please submit your implementation reports at <a href="http://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
+      <p>Please submit your implementation reports at <a href="https://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
 
       <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
     </section>
@@ -811,7 +820,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> contain query string parameters, which <em class="rfc2119" title="MUST">MUST</em> be preserved as query string parameters and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent as POST body parameters when sending the Webmention request.</p>
 
-        <p>Senders <em class="rfc2119" title="MAY">MAY</em> initially make an HTTP HEAD request [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>] to check for the Link header before making a GET request.</p>
+        <p>Senders <em class="rfc2119" title="MAY">MAY</em> initially make an HTTP HEAD request [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>] to check for the Link header before making a GET request.</p>
 
         <p></p>
         <div class="example">
@@ -834,6 +843,8 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></span></pre></div>
         <p></p>
 
+        <p>Senders <em class="rfc2119" title="MAY">MAY</em> customize the HTTP User Agent [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>] used when fetching the target URL in order to indicate to the recipient that this request is made as part of Webmention discovery. In this case, it is recommended to include the string "Webmention" in the User Agent. This provides people with a pointer to find out why the discovery request was made.</p>
+
       </section>
 
       <section id="sender-notifies-receiver" typeof="bibo:Chapter" resource="#sender-notifies-receiver" property="bibo:hasPart">
@@ -846,7 +857,7 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 
         <p>Note that if the Webmention endpoint URL contains query string parameters, the query string parameters <em class="rfc2119" title="MUST">MUST</em> be preserved, and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent in the POST body.</p>
 
-        <p>The Webmention endpoint will validate and process the request, and return an HTTP status code [<cite><a class="bibref" href="#bib-RFC2616">RFC2616</a></cite>]. Most often, <code>202 Accepted</code> or <code>201 Created</code> will be returned, indicating that the request is queued and being processed asynchronously to prevent DoS attacks. If the response code is 201, the <code>Location</code> header will include a URL that can be used to monitor the status of the request.</p>
+        <p>The Webmention endpoint will validate and process the request, and return an HTTP status code [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>]. Most often, <code>202 Accepted</code> or <code>201 Created</code> will be returned, indicating that the request is queued and being processed asynchronously to prevent DoS attacks. If the response code is 201, the <code>Location</code> header will include a URL that can be used to monitor the status of the request.</p>
 
         <p>Any <code>2xx</code> response code <em class="rfc2119" title="MUST">MUST</em> be considered a success.</p>
 
@@ -854,7 +865,7 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <div class="example">
           <div class="example-title marker"><span>Example 3</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
-<span class="hljs-attribute">Content-Type</span>: application/x-www-form-urlencoded; charset=utf-8
+<span class="hljs-attribute">Content-Type</span>: application/x-www-form-urlencoded
 
 <span class="javascript">source=https:<span class="hljs-comment">//waterpigs.example/post-by-barnaby&amp;</span>
 target=https:<span class="hljs-comment">//aaronpk.example/post-by-aaron</span>
@@ -896,25 +907,19 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
         <code>target</code> parameters, the receiver <em class="rfc2119" title="SHOULD">SHOULD</em> verify the parameters (see <a href="#request-verification">Request Verification</a> below) and then
         <em class="rfc2119" title="SHOULD">SHOULD</em> queue and process the request asynchronously, prevent DoS attacks. There are three possible responses to the request, depending on how the receiver processes it.</p>
 
-      <p>If the receiver creates a status page which the sender can use to check the status, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 201 Created</code> response with a <code>Location</code> header pointing to the status URL. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
+      <p>If the receiver creates a status page which the sender can use to check the status, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 201 Created</code> response with a <code>Location</code> header pointing to the status URL. The response body <em class="rfc2119" title="MAY">MAY</em> contain content.</p>
 
       <p></p>
       <div class="example">
         <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
-<span class="hljs-attribute">Location</span>: http://aaronpk.example/webmention/DEhB9Jme
-<span class="hljs-attribute">Content-type</span>: text/plain; charset=utf-8
-
-<span class="javascript">The Webmention is being processed. You can check on its status here: http:<span class="hljs-comment">//aaronpk.example/webmention/DEhB9Jme</span></span></pre></div>
+<span class="hljs-attribute">Location</span>: http://aaronpk.example/webmention/DEhB9Jme</pre></div>
       <p></p>
 
       <p>If the receiver processes the request asynchronously but does not return a status URL, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 202 Accepted</code> response. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
 
       <p></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">202</span> Accepted
-<span class="hljs-attribute">Content-type</span>: text/plain; charset=utf-8
-
-<span class="undefined">The Webmention is being processed</span></pre></div>
+        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">202</span> Accepted</pre></div>
       <p></p>
 
       <p>If the receiver chooses to process the request and perform the verification step synchronously (not recommended), it <em class="rfc2119" title="MUST">MUST</em> respond with a <code>200 OK</code> status on success.</p>
@@ -1091,6 +1096,13 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 
       <p>Creating an HTML landing page can help increase the number of inbound links to your content, by providing people with a useful place to link to when referencing otherwise restricted content such as scholarly articles. In the case of a scholarly article, the landing page should include the list of references in the HTML, so that you can use them as Webmention target URLs.</p>
     </section>
+
+    <section id="respecting-cache-headers-on-discovery" typeof="bibo:Chapter" resource="#respecting-cache-headers-on-discovery" property="bibo:hasPart">
+      <h3 id="h-respecting-cache-headers-on-discovery" resource="#h-respecting-cache-headers-on-discovery"><span property="xhv:role" resource="xhv:heading"><span class="secno">5.2 </span>Respecting cache headers on discovery</span>
+      </h3>
+
+      <p>When performing <a href="#sender-discovers-receiver-webmention-endpoint">Webmention discovery</a>, Senders <em class="rfc2119" title="SHOULD">SHOULD</em> respect the HTTP cache headers [<cite><a class="bibref" href="#bib-RFC7234">RFC7234</a></cite>] returned by the target URL and avoid fetching the target URL more often than is indicated by the headers.</p>
+    </section>
   </section>
 
   <section id="iana-considerations" typeof="bibo:Chapter" resource="#iana-considerations" property="bibo:hasPart">
@@ -1211,6 +1223,10 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
         <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
         <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
+        <li>Removed plaintext English example from response body</li>
+        <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
+        <li>Update RFC2616 references to RFC7231</li>
+        <li>Add note about respecting cache headers and customizing the user agent</li>
       </ul>
     </section>
 
@@ -1299,12 +1315,12 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <dd>Ian Hickson; Robin Berjon; Steve Faulkner; Travis Leithead; Erika Doyle Navara; Theresa O'Connor; Silvia Pfeiffer. W3C. <a href="https://www.w3.org/TR/html5/" property="dc:requires"><cite>HTML5</cite></a>. 28 October 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html5/" property="dc:requires">https://www.w3.org/TR/html5/</a>
         </dd><dt id="bib-RFC2119">[RFC2119]</dt>
         <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
-        </dd><dt id="bib-RFC2616">[RFC2616]</dt>
-        <dd>R. Fielding; J. Gettys; J. Mogul; H. Frystyk; L. Masinter; P. Leach; T. Berners-Lee. IETF. <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires"><cite>Hypertext Transfer Protocol -- HTTP/1.1</cite></a>. June 1999. Draft Standard. URL: <a href="https://tools.ietf.org/html/rfc2616" property="dc:requires">https://tools.ietf.org/html/rfc2616</a>
         </dd><dt id="bib-RFC3986">[RFC3986]</dt>
         <dd>T. Berners-Lee; R. Fielding; L. Masinter. IETF. <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. January 2005. Internet Standard. URL: <a href="https://tools.ietf.org/html/rfc3986" property="dc:requires">https://tools.ietf.org/html/rfc3986</a>
         </dd><dt id="bib-RFC5988">[RFC5988]</dt>
         <dd>M. Nottingham. IETF. <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires">https://tools.ietf.org/html/rfc5988</a>
+        </dd><dt id="bib-RFC7231">[RFC7231]</dt>
+        <dd>R. Fielding, Ed.; J. Reschke, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc7231" property="dc:requires"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. June 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7231" property="dc:requires">https://tools.ietf.org/html/rfc7231</a>
         </dd>
       </dl>
     </section>
@@ -1314,12 +1330,16 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
       </h3>
       <dl class="bibliography" resource=""><dt id="bib-JSON">[JSON]</dt>
         <dd>D. Crockford. IETF. <a href="https://tools.ietf.org/html/rfc4627" property="dc:references"><cite>The application/json Media Type for JavaScript Object Notation (JSON)</cite></a>. July 2006. Informational. URL: <a href="https://tools.ietf.org/html/rfc4627" property="dc:references">https://tools.ietf.org/html/rfc4627</a>
+        </dd><dt id="bib-RFC7234">[RFC7234]</dt>
+        <dd>R. Fielding, Ed.; M. Nottingham, Ed.; J. Reschke, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc7234" property="dc:references"><cite>Hypertext Transfer Protocol (HTTP/1.1): Caching</cite></a>. June 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7234" property="dc:references">https://tools.ietf.org/html/rfc7234</a>
         </dd><dt id="bib-Salmention">[Salmention]</dt>
         <dd>Ben Roberts; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Salmention" property="dc:references">https://indieweb.org/Salmention</a>
         </dd><dt id="bib-Vouch">[Vouch]</dt>
         <dd>Aaron Parecki; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Vouch" property="dc:references">https://indieweb.org/Vouch</a>
         </dd><dt id="bib-h-entry">[h-entry]</dt>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
+        </dd><dt id="bib-social-web-protocols">[social-web-protocols]</dt>
+        <dd>Amy Guy. W3C. <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. 23 August 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a>
         </dd>
       </dl>
     </section>
