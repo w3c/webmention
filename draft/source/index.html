@@ -314,7 +314,7 @@
             preserved as query string parameters and MUST NOT be sent as POST body 
             parameters when sending the Webmention request.</p>
 
-          <p>Senders MAY initially make an HTTP HEAD request [[!RFC2616]] to
+          <p>Senders MAY initially make an HTTP HEAD request [[!RFC7231]] to
             check for the Link header before making a GET request.</p>
 
           <p><pre class="example">GET /post-by-aaron HTTP/1.1
@@ -349,7 +349,7 @@ Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
             POST body.</p>
 
           <p>The Webmention endpoint will validate and process the request, and
-            return an HTTP status code [[!RFC2616]]. Most often, <code>202 Accepted</code>
+            return an HTTP status code [[!RFC7231]]. Most often, <code>202 Accepted</code>
             or <code>201 Created</code> will be returned, indicating that the
             request is queued and being processed asynchronously to prevent
             DoS attacks. If the response code is 201, the <code>Location</code>
@@ -750,7 +750,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
           <li>Removed plaintext English example from response body</li>
           <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
-          <li></li>
+          <li>Update RFC2616 references to RFC7231</li>
         </ul>
       </section>
 
