@@ -335,6 +335,11 @@ Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
 &lt;/body&gt;
 &lt;/html&gt;</pre></p>
 
+          <p>Senders MAY customize the HTTP User Agent [[RFC7231]] used when fetching the target URL
+          in order to indicate to the recipient that this request is made as part of Webmention discovery.
+          In this case, it is recommended to include the string "Webmention" in the User Agent. This 
+          provides people with a pointer to find out why the discovery request was made.</p>
+
         </section>
         <section>
           <h4>Sender notifies receiver</h4>
@@ -642,6 +647,12 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
         <p>Creating an HTML landing page can help increase the number of inbound links to your content, by providing people with a useful place to link to when referencing otherwise restricted content such as scholarly articles. In the case of a scholarly article, the landing page should include the list of references in the HTML, so that you can use them as Webmention target URLs.</p>
       </section>
+
+      <section>
+        <h3>Respecting cache headers on discovery</h3>
+
+        <p>When performing <a href="#sender-discovers-receiver-webmention-endpoint">Webmention discovery</a>, Senders SHOULD respect the HTTP cache headers [[RFC7234]] returned by the target URL and avoid fetching the target URL more often than is indicated by the headers.</p>
+      </section>
     </section>
 
     <section>
@@ -751,6 +762,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Removed plaintext English example from response body</li>
           <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
           <li>Update RFC2616 references to RFC7231</li>
+          <li>Add note about respecting cache headers and customizing the user agent</li>
         </ul>
       </section>
 
