@@ -563,6 +563,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <li class="tocline"><a href="#avoid-sending-webmentions-to-localhost" class="tocxref"><span class="secno">4.3 </span>Avoid sending Webmentions to localhost</a></li>
           <li class="tocline"><a href="#cross-site-request-forgery" class="tocxref"><span class="secno">4.4 </span>Cross-Site Request Forgery</a></li>
           <li class="tocline"><a href="#limit-access-to-protected-resources" class="tocxref"><span class="secno">4.5 </span>Limit access to protected resources</a></li>
+          <li class="tocline"><a href="#security-and-privacy-review" class="tocxref"><span class="secno">4.6 </span>Security and Privacy Review</a></li>
         </ol>
       </li>
       <li class="tocline"><a href="#other-considerations" class="tocxref"><span class="secno">5. </span>Other Considerations</a>
@@ -1081,6 +1082,48 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
       </ul>
     </section>
 
+    <section id="security-and-privacy-review" typeof="bibo:Chapter" resource="#security-and-privacy-review" property="bibo:hasPart">
+      <h3 id="h-security-and-privacy-review" resource="#h-security-and-privacy-review"><span property="xhv:role" resource="xhv:heading"><span class="secno">4.6 </span>Security and Privacy Review</span>
+      </h3>
+
+      <p>These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([<cite><a class="bibref" href="#bib-security-privacy-questionnaire">security-privacy-questionnaire</a></cite>]).</p>
+
+      <dl>
+        <dt>Does this specification deal with personally-identifiable information?</dt>
+        <dd>The only potentially personally-identifiable information involved in Webmention are the source and target URLs.</dd>
+        <dt>Does this specification deal with high-value data?</dt>
+        <dd>No, there is no authentication or other credentials involved.</dd>
+        <dt>Does this specification introduce new state for an origin that persists across browsing sessions?</dt>
+        <dd>No</dd>
+        <dt>Does this specification expose persistent, cross-origin state to the web?</dt>
+        <dd>The Webmention receiver may create a temporary resource with information about the Webmention request.</dd>
+        <dt>Does this specification expose any other data to an origin that it doesn't currently have access to?</dt>
+        <dd>No</dd>
+        <dt>Does this specification enable new script execution/loading mechanisms?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to a user's location?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to sensors on a user's device?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to aspects of a user's local computing environment?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin access to other devices?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow an origin some measure of control over a user agent's native UI?</dt>
+        <dd>No</dd>
+        <dt>Does this specification expose temporary identifiers to the web?</dt>
+        <dd>No</dd>
+        <dt>Does this specification distinguish between behavior in first-party and third-party contexts?</dt>
+        <dd>No</dd>
+        <dt>How should this specification work in the context of a user agent's "incognito" mode?</dt>
+        <dd>Webmention does not maintain any state so there are no considerations when in "incognito" mode.</dd>
+        <dt>Does this specification persist data to a user's local device?</dt>
+        <dd>No</dd>
+        <dt>Does this specification allow downgrading default security characteristics?</dt>
+        <dd>No</dd>
+      </dl>
+    </section>
+
   </section>
 
   <section id="other-considerations" typeof="bibo:Chapter" resource="#other-considerations" property="bibo:hasPart">
@@ -1227,6 +1270,7 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
         <li>Update RFC2616 references to RFC7231</li>
         <li>Add note about respecting cache headers and customizing the user agent</li>
+        <li>Add Security and Privacy Questionnaire</li>
       </ul>
     </section>
 
@@ -1338,6 +1382,8 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <dd>Aaron Parecki; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Vouch" property="dc:references">https://indieweb.org/Vouch</a>
         </dd><dt id="bib-h-entry">[h-entry]</dt>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
+        </dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt>
+        <dd>Mike West. W3C. <a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. 10 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/" property="dc:references">https://www.w3.org/TR/security-privacy-questionnaire/</a>
         </dd><dt id="bib-social-web-protocols">[social-web-protocols]</dt>
         <dd>Amy Guy. W3C. <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. 23 August 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a>
         </dd>

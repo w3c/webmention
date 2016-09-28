@@ -635,6 +635,47 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         </ul>
       </section>
 
+      <section>
+        <h3>Security and Privacy Review</h3>
+
+        <p>These questions provide an overview of security and privacy considerations for this specification as guided by Self-Review Questionnaire: Security and Privacy ([[security-privacy-questionnaire]]).</p>
+
+        <dl>
+          <dt>Does this specification deal with personally-identifiable information?</dt>
+            <dd>The only potentially personally-identifiable information involved in Webmention are the source and target URLs.</dd>
+          <dt>Does this specification deal with high-value data?</dt>
+            <dd>No, there is no authentication or other credentials involved.</dd>
+          <dt>Does this specification introduce new state for an origin that persists across browsing sessions?</dt>
+            <dd>No</dd>
+          <dt>Does this specification expose persistent, cross-origin state to the web?</dt>
+            <dd>The Webmention receiver may create a temporary resource with information about the Webmention request.</dd>
+          <dt>Does this specification expose any other data to an origin that it doesn't currently have access to?</dt>
+            <dd>No</dd>
+          <dt>Does this specification enable new script execution/loading mechanisms?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to a user's location?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to sensors on a user's device?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to aspects of a user's local computing environment?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin access to other devices?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow an origin some measure of control over a user agent's native UI?</dt>
+            <dd>No</dd>
+          <dt>Does this specification expose temporary identifiers to the web?</dt>
+            <dd>No</dd>
+          <dt>Does this specification distinguish between behavior in first-party and third-party contexts?</dt>
+            <dd>No</dd>
+          <dt>How should this specification work in the context of a user agent's "incognito" mode?</dt>
+            <dd>Webmention does not maintain any state so there are no considerations when in "incognito" mode.</dd>
+          <dt>Does this specification persist data to a user's local device?</dt>
+            <dd>No</dd>
+          <dt>Does this specification allow downgrading default security characteristics?</dt>
+            <dd>No</dd>
+        </dl>
+      </section>
+
     </section>
 
     <section>
@@ -763,6 +804,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
           <li>Update RFC2616 references to RFC7231</li>
           <li>Add note about respecting cache headers and customizing the user agent</li>
+          <li>Add Security and Privacy Questionnaire</li>
         </ul>
       </section>
 
