@@ -91,7 +91,7 @@ Describe the response body (if any) which is returned in the request:
 
 ### Webmention Verification (3.2.2)
 
-* [ ] Verification is processed asynchronously (SHOULD)
+* [X] Verification is processed asynchronously (SHOULD)
 * [X] Follows at least one HTTP redirect on source URL (MUST)
 * [X] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
 
