@@ -1,5 +1,5 @@
 Webmention Errata
 =================
 
-No errata have been reported yet.
+No errata have been reported.
 
