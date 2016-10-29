@@ -319,7 +319,7 @@
 
           <p>The endpoint MAY be a relative
             URL, in which case the sender MUST resolve it relative to the
-            <code>target</code> URL according to [[!RFC3986]].</p>
+            <code>target</code> URL according to [[!WHATWG-URL]].</p>
 
           <p>The endpoint MAY contain query string parameters, which MUST be 
             preserved as query string parameters and MUST NOT be sent as POST body 
@@ -447,7 +447,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
         <section>
           <h4>Request Verification</h4>
 
-          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!RFC3986]]
+          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!WHATWG-URL]]
             and are of schemes that are supported by the receiver. (Most
             commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>
@@ -818,9 +818,10 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
           <li>Removed plaintext English example from response body</li>
           <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
-          <li>Update RFC2616 references to RFC7231</li>
+          <li>Update RFC 2616 references to RFC 7231</li>
           <li>Add note about respecting cache headers and customizing the user agent</li>
           <li>Add Security and Privacy Questionnaire</li>
+          <li>Updated reference from RFC 3986 to WHATWG URL</li>
           <li>Added link to Private Webmention extension</li>
         </ul>
       </section>
