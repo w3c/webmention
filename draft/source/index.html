@@ -102,6 +102,16 @@
               ],
               status: "Stable Specification",
               publisher: "hixie.ch"
+            },
+            "URL": {
+              title: "URL Standard",
+              href: "https://url.spec.whatwg.org/",
+              authors: [
+                '<div class="note"><p><b>Note:</b> URLs can be used in numerous different manners, in many differing contexts. For the purpose of producing strict URLs one may wish to consider [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] and [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>]. The URL specification defines the term URL, various algorithms for dealing with URLs, and an API for constructing, parsing, and resolving URLs. Developers are advised to keep abreast of the latest URL developments by tracking the progress of <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>.</p> <p>As a word of caution, there are notable differences in the manner in which Web browsers and other software stacks outside the HTML context handle URLs. While no changes would be accepted to URL processing that would break existing Web content, some important parts of URL processing should therefore be considered as implementation-defined (e.g. parsing <code>file:</code> URLs or operating on URLs that would be syntax errors under the [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>] syntax).</p></div> Anne van Kesteren'
+              ],
+              status: "Continually Updated Specification",
+              publisher: "WHATWG",
+              note: "HI"
             }
           }
       };
@@ -319,7 +329,7 @@
 
           <p>The endpoint MAY be a relative
             URL, in which case the sender MUST resolve it relative to the
-            <code>target</code> URL according to [[!WHATWG-URL]].</p>
+            <code>target</code> URL according to [[!URL]].</p>
 
           <p>The endpoint MAY contain query string parameters, which MUST be 
             preserved as query string parameters and MUST NOT be sent as POST body 
@@ -447,7 +457,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
         <section>
           <h4>Request Verification</h4>
 
-          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!WHATWG-URL]]
+          <p>The receiver MUST check that <code>source</code> and <code>target</code> are valid URLs [[!URL]]
             and are of schemes that are supported by the receiver. (Most
             commonly this means checking that the <code>source</code> and <code>target</code>
             schemes are http or https).</p>

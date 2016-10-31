@@ -539,12 +539,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           ],
           "status": "Stable Specification",
           "publisher": "hixie.ch"
+        },
+        "URL":
+        {
+          "title": "URL Standard",
+          "href": "https://url.spec.whatwg.org/",
+          "authors": [
+            "<div class=\"note\"><p><b>Note:</b> URLs can be used in numerous different manners, in many differing contexts. For the purpose of producing strict URLs one may wish to consider [<a href=\"https://www.ietf.org/rfc/rfc3986\">RFC3986</a>] and [<a href=\"https://www.ietf.org/rfc/rfc3987\">RFC3987</a>]. The URL specification defines the term URL, various algorithms for dealing with URLs, and an API for constructing, parsing, and resolving URLs. Developers are advised to keep abreast of the latest URL developments by tracking the progress of <a href=\"https://url.spec.whatwg.org/\">https://url.spec.whatwg.org/</a>.</p> <p>As a word of caution, there are notable differences in the manner in which Web browsers and other software stacks outside the HTML context handle URLs. While no changes would be accepted to URL processing that would break existing Web content, some important parts of URL processing should therefore be considered as implementation-defined (e.g. parsing <code>file:</code> URLs or operating on URLs that would be syntax errors under the [<a href=\"https://www.ietf.org/rfc/rfc3986\">RFC3986</a>] [<a href=\"https://www.ietf.org/rfc/rfc3987\">RFC3987</a>] syntax).</p></div> Anne van Kesteren"
+          ],
+          "status": "Continually Updated Specification",
+          "publisher": "WHATWG",
+          "note": "HI"
         }
       }
     }
   </script>
 </head>
-<body class="h-entry" role="document" id="respecDocument">
+<body class="h-entry toc-inline" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
@@ -961,7 +972,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           <code>&lt;a&gt;</code> element with a rel value of <code>webmention</code>. If more than one of these is present, the first HTTP Link header takes precedence, followed by the first <code>&lt;link&gt;</code> or <code>&lt;a&gt;</code> element in document order. Senders <em class="rfc2119" title="MUST">MUST</em> support all three options and fall back in this order.</p>
 
         <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> be a relative URL, in which case the sender <em class="rfc2119" title="MUST">MUST</em> resolve it relative to the
-          <code>target</code> URL according to [<cite><a class="bibref" href="#bib-WHATWG-URL">WHATWG-URL</a></cite>].</p>
+          <code>target</code> URL according to [<cite><a class="bibref" href="#bib-URL">URL</a></cite>].</p>
 
         <p>The endpoint <em class="rfc2119" title="MAY">MAY</em> contain query string parameters, which <em class="rfc2119" title="MUST">MUST</em> be preserved as query string parameters and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent as POST body parameters when sending the Webmention request.</p>
 
@@ -1073,7 +1084,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
         <h4 id="h-request-verification" resource="#h-request-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Request Verification</span>
         </h4>
 
-        <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-WHATWG-URL">WHATWG-URL</a></cite>] and are of schemes that are supported by the receiver. (Most commonly this means checking that the <code>source</code> and <code>target</code> schemes are http or https).</p>
+        <p>The receiver <em class="rfc2119" title="MUST">MUST</em> check that <code>source</code> and <code>target</code> are valid URLs [<cite><a class="bibref" href="#bib-URL">URL</a></cite>] and are of schemes that are supported by the receiver. (Most commonly this means checking that the <code>source</code> and <code>target</code> schemes are http or https).</p>
 
         <p>The receiver <em class="rfc2119" title="MUST">MUST</em> reject the request if the source URL is the same as the target URL.</p>
 
@@ -1515,8 +1526,12 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <dd>M. Nottingham. IETF. <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires"><cite>Web Linking</cite></a>. October 2010. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc5988" property="dc:requires">https://tools.ietf.org/html/rfc5988</a>
         </dd><dt id="bib-RFC7231">[RFC7231]</dt>
         <dd>R. Fielding, Ed.; J. Reschke, Ed.. IETF. <a href="https://tools.ietf.org/html/rfc7231" property="dc:requires"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. June 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7231" property="dc:requires">https://tools.ietf.org/html/rfc7231</a>
-        </dd><dt id="bib-WHATWG-URL">[WHATWG-URL]</dt>
-        <dd>Anne van Kesteren. WHATWG. <a href="https://url.spec.whatwg.org/" property="dc:requires"><cite>URL Standard</cite></a>. Living Standard. URL: <a href="https://url.spec.whatwg.org/" property="dc:requires">https://url.spec.whatwg.org/</a>
+        </dd><dt id="bib-URL">[URL]</dt>
+        <dd>
+          <div class="note">
+            <p><b>Note:</b> URLs can be used in numerous different manners, in many differing contexts. For the purpose of producing strict URLs one may wish to consider [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] and [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>]. The URL specification defines the term URL, various algorithms for dealing with URLs, and an API for constructing, parsing, and resolving URLs. Developers are advised to keep abreast of the latest URL developments by tracking the progress of <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>.</p>
+            <p>As a word of caution, there are notable differences in the manner in which Web browsers and other software stacks outside the HTML context handle URLs. While no changes would be accepted to URL processing that would break existing Web content, some important parts of URL processing should therefore be considered as implementation-defined (e.g. parsing <code>file:</code> URLs or operating on URLs that would be syntax errors under the [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>] syntax).</p>
+          </div> Anne van Kesteren. WHATWG. <a href="https://url.spec.whatwg.org/" property="dc:requires"><cite>URL Standard</cite></a>. Continually Updated Specification. URL: <a href="https://url.spec.whatwg.org/" property="dc:requires">https://url.spec.whatwg.org/</a>
         </dd>
       </dl>
     </section>
