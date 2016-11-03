@@ -81,7 +81,7 @@ Delete sending implementation in-progress.
 
 ### Security Considerations (4)
 
-* [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
+* [x] The sender avoids sending a Webmention to a loopback address (SHOULD)
 
 
 ### Extensions
