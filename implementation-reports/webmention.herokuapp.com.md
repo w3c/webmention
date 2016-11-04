@@ -33,14 +33,18 @@ Describe the response body (if any) which is returned in the request:
 
 ### Request Verification (3.2.1)
 
-* [ ] Verifies source and target are valid URLs, rejecting with HTTP 400 (MUST)
+* [x] Verifies source and target are valid URLs, rejecting with HTTP 400 (MUST)
 * [na] Verifies that target is a valid resource for which the receiver accepts Webmentions, rejecting with HTTP 400 (SHOULD)
 * [ ] Ignores fragment when checking if target is supported (SHOULD)
+
+#### Implementation Notes
+
+Verifies that the target is for the right site, but not whether the actual resource exists on that site
 
 ### Webmention Verification (3.2.2)
 
 * [x] Verification is processed asynchronously (SHOULD)
-* [x] Follows at least one HTTP redirect on source URL (MUST)
+* [ ] Follows at least one HTTP redirect on source URL (MUST)
 * [ ] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
 
 #### Source URL content-types supported
@@ -59,10 +63,13 @@ The tests below apply when the source document is HTML.
 * [ ] Accepts a Webmention where the target URL is in an `<img>` tag
 * [ ] Accepts a Webmention where the target URL is in an `<video>` tag
 * [ ] Accepts a Webmention where the target URL is in an `<audio>` tag
-* [ ] Rejects a Webmention where the target URL is in the document as text
-* [ ] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
-* [ ] Rejects a Webmention where the target URL is not in the document
+* [x] Rejects a Webmention where the target URL is in the document as text
+* [x] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
+* [x] Rejects a Webmention where the target URL is not in the document
 
+#### Implementation Notes
+
+When looking for a target URL, all links in the document are normalized and then compared to a normalized target URL. All target resources with the same normalized URL are considered to be the same resource.
 
 ### Webmention Display/Use
 
@@ -82,6 +89,9 @@ The tests below apply when the source document is HTML.
 
 Please describe any other ways the Webmention is displayed or used if applicable.
 
+#### Implementation Notes
+
+The displayed data is updated in realtime in the browser to keep up to date with any new, removed and/or updated mentions. Likes and reposts can be shown as facepiles.
 
 ### Update Tests (3.2.4)
 
@@ -101,7 +111,7 @@ Please describe any other ways the Webmention is displayed or used if applicable
 * [ ] Webmentions are moderated before being displayed (MAY)
 * [ ] Webmentions are periodically re-verified (MAY)
 * [x] The receiver ensures any displayed data it properly encoded/filtered to prevent XSS attacks (MUST)
-* [ ] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
+* [x] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
 * [ ] Respects a self-imposed limit on the number of bytes fetched from the source URL (SHOULD)
 * [ ] The receiver accepts additional parameters or headers, and so has CSRF protection (SHOULD)
 
@@ -110,7 +120,10 @@ Please describe any other ways the Webmention is displayed or used if applicable
 
 This implementation has also implemented the following extensions.
 
-* [ ] [Salmention](http://indiewebcamp.com/Salmention)
+* [Almost] [Salmention](http://indiewebcamp.com/Salmention)
 * [ ] [Vouch](http://indiewebcamp.com/Vouch)
 * [ ] Other: _______
 
+#### Implementation Notes
+
+A basic implementation of Salmention is implemented, but due to lack of testing and safe guards it has not been launched
