@@ -46,16 +46,16 @@ MUST
 * [x] [Discovery Test #18](https://webmention.rocks/test/18)
 * [x] [Discovery Test #19](https://webmention.rocks/test/19)
 * [x] [Discovery Test #20](https://webmention.rocks/test/20)
-* [j] [Discovery Test #21](https://webmention.rocks/test/21)
+* [x] [Discovery Test #21](https://webmention.rocks/test/21)
 
 
 ### Sending Tests (3.1.2)
 
 MUST
 
-* [ ] Accepts HTTP 200 response as a success
-* [ ] Accepts HTTP 201 response as a success
-* [ ] Accepts HTTP 202 response as a success
+* [x] Accepts HTTP 200 response as a success
+* [x] Accepts HTTP 201 response as a success
+* [x] Accepts HTTP 202 response as a success
 
 
 ### Update Tests (3.1.3)
@@ -65,26 +65,15 @@ SHOULD
 * [ ] [Update Test #1](https://webmention.rocks/update/1)
 * [ ] [Update Test #2](https://webmention.rocks/update/2)
 
-#### Implementation Notes
-
-(Add implementation notes here, or remove this section)
-
-
 ### Delete Tests (3.1.4)
 
 SHOULD
 
 * [ ] [Delete Test #1](https://webmention.rocks/delete/1)
 
-#### Implementation Notes
-
-(Add implementation notes here, or remove this section)
-
-
 ### Security Considerations (4)
 
 * [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
-
 
 ### Extensions
 
@@ -101,30 +90,25 @@ Indicate which type of response the receiver provides:
 
 * [ ] HTTP 200 - Receiver synchronously processes the Webmention request (not recommended)
 * [ ] HTTP 201 - Receiver creates a status URL the sender can use to check the status of the Webmention
-* [ ] HTTP 202 - Receiver processes the Webmention asynchronously
-
-Describe the response body (if any) which is returned in the request:
-
+* [x] HTTP 202 - Receiver processes the Webmention asynchronously
 
 ### Request Verification (3.2.1)
 
-* [ ] Verifies source and target are valid URLs, rejecting with HTTP 400 (MUST)
-* [ ] Verifies that target is a valid resource for which the receiver accepts Webmentions, rejecting with HTTP 400 (SHOULD)
-* [ ] Ignores fragment when checking if target is supported (SHOULD)
+* [x] Verifies source and target are valid URLs, rejecting with HTTP 400 (MUST)
+* [x] Verifies that target is a valid resource for which the receiver accepts Webmentions, rejecting with HTTP 400 (SHOULD)
+* [x] Ignores fragment when checking if target is supported (SHOULD)
 
 ### Webmention Verification (3.2.2)
 
-* [ ] Verification is processed asynchronously (SHOULD)
-* [ ] Follows at least one HTTP redirect on source URL (MUST)
-* [ ] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
+* [x] Verification is processed asynchronously (SHOULD)
+* [x] Follows at least one HTTP redirect on source URL (MUST)
+* [x] Respects a self-imposed limit on number of HTTP redirects to follow (MUST)
 
 #### Source URL content-types supported
 
 Please list the content types that your implementation supports when checking if the source document links to the target URL.
 
-* [ ] HTML
-* [ ] Other: ______
-
+* [x] HTML
 
 ### HTML Verification (3.2.2)
 
@@ -154,9 +138,6 @@ The tests below apply when the source document is HTML.
 * [ ] The receiver recognizes additional response types, using markup:
  * [ ] Response: __________ using HTML markup: __________
  * (Please add lines like above for additional response types the receiver has implemented)
-
-Please describe any other ways the Webmention is displayed or used if applicable.
-
 
 ### Update Tests (3.2.4)
 
