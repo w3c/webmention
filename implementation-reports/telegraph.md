@@ -3,11 +3,11 @@
 Implementation Home Page URL: https://telegraph.p3k.io
 
 Source Code repo URL(s) (optional): https://github.com/aaronpk/Telegraph
-* [ ] 100% open source implementation
+* [x] 100% open source implementation
 
 Programming Language(s): PHP
 
-Developer(s): [Aaron Parecki](http://aaronparecki.com)
+Developer(s): [Aaron Parecki](https://aaronparecki.com)
 
 Implementation Classes (Sender and/or Receiver): Sender
 
@@ -74,3 +74,11 @@ SHOULD
 
 * [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
 
+### Extensions
+
+This implementation has also implemented the following extensions.
+
+* [ ] [Salmention](http://indiewebcamp.com/Salmention)
+* [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [x] [Private Webmention](http://indiewebcamp.com/Private-Webmention)
+ * Telegraph will pass on an authorization code when sending a Webmention, but of course does not have the ability to generate codes for arbitrary websites itself.
