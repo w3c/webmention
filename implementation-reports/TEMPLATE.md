@@ -97,6 +97,7 @@ This implementation has also implemented the following extensions.
 
 * [ ] [Salmention](http://indiewebcamp.com/Salmention)
 * [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [ ] [Private Webmention](http://indiewebcamp.com/Private-Webmention)
 * [ ] Other: _______
 
 
@@ -192,4 +193,5 @@ This implementation has also implemented the following extensions.
 
 * [ ] [Salmention](http://indiewebcamp.com/Salmention)
 * [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [ ] [Private Webmention](http://indiewebcamp.com/Private-Webmention)
 * [ ] Other: _______
