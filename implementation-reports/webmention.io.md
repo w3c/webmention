@@ -52,9 +52,9 @@ Please list the content types that your implementation supports when checking if
 The tests below apply when the source document is HTML.
 
 * [x] Accepts a Webmention where the target URL is in an `<a>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<img>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<video>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<audio>` tag
+* [x] Accepts a Webmention where the target URL is in an `<img>` tag
+* [x] Accepts a Webmention where the target URL is in an `<video>` tag
+* [x] Accepts a Webmention where the target URL is in an `<audio>` tag
 * [x] Rejects a Webmention where the target URL is in the document as text
 * [x] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
 * [x] Rejects a Webmention where the target URL is not in the document
@@ -63,7 +63,6 @@ The tests below apply when the source document is HTML.
 ### Webmention Display/Use
 
 * [ ] The receiver displays data from the source URL on the target post (MAY)
-
 * [x] The receiver recognizes that the source URL is a "comment" or "reply" to the post
  * [x] using HTML markup: `class="u-in-reply-to"`
 * [x] The receiver recognizes that the source URL is a "like" of the post
@@ -75,8 +74,6 @@ The tests below apply when the source document is HTML.
 * [ ] The receiver recognizes additional response types, using markup:
  * [ ] Response: __________ using HTML markup: __________
  * (Please add lines like above for additional response types the receiver has implemented)
-
-Please describe any other ways the Webmention is displayed or used if applicable.
 
 The endpoint stores the content found at the source and makes it available through an API.
 
@@ -108,7 +105,8 @@ The endpoint stores the content found at the source and makes it available throu
 
 This implementation has also implemented the following extensions.
 
-* [ ] [Salmention](http://indiewebcamp.com/Salmention)
-* [ ] [Vouch](http://indiewebcamp.com/Vouch)
+* [ ] [Salmention](https://indieweb.org/Salmention)
+* [ ] [Vouch](https://indieweb.org/Vouch)
+* [x] [Private Webmention](https://indieweb.org/Private-Webmention)
 * [ ] Other: _______
 
