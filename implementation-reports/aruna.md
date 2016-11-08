@@ -1,12 +1,3 @@
-This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a <a href="https://help.github.com/articles/using-pull-requests/">pull request</a> and your report will be reviewed and added to the main repository.
-
-Complete this report by filling out the checkboxes as appropriate. To mark one as successful/complete/true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
-
-If your implementation is only a sender or only a receiver, remove the other section from the document before submitting.
-
-When you are complete, send a pull request with the addition of your report file. Please remove this entire top section before submitting.
-
-
 # Aruna
 
 Implementation Home Page URL: https://j4y.co
@@ -114,13 +105,13 @@ Please list the content types that your implementation supports when checking if
 
 The tests below apply when the source document is HTML.
 
-* [ ] Accepts a Webmention where the target URL is in an `<a>` tag
+* [x] Accepts a Webmention where the target URL is in an `<a>` tag
 * [ ] Accepts a Webmention where the target URL is in an `<img>` tag
 * [ ] Accepts a Webmention where the target URL is in an `<video>` tag
 * [ ] Accepts a Webmention where the target URL is in an `<audio>` tag
 * [ ] Rejects a Webmention where the target URL is in the document as text
 * [ ] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
-* [ ] Rejects a Webmention where the target URL is not in the document
+* [x] Rejects a Webmention where the target URL is not in the document
 
 
 ### Webmention Display/Use
