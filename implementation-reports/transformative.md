@@ -120,11 +120,11 @@ Please list the content types that your implementation supports when checking if
 The tests below apply when the source document is HTML.
 
 * [x] Accepts a Webmention where the target URL is in an `<a>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<img>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<video>` tag
-* [ ] Accepts a Webmention where the target URL is in an `<audio>` tag
-* [ ] Rejects a Webmention where the target URL is in the document as text
-* [ ] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
+* [x] Accepts a Webmention where the target URL is in an `<img>` tag
+* [x] Accepts a Webmention where the target URL is in an `<video>` tag
+* [x] Accepts a Webmention where the target URL is in an `<audio>` tag
+* [x] Rejects a Webmention where the target URL is in the document as text
+* [x] Rejects a Webmention where the target URL is in an `<a>` tag inside an HTML comment
 * [x] Rejects a Webmention where the target URL is not in the document
 
 
@@ -140,24 +140,19 @@ The tests below apply when the source document is HTML.
  * [x] using HTML markup: `class="u-repost-of"`
 * [x] The receiver recognizes that the source URL is an "RSVP" to the post
  * [x] using HTML markup: `class="p-rsvp"`
-* [ ] The receiver recognizes additional response types, using markup:
- * [ ] Response: __________ using HTML markup: __________
- * (Please add lines like above for additional response types the receiver has implemented)
-
-Please describe any other ways the Webmention is displayed or used if applicable.
 
 
 ### Update Tests (3.2.4)
 
 * [x] Does not display an update Webmention as a new response (SHOULD)
-* [ ] Removes the response when an update Webmention is sent and the source URL returns 200 and no link is found (SHOULD)
+* [x] Removes the response when an update Webmention is sent and the source URL returns 200 and no link is found (SHOULD)
 * [x] Updates and stores the information from the primary object at the source URL (MUST)
 * [ ] Updates and stores the information from children or descendant objects at the source URL (MAY)
 
 
 ### Delete Tests (3.2.4)
 
-* [ ] Recognizes an HTTP 410 response as a delete, and removes the response (SHOULD)
+* [x] Recognizes an HTTP 410 response as a delete, and removes the response (SHOULD)
 
 
 ### Security Considerations (4)
