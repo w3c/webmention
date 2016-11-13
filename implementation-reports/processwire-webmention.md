@@ -67,7 +67,7 @@ SHOULD
 
 ### Security Considerations (4)
 
-* [ ] The sender avoids sending a Webmention to a loopback address (SHOULD)
+* [x] The sender avoids sending a Webmention to a loopback address (SHOULD)
 
 
 ### Extensions
@@ -76,6 +76,7 @@ This implementation has also implemented the following extensions.
 
 * [ ] [Salmention](http://indiewebcamp.com/Salmention)
 * [x] [Vouch](http://indiewebcamp.com/Vouch)
+* [x] [Private Webmention](http://indiewebcamp.com/Private-Webmention)
 * [ ] Other: _______
 
 
