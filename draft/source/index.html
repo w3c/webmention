@@ -611,7 +611,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
         <h3>Avoid sending Webmentions to localhost</h3>
 
         <p>When the sender discovers the receiver's Webmention endpoint, there
-          is no legitimate reason for the endpoint to be localhost or any other loopback
+          are few legitimate reasons for the endpoint to be localhost or any other loopback
           address. If the sender has any services that listen on localhost that
           don't require authentication, it's possible for a malicious Webmention 
           receiver to craft a Webmention endpoint that could cause the sender to 
@@ -814,7 +814,15 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 24 May 2016 CR to this version</h3>
+        <h3>Changes from 01 November PR to this version</h3>
+
+        <ul>
+          <li>Editorial clarification around sending to loopback addresses</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Changes from 24 May 2016 CR to 01 November PR</h3>
 
         <ul>
           <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
