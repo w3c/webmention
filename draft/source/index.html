@@ -495,7 +495,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
             the source document mentions the target URL. For example, in an
             [[HTML5]] document, the receiver should look for <code>&lt;a href="*"&gt;</code>,
             <code>&lt;img href="*"&gt;</code>, <code>&lt;video src="*"&gt;</code>
-            and other similar links. In a [[JSON]] document, the receiver should
+            and other similar links. In a JSON ([[RFC7159]]) document, the receiver should
             look for properties whose values are an exact match for the URL.
             If the document is plain text, the receiver should look for the URL
             by searching for the string. Other content types may be handled at
@@ -820,6 +820,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
 
         <ul>
           <li>Editorial clarification around sending to loopback addresses</li>
+          <li>Updated JSON reference to RFC7159 from the obsolete RFC4627</li>
         </ul>
       </section>
 
