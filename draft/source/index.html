@@ -4,10 +4,11 @@
     <title>Webmention</title>
     <meta charset='utf-8'>
     <script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
+    <script src='add-paragraph-ids.js' class='remove'></script>
     <script class='remove'>
       var respecConfig = {
           useExperimentalStyles: true,
-          publishDate: "2016-11-01",
+          publishDate: "2016-12-12",
           specStatus: "ED",
           previousMaturity: "CR",
           previousPublishDate: "2016-05-24",
@@ -27,6 +28,7 @@
           wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/72531/status",
           errata: "https://webmention.net/errata/",
           license: "w3c-software-doc",
+          postProcess: [addParagraphIDs],
           otherLinks: [{
             key: 'Repository',
             data: [
@@ -907,5 +909,21 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       </section>
     </section>
 
+    <script>
+    // After text is selected (mouseup), find the closest element that has an ID
+    // attribute, and update the browser location bar to include that as the fragment
+    document.body.onmouseup = function(){
+      var selection;
+      if(selection=window.getSelection()) {
+        var range = selection.getRangeAt(0);
+        var el = range.startContainer;
+        while((el=el.parentElement) && !el.attributes["id"]);
+        var hash = el.attributes["id"].value;
+        if(history.replaceState) {
+          history.replaceState(null, null, "#"+hash);
+        }
+      }
+    };
+    </script>
   </body>
 </html>
