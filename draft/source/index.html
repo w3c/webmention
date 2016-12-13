@@ -780,98 +780,13 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       <h2>Change Log</h2>
 
       <section>
-        <h3>Changes from 01 November PR to this version</h3>
+        <h3>Changes from <a href="https://www.w3.org/TR/2016/PR-webmention-20161101/">01 November PR</a> to REC</h3>
 
         <ul>
           <li>Editorial clarification around sending to loopback addresses</li>
           <li>Updated JSON reference to RFC7159 from the obsolete RFC4627</li>
           <li>Add informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
           <li>Added note about republishing potentially restricted visibilty content</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 24 May 2016 CR to 01 November PR</h3>
-
-        <ul>
-          <li>Replaced "client" with "sender" to match the roles defined in the spec</li>
-          <li>Clarify that senders should only look for HTML <code>link</code> and <code>a</code> tags in HTML documents</li>
-          <li>Added text to security considerations for Webmention to clarify that it allowed to use HEAD request during verification</li>
-          <li>Moved suggested specific limit of number of redirects to follow into the security considerations section</li>
-          <li>In conformance criteria, clarify that the Sender does not need to be the one creating the source document</li>
-          <li>Add intro section describing when you would send a Webmention and describing creating a source document</li>
-          <li>Use the term "mentions" instead of "links to" to cover the plaintext case as well</li>
-          <li>Added a section on creating a landing page for non-HTML or restricted access source documents</li>
-          <li>Removed plaintext English example from response body</li>
-          <li>Expand introduction paragraph, add section linking to Social Web Protocols document</li>
-          <li>Update RFC 2616 references to RFC 7231</li>
-          <li>Add note about respecting cache headers and customizing the user agent</li>
-          <li>Add Security and Privacy Questionnaire</li>
-          <li>Updated reference from RFC 3986 to WHATWG URL</li>
-          <li>Added link to Private Webmention extension</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 29 April 2016 WD to 24 May 2016 CR</h3>
-
-        <ul>
-          <li>Moved list of implementations to webmention.net</li>
-          <li>MUST reject Webmentions where source == target, since most current implementations are already doing this.</li>
-          <li>Remove normative requirement on Salmention.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 20 April 2016 WD to 29 April 2016 WD</h3>
-
-        <ul>
-          <li>Added link to test suite in document header</li>
-          <li>Added section describing how to submit implementation reports</li>
-          <li>Clarified implementation must meet all listed criteria</li>
-          <li>Minor typo fixes</li>
-          <li>Clarified moderation is a MAY since verification is already a MUST in 3.2.2</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 29 March 2016 WD to 20 April 2016 WD</h3>
-
-        <ul>
-          <li>Minor typo fixes</li>
-          <li>Updated discovery to prioritize link and a tags in document order</li>
-          <li>Added Webmention.rocks to the list of tools</li>
-          <li>Added note that if the Webmention endpoint contains query string parameters, they must be preserved</li>
-          <li>Added note and example of a CSRF prevention technique</li>
-          <li>Added security consideration about limiting access to protected resources</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 1 March 2016 WD to 29 March 2016 WD</h3>
-
-        <ul>
-          <li>Updated list of implementations</li>
-          <li>Non-normative language and phrasing clarifications</li>
-          <li>Added section on sending Webmentions for updated and deleted posts</li>
-          <li>Added conformance criteria and classes section</li>
-          <li>Added localhost security consideration</li>
-          <li>Added a note on how to convert source and target parameter names to URIs</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Changes from 12 January 2016 FPWD to 1 March 2016 WD</h3>
-
-        <p>This section lists changes from the <a href="https://www.w3.org/TR/2016/WD-webmention-20160112/">12 January 2016 FPWD</a> to this Working Draft</p>
-
-        <ul>
-          <li>Minor typo and formatting corrections</li>
-          <li>Add IANA Considerations section to register rel=webmention with IANA</li>
-          <li>Add a note that receivers SHOULD remove the fragment before checking if it is a supported URL. <a href="https://github.com/w3c/webmention/issues/24">Issue #24</a></li>
-          <li>Clarify "Receiving Webmentions" introduction paragraph</li>
-          <li>Update list of implementations</li>
-          <li>Correct the capitalization of Webmention and Pingback</li>
           <li>Editorial nits</li>
         </ul>
       </section>
