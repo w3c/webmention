@@ -152,6 +152,13 @@
       </section>
 
       <section class="informative">
+        <h3>Background</h3>
+
+        <p>The Webmention spec began as a simplified version of the [[Pingback]] spec. Where Pingback required sending the source and target URLs in an XML-RPC payload, Webmention simplified that to a form-encoded payload, which meant it could easily be used in HTML forms, was easier to work with since more tools exist for form-encoded payloads, and was not vulnerable to accidentally exposing other parts of a system's code via XML-RPC.</p>
+        <p>Webmention then continued on to more thoroughly specify the details of sending and verifying the request, and expanded to support sending notifications when a source document was updated or deleted. More information can be found in the <a href="https://indieweb.org/Webmention-faq">Webmention FAQ</a> on the IndieWeb wiki.</p>
+      </section>
+
+      <section class="informative">
         <h3>Overview</h3>
 
         <p>A typical Webmention flow is as follows:
