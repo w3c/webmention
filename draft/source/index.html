@@ -111,8 +111,7 @@
                 '<div class="note"><p><b>Note:</b> URLs can be used in numerous different manners, in many differing contexts. For the purpose of producing strict URLs one may wish to consider [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] and [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>]. The URL specification defines the term URL, various algorithms for dealing with URLs, and an API for constructing, parsing, and resolving URLs. Developers are advised to keep abreast of the latest URL developments by tracking the progress of <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>.</p> <p>As a word of caution, there are notable differences in the manner in which Web browsers and other software stacks outside the HTML context handle URLs. While no changes would be accepted to URL processing that would break existing Web content, some important parts of URL processing should therefore be considered as implementation-defined (e.g. parsing <code>file:</code> URLs or operating on URLs that would be syntax errors under the [<a href="https://www.ietf.org/rfc/rfc3986">RFC3986</a>] [<a href="https://www.ietf.org/rfc/rfc3987">RFC3987</a>] syntax).</p></div> Anne van Kesteren'
               ],
               status: "Continually Updated Specification",
-              publisher: "WHATWG",
-              note: "HI"
+              publisher: "WHATWG"
             }
           }
       };
@@ -294,7 +293,7 @@
 
         <p>Please submit your implementation reports at <a href="https://webmention.net/implementation-reports/">http://webmention.net/implementation-reports/</a>. Instructions are provided at the URL. The implementation report template references the tests available at <a href="https://webmention.rocks/">webmention.rocks</a>.</p>
 
-        <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a good tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
+        <p><a href="https://webmention.rocks/">webmention.rocks</a> provides many test cases you can use to live-test your implementation. It also is a useful tool to use while developing a Webmention implementation, as it provides detailed responses when errors are encountered.</p>
       </section>
     </section>
 
@@ -439,7 +438,7 @@ HTTP/1.1 202 Accepted</pre></p>
         <p>Upon receipt of a POST request containing the <code>source</code> and
           <code>target</code> parameters, the receiver SHOULD verify the parameters 
           (see <a href="#request-verification">Request Verification</a> below) and then
-          SHOULD queue and process the request asynchronously, prevent DoS attacks. 
+          SHOULD queue and process the request asynchronously, to prevent DoS attacks. 
           There are three possible responses to the request, depending on how the receiver
           processes it.</p>
 
@@ -475,7 +474,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
           <p>The receiver SHOULD check that <code>target</code> is a valid resource for which
             it can accept Webmentions. This check SHOULD happen
             synchronously to reject invalid Webmentions before more in-depth
-            verification begins. What a 'valid resource' means is up to the receiver. For example, 
+            verification begins. What a "valid resource" means is up to the receiver. For example, 
             some receivers may accept Webmentions for multiple domains, others may accept
             Webmentions for only the same domain the endpoint is on.</p>
 
@@ -519,7 +518,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
 
           <p class="note">When republishing content from the source page, care should be taken to 
             ensure you are not unintentionally changing the visibility of the content. For example,
-            if the source document is visible only to a certain audience, you should
+            if the source document is visible only to a limited audience, you should
             ensure the republished content is not visible to the general public. The source
             document may be restricted to a specific audience either by some form of 
             authentication, or because the source URL was behind a firewall that the receiver
@@ -930,6 +929,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
           <li>Clarify "Receiving Webmentions" introduction paragraph</li>
           <li>Update list of implementations</li>
           <li>Correct the capitalization of Webmention and Pingback</li>
+          <li>Editorial nits</li>
         </ul>
       </section>
     </section>
