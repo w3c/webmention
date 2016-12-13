@@ -727,6 +727,13 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
       </section>
 
       <section>
+        <h3>Sending Webmentions for large datasets</h3>
+
+        <p>If your Webmention source document is particularly large (such as a large HTML page with thousands of records in a table, or a very large JSON file), you will likely want to avoid sending a Webmention with that source URL. Doing so may cause receivers to download the entire dataset, using a lot of your bandwidth, or receivers may download only the first portion of the file in order to restrict their own bandwidth usage, potentially causing the verification to fail. If the receiver republishes a link to your source document, other visitors may follow that link and inadvertently download the entire dataset as well.</p>
+        <p>Similar to how it is considered good practice to break up large datasets into pages when being viewed in a browser, when sending Webmentions, you should send Webmentions only from smaller pages of data if your source document is large. If your dataset is HTML, then you can use your (likely) existing HTML pages as source URLs. If your dataset is JSON, you may need to create URLs with smaller JSON documents in pages that you can use as source URLs.</p>
+      </section>
+
+      <section>
         <h3>Respecting cache headers on discovery</h3>
 
         <p>When performing <a href="#sender-discovers-receiver-webmention-endpoint">Webmention discovery</a>, Senders SHOULD respect the HTTP cache headers [[RFC7234]] returned by the target URL and avoid fetching the target URL more often than is indicated by the headers.</p>
@@ -836,6 +843,7 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         <ul>
           <li>Editorial clarification around sending to loopback addresses</li>
           <li>Updated JSON reference to RFC7159 from the obsolete RFC4627</li>
+          <li>Add informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
           <li>Added note about republishing potentially restricted visibilty content</li>
         </ul>
       </section>
