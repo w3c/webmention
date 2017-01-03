@@ -544,11 +544,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
   <link rel="canonical" href="https://www.w3.org/TR/webmention/">
-  <meta name="generator" content="ReSpec 7.0.0">
+  <meta name="generator" content="ReSpec 8.0.1">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2016-12-15",
+      "publishDate": "2017-01-05",
       "specStatus": "REC",
       "previousMaturity": "PR",
       "previousPublishDate": "2016-11-01",
@@ -662,21 +662,37 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           ],
           "status": "Continually Updated Specification",
           "publisher": "WHATWG"
+        },
+        "CSRF":
+        {
+          "title": "Cross-Site Request Forgery",
+          "href": "https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)",
+          "authors": [],
+          "status": "Living Document",
+          "publisher": "OWASP"
+        },
+        "XSS":
+        {
+          "title": "Cross-Site Scripting",
+          "href": "https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)",
+          "authors": [],
+          "status": "Living Document",
+          "publisher": "OWASP"
         }
       }
     }
   </script>
 </head>
-<body class="h-entry toc-inline" role="document" id="respecDocument">
+<body class="h-entry" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
     <p>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-    <h2 id="w3c-recommendation-15-december-2016"><abbr title="World Wide Web Consortium">W3C</abbr> Recommendation <time property="dcterms:issued" class="dt-published" datetime="2016-12-15">15 December 2016</time></h2>
+    <h2 id="w3c-recommendation-05-january-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-01-05">05 January 2017</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2016/REC-webmention-20161215/">https://www.w3.org/TR/2016/REC-webmention-20161215/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/REC-webmention-20170105/">https://www.w3.org/TR/2017/REC-webmention-20170105/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/webmention/">https://www.w3.org/TR/webmention/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -717,7 +733,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://www.w3.org/2003/03/Translations/byTechnology?technology=https://www.w3.org/TR/webmention/">translations</a> may also be available.
     </p>
     <p class="copyright">
-      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2017
 
       <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
       <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
@@ -1002,12 +1018,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <p id="create-a-source-document-that-mentions-the-target-p-2">For example, the URL at https://waterpigs.example/post-by-barnaby may contain the following HTML that has a link to Aaron's post.</p>
         <p id="create-a-source-document-that-mentions-the-target-p-3"></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 1</span></div><pre class="hljs xml"><span class="hljs-meta">&lt;!doctype html&gt;</span>
+          <div class="example-title marker"><span>Example 1</span></div>
+          <pre class="hljs xml"><span class="hljs-meta">&lt;!doctype html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://aaronpk.example/post-by-aaron"</span>&gt;</span>This is a great post<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></pre>
+        </div>
         <p id="create-a-source-document-that-mentions-the-target-p-4"></p>
       </section>
 
@@ -1027,7 +1045,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
         <p id="sender-discovers-receiver-webmention-endpoint-p-5"></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 2</span></div><pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 2</span></div>
+          <pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 HTTP/1.1 <span class="hljs-number">200</span> OK
 <span class="hljs-attribute">Link</span>: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
@@ -1043,7 +1062,8 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://aaronpk.example/webmention-endpoint"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"webmention"</span>&gt;</span>webmention<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></span></pre></div>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></span></pre>
+        </div>
         <p id="sender-discovers-receiver-webmention-endpoint-p-6"></p>
 
         <p id="sender-discovers-receiver-webmention-endpoint-p-7">Senders <em class="rfc2119" title="MAY">MAY</em> customize the HTTP User Agent [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>] used when fetching the target URL in order to indicate to the recipient that this request is made as part of Webmention discovery. In this case, it is recommended to include the string "Webmention" in the User Agent. This provides people with a pointer to find out why the discovery request was made.</p>
@@ -1060,13 +1080,14 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 
         <p id="sender-notifies-receiver-p-2">Note that if the Webmention endpoint URL contains query string parameters, the query string parameters <em class="rfc2119" title="MUST">MUST</em> be preserved, and <em class="rfc2119" title="MUST NOT">MUST NOT</em> be sent in the POST body.</p>
 
-        <p id="sender-notifies-receiver-p-3">The Webmention endpoint will validate and process the request, and return an HTTP status code [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>]. Most often, <code>202 Accepted</code> or <code>201 Created</code> will be returned, indicating that the request is queued and being processed asynchronously to prevent DoS attacks. If the response code is 201, the <code>Location</code> header will include a URL that can be used to monitor the status of the request.</p>
+        <p id="sender-notifies-receiver-p-3">The Webmention endpoint will validate and process the request, and return an HTTP status code [<cite><a class="bibref" href="#bib-RFC7231">RFC7231</a></cite>]. Most often, <code>202 Accepted</code> or <code>201 Created</code> will be returned, indicating that the request is queued and being processed asynchronously to prevent DoS (Denial of Service) attacks. If the response code is 201, the <code>Location</code> header will include a URL that can be used to monitor the status of the request.</p>
 
         <p id="sender-notifies-receiver-p-4">Any <code>2xx</code> response code <em class="rfc2119" title="MUST">MUST</em> be considered a success.</p>
 
         <p id="sender-notifies-receiver-p-5"></p>
         <div class="example">
-          <div class="example-title marker"><span>Example 3</span></div><pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1
+          <div class="example-title marker"><span>Example 3</span></div>
+          <pre class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/webmention-endpoint</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 <span class="hljs-attribute">Content-Type</span>: application/x-www-form-urlencoded
 
@@ -1074,7 +1095,8 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
 target=https:<span class="hljs-comment">//aaronpk.example/post-by-aaron</span>
 
 
-HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> Accepted</span></pre></div>
+HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> Accepted</span></pre>
+        </div>
         <p id="sender-notifies-receiver-p-6"></p>
 
       </section>
@@ -1114,15 +1136,19 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
       <p id="receiving-webmentions-p-3"></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 4</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
-<span class="hljs-attribute">Location</span>: http://aaronpk.example/webmention/DEhB9Jme</pre></div>
+        <div class="example-title marker"><span>Example 4</span></div>
+        <pre class="hljs http">HTTP/1.1 <span class="hljs-number">201</span> Created
+<span class="hljs-attribute">Location</span>: http://aaronpk.example/webmention/DEhB9Jme</pre>
+      </div>
       <p id="receiving-webmentions-p-4"></p>
 
       <p id="receiving-webmentions-p-5">If the receiver processes the request asynchronously but does not return a status URL, the receiver <em class="rfc2119" title="MUST">MUST</em> reply with an <code>HTTP 202 Accepted</code> response. The response body <em class="rfc2119" title="MAY">MAY</em> contain content, in which case a human-readable response is recommended.</p>
 
       <p id="receiving-webmentions-p-6"></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 5</span></div><pre class="hljs http">HTTP/1.1 <span class="hljs-number">202</span> Accepted</pre></div>
+        <div class="example-title marker"><span>Example 5</span></div>
+        <pre class="hljs http">HTTP/1.1 <span class="hljs-number">202</span> Accepted</pre>
+      </div>
       <p id="receiving-webmentions-p-7"></p>
 
       <p id="receiving-webmentions-p-8">If the receiver chooses to process the request and perform the verification step synchronously (not recommended), it <em class="rfc2119" title="MUST">MUST</em> respond with a <code>200 OK</code> status on success.</p>
@@ -1144,7 +1170,7 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
         <h4 id="h-webmention-verification" resource="#h-webmention-verification"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.2 </span>Webmention Verification</span>
         </h4>
 
-        <p id="webmention-verification-p-1">Webmention verification <em class="rfc2119" title="SHOULD">SHOULD</em> be handled asynchronously to prevent DoS attacks.</p>
+        <p id="webmention-verification-p-1">Webmention verification <em class="rfc2119" title="SHOULD">SHOULD</em> be handled asynchronously to prevent DoS (Denial of Service) attacks.</p>
 
         <p id="webmention-verification-p-2">If the receiver is going to use the Webmention in some way, (displaying it as a comment on a post, incrementing a "like" counter, notifying the author of a post), then it <em class="rfc2119" title="MUST">MUST</em> perform an HTTP GET request on source, following any HTTP redirects (and <em class="rfc2119" title="SHOULD">SHOULD</em> limit the number of redirects it follows) to confirm that it actually mentions the target. The receiver <em class="rfc2119" title="SHOULD">SHOULD</em> include an HTTP Accept header indicating its preference of content types that are acceptable.</p>
 
@@ -1233,10 +1259,11 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
       </h3>
 
       <ul>
-        <li id="preventing-abuse-li-1">The verification process <em class="rfc2119" title="SHOULD">SHOULD</em> be queued and processed asynchronously to prevent DoS attacks.</li>
-        <li id="preventing-abuse-li-2">Receivers <em class="rfc2119" title="MAY">MAY</em> moderate Webmentions before displaying them.</li>
-        <li id="preventing-abuse-li-3">Receivers <em class="rfc2119" title="MAY">MAY</em> periodically re-verify Webmentions and update them.</li>
-        <li id="preventing-abuse-li-4">If a receiver chooses to publish data it picks up from source, it <em class="rfc2119" title="MUST">MUST</em> ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
+        <li id="preventing-abuse-li-1">The verification process <em class="rfc2119" title="SHOULD">SHOULD</em> be queued and processed asynchronously to prevent DoS attacks per <a href="#receiving-webmentions">section 3.2</a>.</li>
+        <li id="preventing-abuse-li-2">Receivers <em class="rfc2119" title="MUST">MUST</em> verify Webmentions per <a href="#webmention-verification">section 3.2.2</a>.</li>
+        <li id="preventing-abuse-li-3">If a receiver chooses to display data it picks up from source, it <em class="rfc2119" title="MUST">MUST</em> ensure that the data is encoded and/or filtered to prevent [<cite><a class="bibref" href="#bib-XSS">XSS</a></cite>] and [<cite><a class="bibref" href="#bib-CSRF">CSRF</a></cite>] attacks.</li>
+        <li id="preventing-abuse-li-4">Receivers <em class="rfc2119" title="MAY">MAY</em> moderate Webmentions before publishing them.</li>
+        <li id="preventing-abuse-li-5">Receivers <em class="rfc2119" title="MAY">MAY</em> periodically re-verify Webmentions and update them.</li>
       </ul>
     </section>
 
@@ -1268,10 +1295,12 @@ HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">202</span> A
 
       <p id="cross-site-request-forgery-p-3"></p>
       <div class="example">
-        <div class="example-title marker"><span>Example 6</span></div><pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
+        <div class="example-title marker"><span>Example 6</span></div>
+        <pre class="hljs http"><span class="hljs-keyword">GET</span> <span class="hljs-string">/post-by-aaron</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: aaronpk.example
 HTTP/1.1 <span class="hljs-number">200</span> OK
-<span class="hljs-attribute">Link</span>: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</pre></div>
+<span class="hljs-attribute">Link</span>: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="webmention"</pre>
+      </div>
       <p id="cross-site-request-forgery-p-4"></p>
 
       <p id="cross-site-request-forgery-p-5">Then, when the Webmention endpoint is processing a request, it can first check the validity of the CSRF token before any other processing.</p>
@@ -1481,9 +1510,13 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
       <ul>
         <li id="changes-from-01-november-pr-to-rec-li-1">Editorial clarification around sending to loopback addresses</li>
         <li id="changes-from-01-november-pr-to-rec-li-2">Updated JSON reference to RFC7159 from the obsolete RFC4627</li>
-        <li id="changes-from-01-november-pr-to-rec-li-3">Add informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
+        <li id="changes-from-01-november-pr-to-rec-li-3">Added informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
         <li id="changes-from-01-november-pr-to-rec-li-4">Added note about republishing potentially restricted visibilty content</li>
-        <li id="changes-from-01-november-pr-to-rec-li-5">Editorial nits</li>
+        <li id="changes-from-01-november-pr-to-rec-li-5">Added informative reference to OWASP documents about XSS and CSRF</li>
+        <li id="changes-from-01-november-pr-to-rec-li-6">Clarified "publish" vs "display" in security considerations</li>
+        <li id="changes-from-01-november-pr-to-rec-li-7">Added an item to 4.1 security considerations to reiterate verifying Webmentions</li>
+        <li id="changes-from-01-november-pr-to-rec-li-8">Re-ordered 4.1 security considerations based on chronological order</li>
+        <li id="changes-from-01-november-pr-to-rec-li-9">Editorial nits</li>
       </ul>
     </section>
   </section>
@@ -1540,7 +1573,9 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
     <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
       <h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">F.2 </span>Informative references</span>
       </h3>
-      <dl class="bibliography" resource=""><dt id="bib-Pingback">[Pingback]</dt>
+      <dl class="bibliography" resource=""><dt id="bib-CSRF">[CSRF]</dt>
+        <dd>OWASP. <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" property="dc:references"><cite>Cross-Site Request Forgery</cite></a>. Living Document. URL: <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" property="dc:references">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)</a>
+        </dd><dt id="bib-Pingback">[Pingback]</dt>
         <dd>Stuart Langridge; Ian Hickson. hixie.ch. <a href="http://www.hixie.ch/specs/pingback/pingback" property="dc:references"><cite>Pingback 1.0</cite></a>. Stable Specification. URL: <a href="http://www.hixie.ch/specs/pingback/pingback" property="dc:references">http://www.hixie.ch/specs/pingback/pingback</a>
         </dd><dt id="bib-Private-Webmention">[Private-Webmention]</dt>
         <dd>Aaron Parecki. IndieWeb. <a href="https://indieweb.org/Private-Webmention" property="dc:references"><cite>Private Webmention</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Private-Webmention" property="dc:references">https://indieweb.org/Private-Webmention</a>
@@ -1552,6 +1587,8 @@ HTTP/1.1 <span class="hljs-number">200</span> OK
         <dd>Ben Roberts; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Salmention" property="dc:references"><cite>Salmention</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Salmention" property="dc:references">https://indieweb.org/Salmention</a>
         </dd><dt id="bib-Vouch">[Vouch]</dt>
         <dd>Aaron Parecki; Tantek Çelik. IndieWeb. <a href="https://indieweb.org/Vouch" property="dc:references"><cite>Vouch</cite></a>. Living Specification. URL: <a href="https://indieweb.org/Vouch" property="dc:references">https://indieweb.org/Vouch</a>
+        </dd><dt id="bib-XSS">[XSS]</dt>
+        <dd>OWASP. <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" property="dc:references"><cite>Cross-Site Scripting</cite></a>. Living Document. URL: <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" property="dc:references">https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)</a>
         </dd><dt id="bib-h-entry">[h-entry]</dt>
         <dd>Tantek Çelik. microformats.org. <a href="http://microformats.org/wiki/h-entry" property="dc:references"><cite>h-entry</cite></a>. Living Specification. URL: <a href="http://microformats.org/wiki/h-entry" property="dc:references">http://microformats.org/wiki/h-entry</a>
         </dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt>
