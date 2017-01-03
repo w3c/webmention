@@ -111,6 +111,20 @@
               ],
               status: "Continually Updated Specification",
               publisher: "WHATWG"
+            },
+            "CSRF": {
+              title: "Cross-Site Request Forgery",
+              href: "https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)",
+              authors: [],
+              status: "Living Document",
+              publisher: "OWASP"
+            },
+            "XSS": {
+              title: "Cross-Site Scripting",
+              href: "https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)",
+              authors: [],
+              status: "Living Document",
+              publisher: "OWASP"
             }
           }
       };
@@ -327,7 +341,7 @@ Link: &lt;http://aaronpk.example/webmention-endpoint&gt;; rel="webmention"
             return an HTTP status code [[!RFC7231]]. Most often, <code>202 Accepted</code>
             or <code>201 Created</code> will be returned, indicating that the
             request is queued and being processed asynchronously to prevent
-            DoS attacks. If the response code is 201, the <code>Location</code>
+            DoS (Denial of Service) attacks. If the response code is 201, the <code>Location</code>
             header will include a URL that can be used to monitor the
             status of the request.</p>
 
@@ -429,7 +443,7 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
           <h4>Webmention Verification</h4>
 
           <p>Webmention verification SHOULD be handled asynchronously to
-            prevent DoS attacks.</p>
+            prevent DoS (Denial of Service) attacks.</p>
 
           <p>If the receiver is going to use the Webmention in some way,
             (displaying it as a comment on a post, incrementing a "like"
@@ -537,10 +551,11 @@ Location: http://aaronpk.example/webmention/DEhB9Jme</pre></p>
         <h3>Preventing Abuse</h3>
 
         <ul>
-          <li>The verification process SHOULD be queued and processed asynchronously to prevent DoS attacks.</li>
-          <li>Receivers MAY moderate Webmentions before displaying them.</li>
+          <li>The verification process SHOULD be queued and processed asynchronously to prevent DoS attacks per <a href="#receiving-webmentions">section 3.2</a>.</li>
+          <li>Receivers MUST verify Webmentions per <a href="#webmention-verification">section 3.2.2</a>.</li>
+          <li>If a receiver chooses to display data it picks up from source, it MUST ensure that the data is encoded and/or filtered to prevent [[XSS]] and [[CSRF]] attacks.</li>
+          <li>Receivers MAY moderate Webmentions before publishing them.</li>
           <li>Receivers MAY periodically re-verify Webmentions and update them.</li>
-          <li>If a receiver chooses to publish data it picks up from source, it MUST ensure that the data is encoded and/or filtered to prevent XSS and CSRF attacks.</li>
         </ul>
       </section>
 
@@ -784,8 +799,10 @@ Link: &lt;http://aaronpk.example/webmention?csrf=Q0NTVhYjI0NTVkNDA3M&gt;; rel="w
         <ul>
           <li>Editorial clarification around sending to loopback addresses</li>
           <li>Updated JSON reference to RFC7159 from the obsolete RFC4627</li>
-          <li>Add informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
+          <li>Added informative note about breaking up large documents into pages when sending Webmentions from large datasets</li>
           <li>Added note about republishing potentially restricted visibilty content</li>
+          <li>Added informative reference to OWASP documents about XSS and CSRF</li>
+          <li>Clarified "publish" vs "display" in security considerations and added a reference to section 3.2</li>
           <li>Editorial nits</li>
         </ul>
       </section>
