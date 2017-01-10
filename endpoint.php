@@ -24,6 +24,14 @@ if(isset($_POST['source']) && isset($_POST['target'])) {
       header($key . ': ' . $val);
   }
   echo $body;
+} else {
+  ?>
+  <form action="/endpoint.php" method="post">
+    <input type="url" name="source" placeholder="source"><br>
+    <input type="url" name="target" placeholder="target"><br>
+    <input type="submit" value="Send Webmention">
+  </form>
+  <?
 }
 
 function parse_headers($headers) {
