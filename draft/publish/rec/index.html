@@ -528,6 +528,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       border-radius: inherit;
     }
     
+    .respec-offending-element {
+      display: inline-block;
+      position: relative;
+      background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x;
+    }
+    
     @media print {
       .removeOnSave {
         display: none;
@@ -541,14 +547,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
   <link rel="pingback" href="https://webmention.net/pingback.php">
   <link rel="webmention" href="https://webmention.net/endpoint.php">
-  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC">
   <!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]-->
-  <link rel="canonical" href="https://www.w3.org/TR/webmention/">
-  <meta name="generator" content="ReSpec 8.0.1">
   <script id="initialUserConfig" type="application/json">
     {
       "useExperimentalStyles": true,
-      "publishDate": "2017-01-10",
+      "publishDate": "2017-01-12",
       "specStatus": "REC",
       "previousMaturity": "PR",
       "previousPublishDate": "2016-11-01",
@@ -682,6 +685,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       }
     }
   </script>
+  <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-REC">
+  <meta name="generator" content="ReSpec 8.4.1">
+  <link rel="canonical" href="https://www.w3.org/TR/webmention/">
 </head>
 <body class="h-entry toc-inline" role="document" id="respecDocument">
   <div class="head" role="contentinfo" id="respecHeader">
@@ -689,10 +695,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a class="logo" href="https://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" alt="W3C"></a>
     </p>
     <h1 class="title p-name" id="title" property="dcterms:title">Webmention</h1>
-    <h2 id="w3c-recommendation-10-january-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-01-10">10 January 2017</time></h2>
+    <h2 id="w3c-recommendation-12-january-2017"><abbr title="World Wide Web Consortium">W3C</abbr> Recommendation <time property="dcterms:issued" class="dt-published" datetime="2017-01-12">12 January 2017</time></h2>
     <dl>
       <dt>This version:</dt>
-      <dd><a class="u-url" href="https://www.w3.org/TR/2017/REC-webmention-20170110/">https://www.w3.org/TR/2017/REC-webmention-20170110/</a></dd>
+      <dd><a class="u-url" href="https://www.w3.org/TR/2017/REC-webmention-20170112/">https://www.w3.org/TR/2017/REC-webmention-20170112/</a></dd>
       <dt>Latest published version:</dt>
       <dd><a href="https://www.w3.org/TR/webmention/">https://www.w3.org/TR/webmention/</a></dd>
       <dt>Latest editor's draft:</dt>
@@ -778,8 +784,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <p id="sotd-p-4">
       This document has been reviewed by <abbr title="World Wide Web Consortium">W3C</abbr> Members, by software developers, and by other <abbr title="World Wide Web Consortium">W3C</abbr> groups and interested parties, and is endorsed by the Director as a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. It is a stable document and may be used as reference material or cited from another document. <abbr title="World Wide Web Consortium">W3C</abbr>'s role in making the Recommendation is to draw attention to the specification and to promote its widespread deployment. This enhances the functionality and interoperability of the Web.
     </p>
-    <p id="sotd-p-5"><abbr title="World Wide Web Consortium">W3C</abbr> expects the functionality specified in this Recommendation will not be affected by changes to Fetch.</p>
-    <p id="sotd-p-6">
+    <p id="sotd-p-5">
       This document was produced by a group operating under the
       <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
               Policy</a>.
@@ -790,6 +795,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
               6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
     </p>
+    <p id="sotd-p-6"><abbr title="World Wide Web Consortium">W3C</abbr> expects the functionality specified in this Recommendation will not be affected by changes to Fetch.</p>
     <p id="sotd-p-7">This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
     </p>
 
