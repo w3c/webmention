@@ -19,9 +19,9 @@ if(isset($_POST['source']) && isset($_POST['target'])) {
   foreach($headers as $key=>$val) {
     if(is_array($val))
       foreach($val as $v)
-        header($key, $v);
+        header($key . ': ' . $v, false);
     else
-      header($key . ': ' . $val);
+      header($key . ': ' . $val, false);
   }
   echo $body;
 } else {
