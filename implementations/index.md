@@ -26,6 +26,7 @@
 ### Receiving
 * PHP Minimum Viable Webmention handler: [https://gist.github.com/adactio/6484118](https://gist.github.com/adactio/6484118)
 * [pear2/Services_Linkback](https://github.com/pear2/Services_Linkback) - *PHP* Pingback and Webmention client + server library
+* [django-webmention](https://github.com/easy-as-python/django-webmention) - Webmention for Django projects
 
 ### Parsing
 * [microformats2 implementations and parsers](http://microformats.org/wiki/microformats2#Implementations)
