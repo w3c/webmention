@@ -8,7 +8,7 @@
 ### Sending
 
 * [indieweb/mention-client-php](https://github.com/indieweb/mention-client-php) - *PHP* library for sending webmention and pingpack notifications
-* [indieweb/mention-client-ruby](https://github.com/indieweb/mention-client-ruby) - *Ruby* library for sending webmention notifications
+* [indieweb/webmention-client-ruby](https://github.com/indieweb/webmention-client-ruby) - *Ruby* library for sending webmention notifications
 * [phpish/webmention](https://github.com/phpish/webmention) - Simple Webmention client (non-OO) in *PHP* packaged as a composer package
 * [vrypan/webmention-tools](https://github.com/vrypan/webmention-tools) - *Python* client library and command line webmention sender
 * [pear2/Services_Linkback](https://github.com/pear2/Services_Linkback) - *PHP* Pingback and Webmention client + server library
