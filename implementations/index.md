@@ -19,6 +19,7 @@
 
 ### Endpoint Discovery
 * [link_rel_parser](https://github.com/indieweb/link-rel-parser-php/blob/master/src/IndieWeb/link_rel_parser.php) - *PHP* `http_rels($h)` &amp; `head_http_rels($url)` - HTTP header string parser for RFC5988 Link: rels (including `X-Pingback`) &amp; function to curl a HEAD request and parse it all in one.
+* [jgarber623/webmention-endpoint-ruby](https://github.com/jgarber623/webmention-endpoint-ruby) - *Ruby* client library for discovering Webmention endpoints
 * [phpish/link_header](https://github.com/phpish/link_header) - *PHP* Link header (RFC 5988) parser
 * [PEAR: HTTP2](http://pear.php.net/package/HTTP2) - *PHP* Link header (RFC 5988) parser ([documentation](http://pear.php.net/manual/en/package.http.http2.parselinks.php))
 * [ronkyuu](http://indiewebcamp.com/ronkyuu) - *Python* client library and command-line tools
