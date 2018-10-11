@@ -1,5 +1,7 @@
 # Pushl
 
+Pushl is a tool that converts updates published via Atom to WebSub and Webmention. It is intended to be run periodically from a cron job or similar, and adds basic IndieWeb-style push notification interoperability to statically-published websites (or CMSes which behave in the style of static publishing, such as [Publ](http://publ.beesbuzz.biz)).
+
 Implementation Home Page URL: http://github.com/PlaidWeb/Pushl
 
 Source Code repo URL(s) (optional): http://github.com/PlaidWeb/Pushl
