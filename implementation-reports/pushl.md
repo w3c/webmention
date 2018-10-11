@@ -39,7 +39,7 @@ MUST
 * [x] [Discovery Test #17](https://webmention.rocks/test/17)
 * [x] [Discovery Test #18](https://webmention.rocks/test/18)
 * [x] [Discovery Test #19](https://webmention.rocks/test/19)
-* [ ] [Discovery Test #20](https://webmention.rocks/test/20)
+* [x] [Discovery Test #20](https://webmention.rocks/test/20)
 * [x] [Discovery Test #21](https://webmention.rocks/test/21)
 
 
