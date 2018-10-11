@@ -69,11 +69,11 @@ This theoretically works, but the 10-minute testing window on webmention.rocks m
 
 SHOULD
 
-* [ ] [Delete Test #1](https://webmention.rocks/delete/1)
+* [x] [Delete Test #1](https://webmention.rocks/delete/1)
 
 #### Implementation Notes
 
-[Support is planned](https://github.com/PlaidWeb/Pushl/issues/7) but is dependent on the Atom feed supporting RFC 6721.
+If an entry disappears from a feed, Pushl will send webmentions against the links found in the previously-cached version of the entry; if the CMS reports the old item as 410 GONE then this will appear as a proper deletion to the recipient. As most CMSes don't support 410 GONE this will usually appear as an update instead.
 
 
 ### Security Considerations (4)
