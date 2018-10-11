@@ -89,8 +89,4 @@ This implementation has also implemented the following extensions.
 * [ ] Other: [`link rel` whitelist/blacklist](https://github.com/PlaidWeb/Pushl/issues/1)
 * [ ] Other: [forced synthetic mentions](https://github.com/PlaidWeb/Pushl/issues/6) (for [fed.brid.gy](http://fed.brid.gy) et al)
 
-#### Implementation Notes
-
-Pushl is a bridge from Atom/RSS to WebSub and Webmention, and is intended to be run from a cron job or similar. Any of the above extensions are up to the templates of the bridged site to support.
-
 
