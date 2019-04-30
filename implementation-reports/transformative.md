@@ -4,15 +4,15 @@ Implementation Home Page URL: https://github.com/barryf/transformative
 
 Source Code repo URL(s):
 * https://github.com/barryf/transformative
-* https://github.com/indieweb/mention-client-ruby
+* https://github.com/indieweb/webmention-client-ruby
 * [x] 100% open source implementation
 
 Programming Language(s): Ruby
 
 Developer(s):
-- [Barry Frost](https://barryfrost.com) (transformative, mention-client-ruby)
-- [Nat Welch](http://natwelch.com) (mention-client-ruby)
-- [Aaron Parecki](https://aaronparecki.com/) (mention-client-ruby)
+- [Barry Frost](https://barryfrost.com) (transformative, webmention-client-ruby)
+- [Nat Welch](http://natwelch.com) (webmention-client-ruby)
+- [Aaron Parecki](https://aaronparecki.com/) (webmention-client-ruby)
 
 Implementation Classes: Sender and Receiver
 
