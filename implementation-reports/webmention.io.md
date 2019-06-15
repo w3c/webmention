@@ -81,14 +81,14 @@ The endpoint stores the content found at the source and makes it available throu
 ### Update Tests (3.2.4)
 
 * [x] Does not display an update Webmention as a new response (SHOULD)
-* [ ] Removes the response when an update Webmention is sent and the source URL returns 200 and no link is found (SHOULD)
+* [x] Removes the response when an update Webmention is sent and the source URL returns 200 and no link is found (SHOULD)
 * [x] Updates and stores the information from the primary object at the source URL (MUST)
 * [ ] Updates and stores the information from children or descendant objects at the source URL (MAY)
 
 
 ### Delete Tests (3.2.4)
 
-* [ ] Recognizes an HTTP 410 response as a delete, and removes the response (SHOULD)
+* [x] Recognizes an HTTP 410 response as a delete, and removes the response (SHOULD)
 
 
 ### Security Considerations (4)
