@@ -16,6 +16,7 @@
 * [glennjones/webmentions](https://github.com/glennjones/webmentions) - *Node.js* a helper library for endpoint discovery, pulling validating Webmentions and sending Webmention requests
 * [willnorris.com/go/webmention](https://willnorris.com/go/webmention) - *Go* client library and command-line tool for discovering and sending Webmentions.
 * [webmentions-elixir](https://github.com/ckruse/webmentions-elixir) - *Elixir* client library for sending Webmentions
+* [Pushl](https://github.com/PlaidWeb/Pushl) - Command line client in *Python* for automating site-wide webmentions using a subscription feed (RSS/Atom/`h-feed`) for discovery
 
 ### Endpoint Discovery
 * [link_rel_parser](https://github.com/indieweb/link-rel-parser-php/blob/master/src/IndieWeb/link_rel_parser.php) - *PHP* `http_rels($h)` &amp; `head_http_rels($url)` - HTTP header string parser for RFC5988 Link: rels (including `X-Pingback`) &amp; function to curl a HEAD request and parse it all in one.
