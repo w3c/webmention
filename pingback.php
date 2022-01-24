@@ -2,6 +2,7 @@
 $body = trim(file_get_contents('php://input'));
 
 if(!$body) {
+  header('HTTP/1.1 405 Method Not Allowed');  
   header('Content-type: text/plain');
   echo "This is the Pingback endpoint for the Webmention spec. Pingback endpoints only accept POST requests.\n";
   die();
