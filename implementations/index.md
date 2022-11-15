@@ -51,7 +51,7 @@ Some additional publishing software, portions of which are open source, supports
 
 Plugins exist for some open source publishing software
 
-* [Wordpress](https://wordpress.org/plugins/webmention/)
+* [WordPress](https://wordpress.org/plugins/webmention/)
 * [Drupal](https://www.drupal.org/project/vinculum)
 * [Elgg](https://github.com/mapkyca/elgg-webmention)
 * [Nucleus CMS](https://github.com/gRegorLove/nucleus-plugin-webmention)
