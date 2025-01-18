@@ -169,8 +169,8 @@ Please describe any other ways the Webmention is displayed or used if applicable
 * [ ] Webmentions are moderated before being displayed (MAY)
 * [ ] Webmentions are periodically re-verified (MAY)
 * [X] The receiver ensures any displayed data it properly encoded/filtered to prevent XSS attacks (MUST)
-* [ ] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
-* [ ] Respects a self-imposed limit on the number of bytes fetched from the source URL (SHOULD)
+* [X] Respects a self-imposed limit on the time spent fetching the source URL (SHOULD)
+* [X] Respects a self-imposed limit on the number of bytes fetched from the source URL (SHOULD)
 * [ ] The receiver accepts additional parameters or headers, and so has CSRF protection (SHOULD)
 
 
