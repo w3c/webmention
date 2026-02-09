@@ -8,7 +8,7 @@ Source Code repo URL(s) (optional): https://github.com/capjamesg/webmention-rece
 
 Programming Language(s): Python
 
-Developer(s): [James Gallagher](https://jamesg.blog)
+Developer(s): [James](https://jamesg.blog)
 
 Implementation Classes (Sender and/or Receiver): Sender and Receiver
 
