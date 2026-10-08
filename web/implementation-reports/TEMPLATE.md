@@ -48,6 +48,8 @@ MUST
 * [ ] [Discovery Test #19](https://webmention.rocks/test/19)
 * [ ] [Discovery Test #20](https://webmention.rocks/test/20)
 * [ ] [Discovery Test #21](https://webmention.rocks/test/21)
+* [ ] [Discovery Test #22](https://webmention.rocks/test/22)
+* [ ] [Discovery Test #23](https://webmention.rocks/test/23)
 
 #### Implementation Notes
 
